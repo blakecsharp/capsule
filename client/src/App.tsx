@@ -1,6 +1,11 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = require("./firebaseConfig");
+
+initializeApp(firebaseConfig);
 
 function App() {
   return (
