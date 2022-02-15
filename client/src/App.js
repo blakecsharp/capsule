@@ -1,7 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./firebaseConfig";
 import theme from "./style/theme";
@@ -14,16 +12,13 @@ const app = initializeApp(firebaseConfig);
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Login />} />
-          </Routes>
-        </BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+        </Routes>
       </ThemeProvider>
-    </>
+    </BrowserRouter>
   );
 }
 

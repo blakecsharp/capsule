@@ -1,6 +1,7 @@
 const admin = require("firebase-admin");
 
 const GetUser = async (userId) => {
+  console.log(userId);
   return await admin
     .firestore()
     .collection("users")
