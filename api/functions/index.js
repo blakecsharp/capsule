@@ -12,4 +12,31 @@ const functions = require("firebase-functions");
 const server = configureServer();
 const api = functions.https.onRequest(server);
 
-module.exports = { api };
+const processSignUp = functions.auth.user().onCreate((user) => {
+  const newUserObj = {
+    id: user.uid,
+    email: user.email,
+    // displayName: user.displayName,
+    // photoURL: user.photoURL,
+    // phoneNumber: user.phoneNumber,
+    creationTime: user.metadata.creationTime,
+    // lastSignInTime: user.lastSignInTime,
+  };
+  console.log("PROCESS SIGN UP newUserObj", newUserObj);
+
+  return admin
+    .firestore()
+    .collection("users")
+    .doc(user.uid)
+    .set(newUserObj)
+    .then((writeResult) => {
+      console.log("User Created result:", writeResult);
+      return;
+    })
+    .catch((err) => {
+      console.log(err);
+      return;
+    });
+});
+
+module.exports = { api, processSignUp };

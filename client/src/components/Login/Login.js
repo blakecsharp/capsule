@@ -13,6 +13,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 
 import { ADD_USER } from "../../requests";
@@ -34,7 +35,7 @@ const Login = () => {
     addPWConf: "",
   });
 
-  const [addUser] = useMutation(ADD_USER);
+  const [AddUser] = useMutation(ADD_USER);
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
@@ -224,14 +225,20 @@ const Login = () => {
                 width: "50%",
               }}
               onClick={() => {
-                addUser({
+                AddUser({
                   variables: {
                     id: "",
                     firstName: values.addFirstName,
                     lastName: values.addLastName,
                     email: values.addEmail,
                   },
-                });
+                })
+                  .then((data) => {
+                    console.log(data);
+                  })
+                  .catch((e) => {
+                    console.log(e);
+                  });
               }}
             >
               Sign Up
