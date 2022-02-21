@@ -1,9 +1,10 @@
-const { gql } = require("apollo-server-express");
+const { gql } = require("apollo-server-cloud-functions");
 
 const typeDefs = gql`
   type Query {
-    GetUser(id: String): User
+    GetUser(userId: String): User
     GetItem(id: String): Item
+    GetCollection(userId: String): [Item]
   }
 
   type Mutation {
@@ -13,12 +14,14 @@ const typeDefs = gql`
       lastName: String
       email: String
     ): Response
+    CreateCapsule(createdById: String, title: String): Response
   }
 
   type User {
     id: String
     firstName: String
     lastName: String
+    capsules: [Capsule]
   }
 
   type Item {
@@ -28,6 +31,14 @@ const typeDefs = gql`
     title: String
     memories: [Memory]
     photos: [String] # should be URL links to firebase
+    capsuleId: String
+  }
+
+  type Capsule {
+    createdBy: String
+    id: String
+    title: String
+    items: [Item]
   }
 
   type Memory {

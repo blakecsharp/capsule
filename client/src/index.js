@@ -5,6 +5,7 @@ import { ApolloClient } from "@apollo/client/core";
 import { InMemoryCache } from "@apollo/client/cache";
 import { ApolloProvider, HttpLink } from "@apollo/client";
 import * as serviceWorker from "./lib/serviceWorker";
+import { AuthProvider } from "./AuthContext";
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
@@ -18,7 +19,9 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </ApolloProvider>,
   document.getElementById("root")
 );

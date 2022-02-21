@@ -1,27 +1,24 @@
-import * as React from "react";
-import { useQuery, useMutation } from "@apollo/client";
+import React from "react";
+import { useMutation } from "@apollo/client";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
 import TextInput from "../shared/TextInput";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
+import { useAuth } from "../../AuthContext";
 
 import logo from "./whitelogo.png";
-
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
 
 import { ADD_USER } from "../../requests";
 
 import { Container, Typography } from "@mui/material";
 
 const Login = () => {
-  const auth = getAuth();
+  const navigate = useNavigate();
+  const { signup } = useAuth();
+  const { login } = useAuth();
 
   const [values, setValues] = React.useState({
     email: "",
@@ -35,18 +32,16 @@ const Login = () => {
     addPWConf: "",
   });
 
-  const [AddUser] = useMutation(ADD_USER);
+  const [addUser, { data, loading, error }] = useMutation(ADD_USER);
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
 
   const handleLogin = () => () => {
-    signInWithEmailAndPassword(auth, values.email, values.password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log("SUCESS", user);
+    const val = login(values.email, values.password)
+      .then(() => {
+        navigate(`/home`);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -60,41 +55,23 @@ const Login = () => {
     if (values.addPW != values.addPWConf) {
       setValues({ error: "Your passwords must match" });
     }
-    createUserWithEmailAndPassword(auth, values.addEmail, values.addPW)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        /*
+    const val = signup(values.addEmail, values.addPW, values.firstName)
+      .then((user) => {
         addUser({
           variables: {
-            id: user.uid,
+            id: user.user.uid,
             firstName: values.addFirstName,
             lastName: values.addLastName,
             email: values.addEmail,
           },
-        }).then(({ data }) => {
-          console.log(data);
         });
-        */
+        setValues({ joinNow: false });
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        setValues({ error: errorMessage });
+        setValues({ error: error.message });
       });
   };
 
-  /*
-  const { data, loading, error } = useQuery(GET_USER, {
-    context: { clientName: "apiv2" },
-    variables: {
-      userId: authUser?.uid,
-    },
-  });
-  */
-
-  // console.log(data);
   return (
     <Container
       maxWidth={false}
@@ -116,6 +93,7 @@ const Login = () => {
       <Box
         sx={{
           width: "60%",
+          maxWidth: "800px",
         }}
       >
         {!values.joinNow ? (
@@ -224,22 +202,7 @@ const Login = () => {
               sx={{
                 width: "50%",
               }}
-              onClick={() => {
-                AddUser({
-                  variables: {
-                    id: "",
-                    firstName: values.addFirstName,
-                    lastName: values.addLastName,
-                    email: values.addEmail,
-                  },
-                })
-                  .then((data) => {
-                    console.log(data);
-                  })
-                  .catch((e) => {
-                    console.log(e);
-                  });
-              }}
+              onClick={handleAddUser()}
             >
               Sign Up
             </Button>

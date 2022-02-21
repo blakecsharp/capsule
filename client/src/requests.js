@@ -1,11 +1,32 @@
 import gql from "graphql-tag";
 
+export const GET_COLLECTION = gql`
+  query GetCollection($userId: String) {
+    resposne: GetCollection(userId: $userId) {
+      item {
+        uploadedBy
+        dateUploaded
+        location
+        title
+        memories
+        photos
+      }
+    }
+  }
+`;
+
 export const GET_USER = gql`
-  query getUser($userId: String!) {
-    response: getUser(userId: $String) {
+  query GetUser($userId: String) {
+    response: GetUser(userId: $userId) {
       id
       firstName
       lastName
+      capsules {
+        title
+        items {
+          photos
+        }
+      }
     }
   }
 `;
@@ -29,11 +50,11 @@ export const ADD_USER = gql`
   }
 `;
 
-export const EXCHANGE_RATES = gql`
-  query GetExchangeRates {
-    rates(currency: "USD") {
-      currency
-      rate
+export const CREATE_CAPSULE = gql`
+  mutation CreateCapsule($createdById: String, $title: String) {
+    CreateCapsule(createdById: $createdById, title: $title) {
+      success
+      error
     }
   }
 `;

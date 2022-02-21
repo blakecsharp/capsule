@@ -1,14 +1,25 @@
 const admin = require("firebase-admin");
+const objectAssignDeep = require("object-assign-deep");
 
-const GetUser = async (userId) => {
-  console.log(userId);
+const GetUser = async (_, data) => {
+  console.log(data);
   return await admin
     .firestore()
     .collection("users")
-    .doc(userId)
+    .doc(data.userId)
     .get()
-    .then((doc) => {
+    .then(async (doc) => {
       if (doc.exists) {
+        /*console.log(doc.data().capsuleIds);
+        let capsules = [];
+        for (var i = 0; i < doc.data().capsuleIds.length; i++) {
+          let query = await admin
+            .firestore()
+            .collection("items")
+            .where("capsuleId", "==", capsuleId)
+            .get();
+          console.log(query);
+        } */
         return doc.data();
       } else {
         const error = new Error(`User "${userId}" does not exist.`);
@@ -22,6 +33,4 @@ const GetUser = async (userId) => {
     });
 };
 
-module.export = {
-  GetUser,
-};
+exports.GetUser = GetUser;

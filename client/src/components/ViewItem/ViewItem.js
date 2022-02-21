@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useQuery } from "@apollo/react-hooks";
 import { GET_USER } from "../../requests";
 import { Container } from "@mui/material";
 

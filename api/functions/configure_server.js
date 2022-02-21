@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const { ApolloServer } = require("apollo-server-express");
+const { ApolloServer } = require("apollo-server-cloud-functions");
 const schema = require("./src/schema");
 const resolvers = require("./src/resolvers");
 
@@ -16,15 +16,14 @@ function configureServer() {
   const server = new ApolloServer({
     typeDefs: schema,
     resolvers,
-    introspection: true, // so we can access the playground in production reference: https://www.apollographql.com/docs/apollo-server/api/apollo-server/#constructor-options-lt-ApolloServer-gt
-    playground: true,
-    engine: {
-      debugPrintReports: true,
-    },
+    context: ({ req, res }) => ({
+      headers: req.headers,
+      req,
+      res,
+    }),
   });
-  server.applyMiddleware({ app, path: "/", cors: true });
-
-  return app;
+  return server;
+  // return app;
 }
 
 module.exports = configureServer;
