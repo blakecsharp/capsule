@@ -43,47 +43,57 @@ const Home = () => {
       }}
     >
       <NavigationBar />
-      <Typography sx={{ marginBottom: "20px" }}>
-        Hi {currentUser.displayName}!
-      </Typography>
-
-      {!data.response.capsules || data.response.capsules.length < 1 ? (
-        <Box
+      {!loading && data && (
+        <Container
           sx={{
             display: "flex",
             flexDirection: "column",
-            width: "100%",
             alignItems: "center",
           }}
         >
-          Looks like you are not a part of any capsules.
-          <Button
-            variant="contained"
-            disableElevation
-            sx={{
-              width: "50%",
-            }}
-            onClick={() => {
-              navigate("/create");
-            }}
-          >
-            Click here to create your first capsule
-          </Button>
-          <Button
-            variant="contained"
-            disableElevation
-            sx={{
-              width: "50%",
-            }}
-            onClick={() => {
-              navigate("/create");
-            }}
-          >
-            Click here to join your first capsule
-          </Button>
-        </Box>
-      ) : (
-        <Box></Box>
+          <Typography sx={{ marginBottom: "20px" }}>
+            Hi {data.response.firstName}!
+          </Typography>
+
+          {!data.response.capsules || data.response.capsules.length < 1 ? (
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                width: "100%",
+                alignItems: "center",
+              }}
+            >
+              Looks like you are not a part of any capsules.
+              <Button
+                variant="contained"
+                disableElevation
+                sx={{
+                  width: "50%",
+                }}
+                onClick={() => {
+                  navigate("/create");
+                }}
+              >
+                Click here to create your first capsule
+              </Button>
+              <Button
+                variant="contained"
+                disableElevation
+                sx={{
+                  width: "50%",
+                }}
+                onClick={() => {
+                  navigate("/create");
+                }}
+              >
+                Click here to join your first capsule
+              </Button>
+            </Box>
+          ) : (
+            <Box></Box>
+          )}
+        </Container>
       )}
     </Container>
   );

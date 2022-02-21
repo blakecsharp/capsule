@@ -28,16 +28,8 @@ export function AuthProvider({ children }) {
     setAppLoading(false);
   });
 
-  const signup = async (email, password, firstName) => {
-    return createUserWithEmailAndPassword(auth, email, password).then(
-      (userContext) => {
-        /*
-        userContext.user.updateProfile({
-          displayName: firstName,
-        });
-        */
-      }
-    );
+  const signup = async (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const login = (email, password) => {

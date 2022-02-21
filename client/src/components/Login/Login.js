@@ -55,7 +55,7 @@ const Login = () => {
     if (values.addPW != values.addPWConf) {
       setValues({ error: "Your passwords must match" });
     }
-    const val = signup(values.addEmail, values.addPW, values.firstName)
+    const val = signup(values.addEmail, values.addPW)
       .then((user) => {
         addUser({
           variables: {
@@ -112,7 +112,7 @@ const Login = () => {
               placeholder="Password"
               id="password-input"
               type="password"
-              adornment={<EmailIcon sx={{ color: "white", mr: 3 }} />}
+              adornment={<LockIcon sx={{ color: "white", mr: 3 }} />}
             />
             <Box
               sx={{
