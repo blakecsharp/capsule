@@ -9,24 +9,27 @@ import {
   sendPasswordResetEmail,
   onAuthStateChanged,
 } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 export const AuthContext = React.createContext();
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const storage = getStorage(app);
 
 export function AuthProvider({ children }) {
+  const [currentUser, setCurrentUser] = useState(null);
   const [appLoading, setAppLoading] = useState(true);
-  const [currentUser, setCurrentUser] = useState();
 
-  React.useEffect(() => {
-    setAppLoading(true);
+  useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setCurrentUser(user);
-      }
+      setAppLoading(false);
+      setCurrentUser(user);
     });
-    setAppLoading(false);
-  });
+  }, []);
+
+  if (appLoading) {
+    return <>Loading...</>;
+  }
 
   const signup = async (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);

@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 import TextInput from "../shared/TextInput";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
-import { useAuth } from "../../AuthContext";
+import { useAuth, auth } from "../../AuthContext";
 
 import logo from "./whitelogo.png";
 
@@ -19,6 +20,17 @@ const Login = () => {
   const navigate = useNavigate();
   const { signup } = useAuth();
   const { login } = useAuth();
+  const [user, loading, error] = useAuthState(auth);
+
+  useEffect(() => {
+    if (loading) {
+      return <>Loading...</>;
+    }
+    if (user) {
+      console.log(user);
+      navigate("/home");
+    }
+  }, [user, loading]);
 
   const [values, setValues] = React.useState({
     email: "",
@@ -32,7 +44,7 @@ const Login = () => {
     addPWConf: "",
   });
 
-  const [addUser, { data, loading, error }] = useMutation(ADD_USER);
+  const [addUser] = useMutation(ADD_USER);
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });

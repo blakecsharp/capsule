@@ -4,19 +4,24 @@ import { useMutation } from "@apollo/client";
 import { Container } from "@mui/material";
 import { Box, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { getAuth } from "firebase/auth";
+import { auth } from "../../AuthContext";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 import TextInput from "../shared/TextInput";
 
 const CreateCapsule = () => {
   const navigate = useNavigate();
-  const auth = getAuth();
-  const user = auth.currentUser;
+  const [user, loading, error] = useAuthState(auth);
+
+  React.useEffect(() => {
+    if (loading) return;
+    if (!user) return navigate("/");
+  }, [user, loading]);
 
   const [values, setValues] = React.useState({
     title: "",
   });
-  const [createCapsule, { data, loading, error }] = useMutation(CREATE_CAPSULE);
+  const [createCapsule] = useMutation(CREATE_CAPSULE);
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });

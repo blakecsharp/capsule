@@ -15,6 +15,17 @@ const typeDefs = gql`
       email: String
     ): Response
     CreateCapsule(createdById: String, title: String): Response
+    AddItem(
+      uploadedBy: String
+      location: String
+      title: String
+      mementoType: String
+      date: String
+      textMemories: [String]
+      images: [String]
+      audio: [String]
+      capsuleId: String
+    ): Response
   }
 
   type User {
@@ -26,12 +37,13 @@ const typeDefs = gql`
 
   type Item {
     uploadedBy: String # should be an id
-    dateUploaded: String
+    date: String
     location: String
     title: String
     memories: [Memory]
     photos: [String] # should be URL links to firebase
     capsuleId: String
+    mementoType: String
   }
 
   type Capsule {
@@ -44,7 +56,7 @@ const typeDefs = gql`
   type Memory {
     addedBy: String # should be id
     text: String
-    media: [String]
+    audio: String
     typeOfMemory: String # change to memorytype
   }
 

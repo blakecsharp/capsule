@@ -9,6 +9,10 @@ const TextInput = ({
   id,
   type,
   adornment,
+  multiline,
+  rows,
+  maxRows,
+  border,
 }) => {
   return (
     <TextField
@@ -20,30 +24,33 @@ const TextInput = ({
       InputProps={{
         startAdornment: adornment,
       }}
+      multiline={multiline ? multiline : false}
+      rows={multiline ? rows : 1}
+      maxRows={multiline ? maxRows : 1}
       sx={{
         m: 1,
         width: "100%",
 
         "& .MuiOutlinedInput-root:hover": {
           "& > fieldset": {
-            borderColor: "white",
+            borderColor: border ? border : "white",
           },
         },
         "& .MuiOutlinedInput-root": {
           "& > fieldset": {
-            borderColor: "white",
+            borderColor: border ? border : "white",
             color: "white",
           },
         },
         "& .MuiOutlinedInput-root:focused": {
           "& > fieldset": {
-            borderColor: "white",
+            borderColor: border ? border : "white",
           },
         },
         "& .MuiOutlinedInput-root:active": {
           "& > fieldset": {
-            borderColor: "white",
-            color: "white",
+            borderColor: border ? border : "white",
+            color: border ? border : "white",
           },
         },
       }}

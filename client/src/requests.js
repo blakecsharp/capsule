@@ -22,11 +22,41 @@ export const GET_USER = gql`
       firstName
       lastName
       capsules {
+        id
         title
         items {
           photos
         }
       }
+    }
+  }
+`;
+
+export const ADD_ITEM = gql`
+  mutation AddItem(
+    $uploadedBy: String
+    $location: String
+    $title: String
+    $mementoType: String
+    $date: String
+    $textMemories: [String]
+    $images: [String]
+    $audio: [String]
+    $capsuleId: String
+  ) {
+    AddItem(
+      uploadedBy: $uploadedBy
+      location: $location
+      title: $title
+      mementoType: $mementoType
+      date: $date
+      textMemories: $textMemories
+      images: $images
+      audio: $audio
+      capsuleId: $capsuleId
+    ) {
+      success
+      error
     }
   }
 `;

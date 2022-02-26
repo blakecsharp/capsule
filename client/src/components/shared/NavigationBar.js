@@ -9,8 +9,12 @@ import { useAuth } from "../../AuthContext";
 
 import whitelogo from "./whitesmalllogo.png";
 import blanklogo from "./smalllogoblank.png";
+import purplelogo from "./smallpurplelogo.png";
+import purplelogoblank from "./smallpurpleblank.png";
 
-const NavigationBar = () => {
+const purple = "#9567e0";
+
+const NavigationBar = ({ isLoggedIn }) => {
   const { logout } = useAuth();
   const navigate = useNavigate();
   return (
@@ -24,7 +28,7 @@ const NavigationBar = () => {
     >
       <Box
         component="img"
-        src={whitelogo}
+        src={isLoggedIn ? purplelogo : whitelogo}
         sx={{
           height: "42px",
           width: "50px",
@@ -36,14 +40,19 @@ const NavigationBar = () => {
       />
       <Box sx={{ marginLeft: "auto", mr: "10vw" }}>
         <AddIcon
-          sx={{ color: "white", height: "60px", width: "50px", pr: "5px" }}
+          sx={{
+            color: isLoggedIn ? purple : "white",
+            height: "60px",
+            width: "50px",
+            pr: "5px",
+          }}
           onClick={() => {
             navigate(`/add`);
           }}
         />
         <Box
           component="img"
-          src={blanklogo}
+          src={isLoggedIn ? purplelogoblank : blanklogo}
           sx={{
             height: "50px",
             width: "50px",
@@ -54,7 +63,12 @@ const NavigationBar = () => {
           }}
         />
         <HomeIcon
-          sx={{ color: "white", height: "60px", width: "50px", pr: "5px" }}
+          sx={{
+            color: isLoggedIn ? purple : "white",
+            height: "60px",
+            width: "50px",
+            pr: "5px",
+          }}
           onClick={() => {
             navigate(`/home`);
           }}
@@ -75,6 +89,7 @@ const NavigationBar = () => {
                 // An error happened.
               });
           }}
+          fontColor={isLoggedIn ? "#9567e0" : "white"}
         >
           Sign Out
         </Button>
