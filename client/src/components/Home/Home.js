@@ -6,6 +6,7 @@ import { Box } from "@mui/material";
 import { Button } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
+import CustomButton from "../shared/Button";
 
 import NavigationBar from "../shared/NavigationBar";
 import { GET_USER } from "../../requests";
@@ -34,6 +35,8 @@ const Home = () => {
   if (loading) {
     return null;
   }
+
+  console.log(data);
 
   return (
     <Container
@@ -70,31 +73,33 @@ const Home = () => {
                 alignItems: "center",
               }}
             >
-              Looks like you are not a part of any capsules.
-              <Button
-                variant="contained"
+              <Typography variant="body1" sx={{ mb: "10px" }}>
+                Looks like you are not a part of any capsules.
+              </Typography>
+              <CustomButton
+                isLoggedIn
                 disableElevation
-                sx={{
+                style={{
                   width: "50%",
+                  mb: "10px",
                 }}
                 onClick={() => {
                   navigate("/create");
                 }}
-              >
-                Click here to create your first capsule
-              </Button>
-              <Button
-                variant="contained"
+                text="Create your first capsule"
+              />
+              <CustomButton
+                isLoggedIn
                 disableElevation
-                sx={{
+                style={{
                   width: "50%",
+                  mb: "10px",
                 }}
                 onClick={() => {
                   navigate("/create");
                 }}
-              >
-                Click here to join your first capsule
-              </Button>
+                text="Join your first capsule"
+              />
             </Box>
           ) : (
             <Container
@@ -150,7 +155,10 @@ const Home = () => {
                     >
                       {capsule.items
                         ? `${capsule.items.length} memento${
-                            capsule.items.length > 1 ? "s" : ""
+                            capsule.items.length > 1 ||
+                            capsule.items.length === 0
+                              ? "s"
+                              : ""
                           }`
                         : ""}
                     </Typography>
@@ -168,8 +176,14 @@ const Home = () => {
                         })}
                     </Stack>
 
-                    {!capsule.items && (
-                      <Box>
+                    {capsule.items.length === 0 && (
+                      <Box
+                        sx={{
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                        }}
+                      >
                         <Typography
                           sx={{
                             display: "flex",
@@ -179,12 +193,10 @@ const Home = () => {
                         >
                           Looks like this capsule is empty.
                         </Typography>
-                        <Button
-                          variant="contained"
+
+                        <CustomButton
+                          isLoggedIn
                           disableElevation
-                          sx={{
-                            width: "25%",
-                          }}
                           onClick={() => {
                             navigate("/add", {
                               state: {
@@ -192,9 +204,8 @@ const Home = () => {
                               },
                             });
                           }}
-                        >
-                          Add a memento
-                        </Button>
+                          text={"Add a memento"}
+                        />
                       </Box>
                     )}
                   </Box>
@@ -205,7 +216,7 @@ const Home = () => {
                   navigate("/create");
                 }}
               >
-                Click here to create a new capsule
+                Create a new capsule
               </Button>
             </Container>
           )}

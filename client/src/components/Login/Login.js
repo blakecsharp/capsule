@@ -63,7 +63,7 @@ const Login = () => {
       });
   };
 
-  const handleAddUser = () => () => {
+  const handleAddUser = () => {
     if (values.addPW != values.addPWConf) {
       setValues({ error: "Your passwords must match" });
     }
@@ -77,10 +77,10 @@ const Login = () => {
             email: values.addEmail,
           },
         });
-        setValues({ joinNow: false });
+        setValues({ ...values, joinNow: false });
       })
       .catch((error) => {
-        setValues({ error: error.message });
+        setValues({ ...values, error: error.message });
       });
   };
 
@@ -214,7 +214,7 @@ const Login = () => {
               sx={{
                 width: "50%",
               }}
-              onClick={handleAddUser()}
+              onClick={handleAddUser}
             >
               Sign Up
             </Button>
