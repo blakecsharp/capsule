@@ -42,7 +42,7 @@ const Capsule = () => {
     if (!user) return navigate("/");
   }, [user, loading]);
   return (
-    <Container maxWidth={false} disableGutters sx={{}}>
+    <Container maxWidth={false} disableGutters sx={{ maxWidth: "100vw" }}>
       <NavigationBar isLoggedIn />
       <Box
         sx={{

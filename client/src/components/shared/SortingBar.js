@@ -16,6 +16,7 @@ const SortingBar = ({ sort, setSort, capsuleId }) => {
         flexDirection: "row",
         width: "100%",
         alignItems: "flex-end",
+        maxWidth: "100vw",
       }}
     >
       <ToggleButtonGroup

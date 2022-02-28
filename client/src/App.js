@@ -12,6 +12,7 @@ import Add from "./components/Add/Add";
 import CreateCapsule from "./components/CreateCapsule/CreateCapsule";
 import Item from "./components/Item/Item";
 import Join from "./components/JoinCapsule/JoinCapsule";
+import Request from "./components/Request/Request";
 import { TabletView, isMobile, isTablet } from "react-device-detect";
 import { Typography } from "@mui/material";
 
@@ -35,6 +36,7 @@ function App() {
           <Route path="/create" element={<CreateCapsule />} />
           <Route path="/item" element={<Item />} />
           <Route path="/join" element={<Join />} />
+          <Route path="/request" element={<Request />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>

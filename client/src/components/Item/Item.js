@@ -125,7 +125,7 @@ const Item = () => {
             }}
             onClick={() => {}}
           >
-            <Typography variant="subtitle1" color="gray">
+            <Typography variant="subtitle1" color="black">
               Type or Record
             </Typography>
 
@@ -161,9 +161,16 @@ const Item = () => {
               p: "10px",
               width: "100px",
             }}
-            onClick={() => {}}
+            onClick={() => {
+              navigate("/request", {
+                state: {
+                  capsuleId: location.state.capsuleId,
+                  itemId: location.state.itemId,
+                },
+              });
+            }}
           >
-            <Typography color="gray" variant="subtitle1">
+            <Typography color="black" variant="subtitle1">
               Request
             </Typography>
 
