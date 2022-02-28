@@ -4,8 +4,8 @@ const AddItem = async (_, data) => {
   try {
     console.log(data);
 
-    var memories = [];
-    for (var i = 0; i < data.textMemories.length; i++) {
+    const memories = [];
+    for (let i = 0; i < data.textMemories.length; i++) {
       memories.push({
         addedBy: data.uploadedBy,
         text: data.textMemories[i],
@@ -13,10 +13,10 @@ const AddItem = async (_, data) => {
       });
     }
 
-    for (var i = 0; i < data.audio.length; i++) {
+    for (let j = 0; j < data.audio.length; j++) {
       memories.push({
         addedBy: data.uploadedBy,
-        audio: data.audio[i],
+        audio: data.audio[j],
         typeOfMemory: "AUDIO",
       });
     }

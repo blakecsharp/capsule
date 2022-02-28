@@ -1,5 +1,3 @@
-const admin = require("firebase-admin");
-
 const QueryUser = require("./queries/Users.js");
 const QueryItem = require("./queries/Items");
 const QueryCapsule = require("./queries/Capsule");

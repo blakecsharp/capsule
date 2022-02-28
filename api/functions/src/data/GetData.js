@@ -1,10 +1,11 @@
+/* eslint comma-dangle: "off" */
 const admin = require("firebase-admin");
 const objectAssignDeep = require("object-assign-deep");
 
-const GetData = async (collectionName, wherePairs) => {
+const getData = async (collectionName, wherePairs) => {
   let query = admin.firestore().collection(collectionName);
 
-  for (var i = 0; i < wherePairs.length; i++) {
+  for (let i = 0; i < wherePairs.length; i++) {
     query = query.where(
       wherePairs[i].property,
       wherePairs[i].condition,
@@ -25,11 +26,11 @@ const GetData = async (collectionName, wherePairs) => {
         });
         return results;
       } else {
-        return new error(`[${collectionName}] Documents do not exist`);
+        return new Error(`[${collectionName}] Documents do not exist`);
       }
     })
     .catch((err) =>
       console.log(`[${collectionName}] Error getting document`, err)
     );
 };
-exports.GetData = GetData;
+exports.getData = getData;

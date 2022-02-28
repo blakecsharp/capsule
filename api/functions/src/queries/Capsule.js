@@ -1,11 +1,9 @@
-const admin = require("firebase-admin");
-const { GetData } = require("../data/GetData");
-const objectAssignDeep = require("object-assign-deep");
+const { getData } = require("../data/GetData");
 
 const GetCapsule = async (_, data) => {
   console.log(data);
 
-  const capsuleItems = await GetData("items", [
+  const capsuleItems = await getData("items", [
     {
       property: "capsuleId",
       condition: "==",

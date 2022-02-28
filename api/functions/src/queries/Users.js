@@ -1,46 +1,33 @@
 const admin = require("firebase-admin");
-const { GetData } = require("../data/GetData");
+const { getData } = require("../data/GetData");
 const objectAssignDeep = require("object-assign-deep");
 
 const GetUser = async (_, data) => {
-  console.log(data);
-  let userInformation = await admin
+  const userInformation = await admin
     .firestore()
     .collection("users")
     .doc(data.userId)
     .get()
     .then(async (doc) => {
       if (doc.exists) {
-        /*console.log(doc.data().capsuleIds);
-        let capsules = [];
-        for (var i = 0; i < doc.data().capsuleIds.length; i++) {
-          let query = await admin
-            .firestore()
-            .collection("capsules")
-            .where("id", "==", doc.data().capsuleIds[i])
-            .get()
-            .then(async (cap) => {
-              console.log(cap.data());
-              if (cap.exists) {
-                return cap.data();
-              }
-            });
-          console.log(query);
-        }*/
         return doc.data();
       } else {
-        const error = new Error(`User "${userId}" does not exist.`);
+        const error = new Error(`User "${data.userId}" does not exist.`);
         console.log(error);
         return null;
       }
     })
     .catch((err) => {
-      console.log(err, `Data call getUserData failed for userId: ${userId}`);
+      /* eslint comma-dangle: "off" */
+      console.log(
+        err,
+        `Data call getUserData failed for userId: ${data.userId}`
+      );
       return null;
     });
-  capsules = [];
-  for (var i = 0; i < userInformation.capsuleIds.length; i++) {
-    const cap = await GetData("capsules", [
+  const capsules = [];
+  for (let i = 0; i < userInformation.capsuleIds.length; i++) {
+    const cap = await getData("capsules", [
       {
         property: "id",
         condition: "==",
@@ -52,7 +39,7 @@ const GetUser = async (_, data) => {
         "found capsule where id matches",
         userInformation.capsuleIds[i]
       );
-      const capItems = await GetData("items", [
+      const capItems = await getData("items", [
         {
           property: "capsuleId",
           condition: "==",

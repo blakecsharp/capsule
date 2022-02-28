@@ -3,7 +3,7 @@ const admin = require("firebase-admin");
 const AddUser = async (_, data) => {
   try {
     data.capsuleIds = [];
-    const res = await admin
+    await admin
       .firestore()
       .collection("users")
       .doc(data.id)
