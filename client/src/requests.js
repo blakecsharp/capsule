@@ -32,6 +32,48 @@ export const GET_USER = gql`
   }
 `;
 
+export const GET_CAPSULE = gql`
+  query GetCapsule($capsuleId: String) {
+    response: GetCapsule(capsuleId: $capsuleId) {
+      id
+      uploadedBy
+      date
+      location
+      title
+      memories {
+        addedBy
+        text
+        audio
+        typeOfMemory
+      }
+      photos
+      capsuleId
+      mementoType
+    }
+  }
+`;
+
+export const GET_ITEM = gql`
+  query GetItem($itemId: String) {
+    response: GetItem(itemId: $itemId) {
+      id
+      uploadedBy
+      date
+      location
+      title
+      memories {
+        addedBy
+        text
+        audio
+        typeOfMemory
+      }
+      photos
+      capsuleId
+      mementoType
+    }
+  }
+`;
+
 export const ADD_ITEM = gql`
   mutation AddItem(
     $uploadedBy: String

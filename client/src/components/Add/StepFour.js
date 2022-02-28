@@ -129,7 +129,9 @@ const StepFour = ({
   }, [user, loading]);
   return (
     <Container maxWidth={false} disableGutters sx={{}}>
-      <Typography sx={{ mb: "20px" }}>{values.title}</Typography>
+      <Typography variant="h2" sx={{ mb: "20px" }}>
+        {values.title}
+      </Typography>
       <Box sx={{ display: "flex", flexDirection: "row" }}>
         <Box
           component="img"
@@ -141,17 +143,16 @@ const StepFour = ({
           src={values.previewImages[0]}
         />
         <Box sx={{ display: "flex", flexDirection: "column", ml: "30px" }}>
-          <Typography>Date: </Typography>
-
-          <Typography>{values.date}</Typography>
-
-          <Typography>Location: </Typography>
-
-          <Typography>{values.location}</Typography>
+          <Typography variant="h4">Date </Typography>{" "}
+          <Typography variant="subtitle1">{values.date}</Typography>
+          <Typography variant="h4">Location: </Typography>
+          <Typography variant="subtitle1">{values.location}</Typography>
         </Box>
       </Box>
       <Box sx={{ mt: "30px" }}>
-        <Typography sx={{ mb: "30px" }}>Memory Lane</Typography>
+        <Typography variant="subtitle2" sx={{ mb: "30px" }}>
+          MEMORY LANE
+        </Typography>
 
         <Timeline>{memories}</Timeline>
       </Box>

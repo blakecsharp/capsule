@@ -6,7 +6,6 @@ import { Box } from "@mui/material";
 import { Button } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 import NavigationBar from "../shared/NavigationBar";
 import { GET_USER } from "../../requests";

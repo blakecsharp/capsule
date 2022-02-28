@@ -10,13 +10,14 @@ import TextsmsIcon from "@mui/icons-material/Textsms";
 import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
 import MicRecorder from "mic-recorder-to-mp3";
 
-const StepThree = ({ values, handleChange, handleTextMemory, handleAudio }) => {
+const StepThree = ({ values, handleChange, handleAudio }) => {
   const navigate = useNavigate();
   const [user, loading, error] = useAuthState(auth);
   const [inType, setInType] = React.useState(false);
   const [inRecord, setInRecord] = React.useState(false);
   const [isRecording, setIsRecording] = React.useState(false);
   const [recorder, setRecorder] = React.useState(null);
+  const [showConfirmation, setShowConfirmation] = React.useState(false);
 
   async function requestRecorder() {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -45,7 +46,6 @@ const StepThree = ({ values, handleChange, handleTextMemory, handleAudio }) => {
 
     // Obtain the audio when ready.
     const handleData = (e) => {
-      console.log(e.data);
       let audioURL = URL.createObjectURL(e.data);
       handleAudio(e.data, audioURL);
     };
@@ -66,9 +66,12 @@ const StepThree = ({ values, handleChange, handleTextMemory, handleAudio }) => {
     if (loading) return;
     if (!user) return navigate("/");
   }, [user, loading]);
+
   return (
-    <Container maxWidth={false} disableGutters sx={{}}>
-      <Typography sx={{ mb: "20px" }}>{values.title}</Typography>
+    <Container maxWidth={false} disableGutters sx={{ mb: "40px" }}>
+      <Typography variant="h2" sx={{ mb: "20px" }}>
+        {values.title}
+      </Typography>
 
       <Box sx={{ display: "flex", flexDirection: "row" }}>
         <Box
@@ -94,8 +97,8 @@ const StepThree = ({ values, handleChange, handleTextMemory, handleAudio }) => {
             placeholder="Date for the objet (if appropriate)"
             id="date-input"
             type="string"
-            border="black"
-            adornment={<EditIcon sx={{ color: "black", mr: 3 }} />}
+            border="#9567E0"
+            adornment={<EditIcon sx={{ color: "#9567E0", mr: 3 }} />}
           />
           <TextInput
             value={values.location}
@@ -103,59 +106,73 @@ const StepThree = ({ values, handleChange, handleTextMemory, handleAudio }) => {
             placeholder="Location where the object currently is"
             id="location-input"
             type="string"
-            border="black"
-            adornment={<EditIcon sx={{ color: "black", mr: 3 }} />}
+            border="#9567E0"
+            adornment={<EditIcon sx={{ color: "#9567E0", mr: 3 }} />}
           />
         </Box>
       </Box>
       {!inType && !inRecord && (
         <Box
           sx={{
-            display: "flex",
-            flexDirection: "row",
-            width: "80vw",
-            justifyContent: "center",
-            alignItems: "center",
+            mt: "30px",
           }}
         >
+          <Typography variant="h3">Add a memory</Typography>
+
           <Box
             sx={{
-              border: 1,
-              borderColor: "white",
-              borderRadius: "10px",
+              display: "flex",
+              flexDirection: "row",
+              width: "80vw",
               justifyContent: "center",
               alignItems: "center",
-              width: "40%",
-              height: "10vh",
-              display: "flex",
-              flexDirection: "column",
-              mr: "20px",
-            }}
-            onClick={() => {
-              setInType(true);
+              mt: "20px",
+              mb: "20px",
             }}
           >
-            <TextsmsIcon sx={{ height: "50px", width: "50px" }} />
-            Type
-          </Box>
-          <Box
-            sx={{
-              border: 1,
-              borderColor: "white",
-              borderRadius: "10px",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "40%",
-              height: "10vh",
-              display: "flex",
-              flexDirection: "column",
-            }}
-            onClick={() => {
-              setInRecord(true);
-            }}
-          >
-            <KeyboardVoiceIcon sx={{ height: "50px", width: "50px" }} />
-            Record
+            <Box
+              sx={{
+                border: 1,
+                borderColor: "#9567E0",
+                borderRadius: "10px",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "40%",
+                height: "10vh",
+                display: "flex",
+                flexDirection: "column",
+                mr: "20px",
+              }}
+              onClick={() => {
+                setInType(true);
+              }}
+            >
+              <TextsmsIcon
+                sx={{ color: "#9567E0", height: "50px", width: "50px" }}
+              />
+              <Typography variant="subtitle2">Type</Typography>
+            </Box>
+            <Box
+              sx={{
+                border: 1,
+                borderColor: "#9567E0",
+                borderRadius: "10px",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "40%",
+                height: "10vh",
+                display: "flex",
+                flexDirection: "column",
+              }}
+              onClick={() => {
+                setInRecord(true);
+              }}
+            >
+              <KeyboardVoiceIcon
+                sx={{ color: "#9567E0", height: "50px", width: "50px" }}
+              />
+              <Typography variant="subtitle2">Record</Typography>
+            </Box>
           </Box>
         </Box>
       )}
@@ -201,7 +218,16 @@ const StepThree = ({ values, handleChange, handleTextMemory, handleAudio }) => {
 
       {inType && !inRecord && (
         <Box>
-          <Box sx={{ width: "60%", maxWidth: "800px" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              mr: "0",
+            }}
+          >
             <TextInput
               multiline
               rows={4}
@@ -210,17 +236,8 @@ const StepThree = ({ values, handleChange, handleTextMemory, handleAudio }) => {
               placeholder="Type here"
               id="memory-input"
               type="string"
-              border="black"
+              border="#9567E0"
             />
-            <Button
-              onClick={() => {
-                handleTextMemory();
-                setInType(true);
-                setInRecord(false);
-              }}
-            >
-              Save
-            </Button>
           </Box>
           <Button
             onClick={() => {

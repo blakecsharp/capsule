@@ -10,6 +10,7 @@ import Home from "./components/Home/Home";
 import Capsule from "./components/Capsule/Capsule";
 import Add from "./components/Add/Add";
 import CreateCapsule from "./components/CreateCapsule/CreateCapsule";
+import Item from "./components/Item/Item";
 import { TabletView, isMobile, isTablet } from "react-device-detect";
 import { Typography } from "@mui/material";
 
@@ -31,6 +32,7 @@ function App() {
           <Route path="/capsule" element={<Capsule />} />
           <Route path="/add" element={<Add />} />
           <Route path="/create" element={<CreateCapsule />} />
+          <Route path="/item" element={<Item />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>

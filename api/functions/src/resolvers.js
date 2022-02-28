@@ -1,7 +1,8 @@
 const admin = require("firebase-admin");
 
 const QueryUser = require("./queries/Users.js");
-const GetItem = require("./queries/Items");
+const QueryItem = require("./queries/Items");
+const QueryCapsule = require("./queries/Capsule");
 
 const MutationUser = require("./mutations/User.js");
 const Capsule = require("./mutations/Capsule.js");
@@ -10,7 +11,8 @@ const Item = require("./mutations/Item.js");
 module.exports = {
   Query: {
     GetUser: QueryUser.GetUser,
-    GetItem,
+    GetCapsule: QueryCapsule.GetCapsule,
+    GetItem: QueryItem.GetItem,
   },
   Mutation: {
     AddUser: MutationUser.AddUser,

@@ -3,8 +3,8 @@ const { gql } = require("apollo-server-cloud-functions");
 const typeDefs = gql`
   type Query {
     GetUser(userId: String): User
-    GetItem(id: String): Item
-    GetCollection(userId: String): [Item]
+    GetItem(itemId: String): Item
+    GetCapsule(capsuleId: String): [Item]
   }
 
   type Mutation {
@@ -36,6 +36,7 @@ const typeDefs = gql`
   }
 
   type Item {
+    id: String
     uploadedBy: String # should be an id
     date: String
     location: String

@@ -33,7 +33,9 @@ const StepOne = ({ values, handleChange }) => {
   }, [user, loading]);
   return (
     <Container maxWidth={false} disableGutters>
-      <Typography sx={{ mb: "20px" }}>Add a memento</Typography>
+      <Typography variant="h2" sx={{ mb: "20px" }}>
+        Add a memento
+      </Typography>
       <Box sx={{ width: "60%", maxWidth: "800px" }}>
         <Typography>Give your memento a name:</Typography>
         <TextInput

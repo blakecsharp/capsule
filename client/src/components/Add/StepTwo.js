@@ -146,7 +146,9 @@ const StepTwo = ({
 
   return (
     <Container maxWidth={false} disableGutters sx={{}}>
-      <Typography sx={{ mb: "20px" }}>Add a photo or video</Typography>
+      <Typography variant="h2" sx={{ mb: "20px" }}>
+        Add a photo or video
+      </Typography>
 
       {!inUpload && !inCapture && (
         <Box
@@ -162,7 +164,7 @@ const StepTwo = ({
           <Box
             sx={{
               border: 1,
-              borderColor: "black",
+              borderColor: "#9567E0",
               borderRadius: "10px",
               justifyContent: "center",
               alignItems: "center",
@@ -176,13 +178,15 @@ const StepTwo = ({
               setInUpload(true);
             }}
           >
-            <UploadIcon sx={{ height: "50px", width: "50px" }} />
-            Upload
+            <UploadIcon
+              sx={{ color: "#9567E0", height: "50px", width: "50px" }}
+            />
+            <Typography variant="subtitle2">Upload</Typography>
           </Box>
           <Box
             sx={{
               border: 1,
-              borderColor: "black",
+              borderColor: "#9567E0",
               borderRadius: "10px",
               justifyContent: "center",
               alignItems: "center",
@@ -195,8 +199,10 @@ const StepTwo = ({
               setInCapture(true);
             }}
           >
-            <CameraAltIcon sx={{ height: "50px", width: "50px" }} />
-            Capture
+            <CameraAltIcon
+              sx={{ color: "#9567E0", height: "50px", width: "50px" }}
+            />
+            <Typography variant="subtitle2">Capture</Typography>
           </Box>
         </Box>
       )}
@@ -215,6 +221,8 @@ const StepTwo = ({
             sx={{
               display: "flex",
               flexDirection: "row",
+              alignItems: "center",
+              mb: "20px",
             }}
           >
             <input
@@ -228,7 +236,13 @@ const StepTwo = ({
                 }
               }}
             />
-            <Button onClick={updateImages}> Add Image </Button>
+            <Button
+              sx={{ border: 1, borderColor: "#9567E0" }}
+              onClick={updateImages}
+            >
+              {" "}
+              Add Image{" "}
+            </Button>
           </Box>
           <Box
             sx={{

@@ -2,7 +2,8 @@ import React, { memo, useEffect } from "react";
 import { Container, Typography } from "@mui/material";
 import { useMutation } from "@apollo/client";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Button, Box } from "@mui/material";
+import { Box } from "@mui/material";
+import CustomButton from "../shared/Button";
 
 import NavigationBar from "../shared/NavigationBar";
 import { ADD_ITEM } from "../../requests";
@@ -27,6 +28,7 @@ const Add = () => {
   const location = useLocation();
   const [user, loading, error] = useAuthState(auth);
   const [currentStep, setCurrentStep] = React.useState(0);
+  const [errorMessage, setErrorMessage] = React.useState();
   const [showConfirmation, setShowConfirmation] = React.useState(false);
 
   // const { capsuleId } = route.params;
@@ -66,7 +68,9 @@ const Add = () => {
     setValues({
       ...values,
       capturedMedia: media,
+      previewImages: [...values.previewImages, media],
     });
+    setImageFiles([...imageFiles, media]);
   };
 
   const handleTextMemory = () => {
@@ -101,7 +105,41 @@ const Add = () => {
     });
   };
 
+  const validate = () => {
+    if (currentStep == 0) {
+      if (values.title === "") {
+        return "Error: Please give your memento a title";
+      }
+      if (values.mementoType === "") {
+        return "Error: Please choose a memento category.";
+      }
+      return "";
+    }
+    if (currentStep == 1) {
+      if (imageFiles.length == 0) {
+        return "Please upload at least one image";
+      }
+      return "";
+    }
+    if (currentStep == 2) {
+      if (values.location === "") {
+        return "Please add a current location for the memento.";
+      }
+      if (values.currentTextMemory === "" && values.audioBlobs.length === 0) {
+        return "Please add either a text or audio memory with the memento.";
+      }
+    }
+  };
+
   const handleNext = async () => {
+    let errorMessage = validate();
+    setErrorMessage(errorMessage);
+    if (errorMessage) {
+      return;
+    }
+    if (currentStep == 2 || values.currentTextMemory != "") {
+      handleTextMemory();
+    }
     if (currentStep < 3) {
       setCurrentStep(currentStep + 1);
       return;
@@ -113,31 +151,37 @@ const Add = () => {
     console.log(imageFiles);
 
     for (var i = 0; i < imageFiles.length; i++) {
-      const imagePath = `/images/${values.title}/${imageFiles[i].name}`;
-      const storageRef = ref(storage, imagePath);
-      const metadata = {
-        contentType: imageFiles[i].type,
-      };
-      const uploadTask = await uploadBytes(storageRef, imageFiles[i], metadata);
-      const url = await getDownloadURL(ref(storage, imagePath));
-      firebaseImages.push(url);
-    }
-    if (values.capturedMedia) {
-      const imagePath = `/images/${values.title}/capturedImage${Math.floor(
-        Math.random() * 256
-      )}`;
-      const storageRef = ref(storage, imagePath);
+      if (typeof imageFiles[i] === "String") {
+        const imagePath = `/images/${values.title}/capturedImage${Math.floor(
+          Math.random() * 256
+        )}`;
+        const storageRef = ref(storage, imagePath);
 
-      const encodedString = btoa(values.capturedMedia);
+        const encodedString = btoa(values.capturedMedia);
 
-      const uploadTask = await uploadString(
-        storageRef,
-        encodedString,
-        "base64"
-      );
-      const url = await getDownloadURL(ref(storage, imagePath));
-      firebaseImages.push(url);
+        const uploadTask = await uploadString(
+          storageRef,
+          encodedString,
+          "base64"
+        );
+        const url = await getDownloadURL(ref(storage, imagePath));
+        firebaseImages.push(url);
+      } else {
+        const imagePath = `/images/${values.title}/${imageFiles[i].name}`;
+        const storageRef = ref(storage, imagePath);
+        const metadata = {
+          contentType: imageFiles[i].type,
+        };
+        const uploadTask = await uploadBytes(
+          storageRef,
+          imageFiles[i],
+          metadata
+        );
+        const url = await getDownloadURL(ref(storage, imagePath));
+        firebaseImages.push(url);
+      }
     }
+
     var audioBlobURLs = [];
     if (values.audioBlobs) {
       for (var i = 0; i < values.audioBlobs.length; i++) {
@@ -179,7 +223,7 @@ const Add = () => {
   };
 
   const handleBack = async () => {
-    if (currentStep > -1) {
+    if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
     }
   };
@@ -190,7 +234,6 @@ const Add = () => {
       disableGutters
       sx={{
         backgroundColor: "#ffffff",
-        height: "100vh",
         width: "100vw",
         ml: "20px",
         mr: "20px",
@@ -198,7 +241,7 @@ const Add = () => {
     >
       <NavigationBar isLoggedIn={true} />
       {!showConfirmation && (
-        <Box sx={{ ml: "8vw", mr: "8vw" }}>
+        <Box sx={{ ml: "8vw", mr: "8vw", height: "100%" }}>
           {currentStep == 0 ? (
             <StepOne values={values} handleChange={handleChange} />
           ) : currentStep == 1 ? (
@@ -214,7 +257,6 @@ const Add = () => {
             <StepThree
               values={values}
               handleChange={handleChange}
-              handleTextMemory={handleTextMemory}
               handleAudio={handleAudio}
             />
           ) : currentStep == 3 ? (
@@ -227,11 +269,13 @@ const Add = () => {
           ) : (
             <Typography> Oops something went wrong </Typography>
           )}
+          <Typography variant="h6">{errorMessage}</Typography>
           <Box
             sx={{
               width: "100%",
               bottom: "0",
               mb: "5vh",
+              position: "static",
             }}
           >
             <Box
@@ -243,29 +287,29 @@ const Add = () => {
                 width: "100%",
               }}
             >
-              <Button
+              <CustomButton
                 variant="contained"
                 disableElevation
                 onClick={handleBack}
-                sx={{
+                disabled={currentStep == 0 ? true : false}
+                style={{
                   width: "100%",
                   maxWidth: "400px",
                 }}
-              >
-                Back
-              </Button>
+                text="Back"
+                isLoggedIn
+              />
 
-              <Button
+              <CustomButton
                 variant="contained"
-                disableElevation
                 onClick={handleNext}
-                sx={{
+                style={{
                   width: "100%",
                   maxWidth: "400px",
                 }}
-              >
-                {currentStep != 3 ? "Next" : "Done"}
-              </Button>
+                text={currentStep != 3 ? "Next" : "Done"}
+                isLoggedIn
+              />
             </Box>
             <Breadcrumb currentStep={currentStep} />
           </Box>
@@ -283,13 +327,13 @@ const Add = () => {
           }}
         >
           <Typography>Item successfully added to your capsule.</Typography>
-          <Button
+          <CustomButton
             onClick={() => {
               navigate("/home");
             }}
-          >
-            Return to the home screen
-          </Button>
+            text="Return to the home screen"
+            isLoggedIn
+          />
         </Box>
       )}
     </Container>
