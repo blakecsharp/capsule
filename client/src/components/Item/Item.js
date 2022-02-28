@@ -52,29 +52,37 @@ const Item = () => {
   if (loading) {
     return null;
   }
-
-  console.log(data);
-
   const memories = [];
 
   if (data) {
     for (var i = 0; i < data.response.memories.length; i++) {
       memories.push(
         <TimelineItem>
-          <TimelineOppositeContent style={{ flex: "0.1" }} />
+          <TimelineOppositeContent
+            sx={{
+              flex: 0.5,
+            }}
+          />
           <TimelineSeparator>
-            {i == 0 ? <TimelineConnector /> : null}
-            <TimelineDot />
-            <TimelineConnector />
+            {i == 0 ? (
+              <TimelineConnector
+                sx={{ width: "1px", backgroundColor: "#9567E0" }}
+              />
+            ) : null}
+            <TimelineDot sx={{ width: "1px", backgroundColor: "#9567E0" }} />
+            <TimelineConnector
+              sx={{ width: "1px", backgroundColor: "#9567E0" }}
+            />
           </TimelineSeparator>
           <TimelineContent
             sx={{
               display: "flex",
               alignItems: "center",
+              flex: 25,
             }}
           >
             {data.response.memories[i].typeOfMemory == "TEXT" ? (
-              data.response.memories[i].text
+              <Typography>{data.response.memories[i].text}</Typography>
             ) : (
               <audio
                 key={i}
@@ -90,14 +98,18 @@ const Item = () => {
 
   memories.push(
     <TimelineItem>
-      <TimelineOppositeContent style={{ flex: "0.1" }} />
+      <TimelineOppositeContent
+        sx={{
+          flex: 0.5,
+        }}
+      />
       <TimelineSeparator>
-        <TimelineDot />
-        <TimelineConnector />
+        <TimelineDot sx={{ width: "1px", backgroundColor: "#9567E0" }} />
+        <TimelineConnector sx={{ width: "1px", backgroundColor: "#9567E0" }} />
       </TimelineSeparator>
-      <TimelineContent>
+      <TimelineContent sx={{ flex: 25 }}>
         Add another memory
-        <Box sx={{ display: "flex", flexDirection: "row" }}>
+        <Box sx={{ display: "flex", flexDirection: "row", mt: "10px" }}>
           <Box
             sx={{
               display: "flex",
@@ -107,19 +119,33 @@ const Item = () => {
               alignItems: "center",
               border: 1,
               borderRadius: "10px",
+              borderColor: "#9567E0",
               p: "10px",
               width: "200px",
             }}
             onClick={() => {}}
           >
-            Type or Record
+            <Typography variant="subtitle1" color="gray">
+              Type or Record
+            </Typography>
+
             <Box
               sx={{
                 display: "flex",
                 flexDirection: "row",
               }}
             >
-              <TextsmsIcon sx={{ mr: "10px" }} /> <KeyboardVoiceIcon />
+              <TextsmsIcon
+                sx={{
+                  mr: "10px",
+                  width: "36px",
+                  height: "36px",
+                  color: "#9567E0",
+                }}
+              />
+              <KeyboardVoiceIcon
+                sx={{ width: "36px", height: "36px", color: "#9567E0" }}
+              />
             </Box>
           </Box>
           <Box
@@ -131,13 +157,19 @@ const Item = () => {
               alignItems: "center",
               border: 1,
               borderRadius: "10px",
+              borderColor: "#9567E0",
               p: "10px",
               width: "100px",
             }}
             onClick={() => {}}
           >
-            Request
-            <ShortcutIcon />
+            <Typography color="gray" variant="subtitle1">
+              Request
+            </Typography>
+
+            <ShortcutIcon
+              sx={{ width: "36px", height: "36px", color: "#9567E0" }}
+            />
           </Box>
         </Box>
       </TimelineContent>
@@ -159,7 +191,9 @@ const Item = () => {
       <NavigationBar isLoggedIn />
       {data && (
         <Box sx={{ ml: "100px", mr: "100px", mt: "50px" }}>
-          <Typography variant="h2">{data.response.title}</Typography>
+          <Typography variant="h2" sx={{ mb: "20px" }}>
+            {data.response.title}
+          </Typography>
           <Box
             sx={{
               display: "flex",
@@ -225,7 +259,10 @@ const Item = () => {
             </Box>
           </Box>
           <Box>
-            <Timeline>{memories}</Timeline>
+            <Typography variant="subtitle2" sx={{ mb: "30px" }}>
+              MEMORY LANE
+            </Typography>
+            <Timeline align="left">{memories}</Timeline>
           </Box>
           <CustomButton
             onClick={() => {

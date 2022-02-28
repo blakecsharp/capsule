@@ -1,6 +1,12 @@
 import * as React from "react";
 import { useQuery } from "@apollo/client";
-import { Container, Box, Button, ImageListItemBar } from "@mui/material";
+import {
+  Container,
+  Box,
+  Button,
+  ImageListItemBar,
+  Typography,
+} from "@mui/material";
 import { auth } from "../../AuthContext";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -9,6 +15,7 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import SortingBar from "../shared/SortingBar";
+import MementoTypes from "../../constants/constants";
 
 import NavigationBar from "../shared/NavigationBar";
 
@@ -28,7 +35,7 @@ const Capsule = () => {
     },
   });
 
-  console.log(location);
+  console.log(dataError);
 
   React.useEffect(() => {
     if (loading) return;
@@ -44,40 +51,121 @@ const Capsule = () => {
           mr: "100px",
         }}
       >
-        <SortingBar sort={sort} setSort={setSort} />
-        <ImageList sx={{ width: "80vw" }} cols={4} rowHeight={500}>
-          {data &&
-            data.response.map((item, key) => (
-              <ImageListItem
-                key={key}
-                sx={{
-                  border: 1,
-                  borderRadius: "15px",
-                  borderColor: "black",
-                  padding: "10px",
-                }}
-                onClick={() => {
-                  navigate("/item", {
-                    state: {
-                      itemId: item.id,
-                      capsuleId: location.state.capsuleId,
-                    },
-                  });
-                }}
-              >
-                <img src={item.photos[0]} alt={item.title} loading="lazy" />
-                <ImageListItemBar
-                  position="below"
-                  title={item.title}
-                  actionIcon={<ArrowForwardIosIcon />}
+        <SortingBar
+          sort={sort}
+          setSort={setSort}
+          capsuleId={location.state.capsuleId}
+        />
+        {sort === "all" && (
+          <ImageList sx={{ width: "80vw" }} cols={4} rowHeight={500}>
+            {data &&
+              data.response.map((item, key) => (
+                <ImageListItem
+                  key={key}
                   sx={{
-                    pl: "10px",
-                    pr: "10px",
+                    border: 1,
+                    borderRadius: "15px",
+                    borderColor: "#9567E0",
+                    padding: "10px",
+                    mr: "10px",
+                    width: "300px",
                   }}
-                />
-              </ImageListItem>
-            ))}
-        </ImageList>
+                  onClick={() => {
+                    navigate("/item", {
+                      state: {
+                        itemId: item.id,
+                        capsuleId: location.state.capsuleId,
+                      },
+                    });
+                  }}
+                >
+                  <img src={item.photos[0]} alt={item.title} loading="lazy" />
+                  <ImageListItemBar
+                    position="below"
+                    title={item.title}
+                    actionIcon={
+                      <ArrowForwardIosIcon sx={{ color: "#9567E0" }} />
+                    }
+                    sx={{
+                      mt: "10px",
+                      pl: "10px",
+                      pr: "10px",
+                    }}
+                  />
+                </ImageListItem>
+              ))}
+          </ImageList>
+        )}
+
+        {sort === "mementoType" && (
+          <Box sx={{ mt: "20px", maxWidth: "80%" }}>
+            {MementoTypes.map((type, key) => {
+              return (
+                <Box
+                  key={key}
+                  sx={{
+                    m: "10px",
+                    p: "10px",
+                    border: 1,
+                    borderRadius: "15px",
+                    borderColor: "#9567E0",
+                  }}
+                >
+                  <Typography variant="h5" sx={{ pl: "5px" }}>
+                    {type}
+                  </Typography>
+                  <ImageList sx={{}} cols={4} rowHeight={500}>
+                    {data &&
+                      data.response.map((item, key) => {
+                        if (item.mementoType != type) {
+                          return;
+                        } else {
+                          return (
+                            <ImageListItem
+                              key={key}
+                              sx={{
+                                padding: "10px",
+                                mr: "10px",
+                                width: "300px",
+                              }}
+                              onClick={() => {
+                                navigate("/item", {
+                                  state: {
+                                    itemId: item.id,
+                                    capsuleId: location.state.capsuleId,
+                                  },
+                                });
+                              }}
+                            >
+                              <img
+                                src={item.photos[0]}
+                                alt={item.title}
+                                loading="lazy"
+                              />
+                              <ImageListItemBar
+                                position="below"
+                                title={item.title}
+                                actionIcon={
+                                  <ArrowForwardIosIcon
+                                    sx={{ color: "#9567E0" }}
+                                  />
+                                }
+                                sx={{
+                                  mt: "10px",
+                                  pl: "10px",
+                                  pr: "10px",
+                                }}
+                              />
+                            </ImageListItem>
+                          );
+                        }
+                      })}
+                  </ImageList>
+                </Box>
+              );
+            })}
+          </Box>
+        )}
         <Button
           onClick={() => {
             navigate("/add", {
@@ -85,6 +173,10 @@ const Capsule = () => {
                 capsuleId: location.state.capsuleId,
               },
             });
+          }}
+          sx={{
+            border: 1,
+            borderColor: "#9567E0",
           }}
         >
           Add item to capsule

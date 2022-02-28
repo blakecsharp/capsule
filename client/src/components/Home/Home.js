@@ -57,7 +57,7 @@ const Home = () => {
             alignItems: "center",
           }}
         >
-          <Typography sx={{ marginBottom: "20px" }}>
+          <Typography variant="h2" sx={{ mb: "20px" }}>
             Hi {data.response.firstName}!
           </Typography>
 
@@ -132,6 +132,7 @@ const Home = () => {
                     }}
                   >
                     <Typography
+                      variant="subtitle2"
                       sx={{
                         display: "flex",
                         alignItems: "center",
@@ -145,6 +146,7 @@ const Home = () => {
                         alignItems: "center",
                         pb: "10px",
                       }}
+                      variant="body1"
                     >
                       {capsule.items
                         ? `${capsule.items.length} memento${

@@ -11,17 +11,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import TextInput from "../shared/TextInput";
-
-const MementoTypes = [
-  "Photograph",
-  "Clothing",
-  "Furniture",
-  "Art",
-  "Recipes",
-  "Letters and Diaries",
-  "Children's toys",
-  "Other",
-];
+import MementoTypes from "../../constants/constants";
 
 const StepOne = ({ values, handleChange }) => {
   const navigate = useNavigate();

@@ -14,6 +14,25 @@ const GetCapsule = async (_, data) => {
   ]);
 
   if (capsuleItems) {
+    /*
+    for (var i = 0; i < capsuleItems.length; i++) {
+      const userRef = admin
+        .firestore()
+        .collection("users")
+        .doc(capsuleItems[i].uploadedBy);
+      const user = await userRef.get();
+      if (!user.exists) {
+        return {
+          success: "",
+          error: "couldn't find user",
+        };
+      }
+      const userData = user.data();
+      capsuleItems.uploadedBy = {
+        firstName: userData.firstName,
+      };
+    }
+    */
     return capsuleItems;
   }
 
