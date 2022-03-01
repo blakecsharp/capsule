@@ -1,5 +1,5 @@
 import React, { memo, useEffect } from "react";
-import { Container, Typography } from "@mui/material";
+import { Container, Typography, Button } from "@mui/material";
 import { useMutation } from "@apollo/client";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Box } from "@mui/material";
@@ -309,6 +309,21 @@ const Add = () => {
               />
             </Box>
             <Breadcrumb currentStep={currentStep} />
+
+            <Button
+              disableElevation
+              onClick={() => {
+                navigate("/home");
+              }}
+              sx={{
+                border: 1,
+                borderRadius: "10px",
+                mt: "10px",
+              }}
+              isLoggedIn
+            >
+              Back to home
+            </Button>
           </Box>
         </Box>
       )}

@@ -34,8 +34,9 @@ const StepOne = ({ values, handleChange }) => {
           placeholder="ex: My Journal"
           id="title-input"
           type="string"
-          border="black"
-          adornment={<EditIcon sx={{ color: "white", pr: 3 }} />}
+          adornment={<EditIcon sx={{ color: "#9567E0", pr: 3 }} />}
+          style={{ mb: "10px" }}
+          border="#9567E0"
         />
       </Box>
       <Box>

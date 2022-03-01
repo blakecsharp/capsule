@@ -99,6 +99,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
             type="string"
             border="#9567E0"
             adornment={<EditIcon sx={{ color: "#9567E0", mr: 3 }} />}
+            style={{ mb: "10px" }}
           />
           <TextInput
             value={values.location}
@@ -108,6 +109,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
             type="string"
             border="#9567E0"
             adornment={<EditIcon sx={{ color: "#9567E0", mr: 3 }} />}
+            style={{ mb: "10px" }}
           />
         </Box>
       </Box>

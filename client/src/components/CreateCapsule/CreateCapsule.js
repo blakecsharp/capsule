@@ -65,8 +65,9 @@ const CreateCapsule = () => {
           placeholder="Name of your new Capsule"
           id="title-input"
           type="string"
-          border="black"
           adornment={<EditIcon sx={{ color: "black", pr: 3 }} />}
+          style={{ mb: "10px" }}
+          border="#9567E0"
         />
 
         <Box

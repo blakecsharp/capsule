@@ -13,6 +13,7 @@ const TextInput = ({
   rows,
   maxRows,
   border,
+  style,
 }) => {
   return (
     <TextField
@@ -28,9 +29,8 @@ const TextInput = ({
       rows={multiline ? rows : 1}
       maxRows={multiline ? maxRows : 1}
       sx={{
-        m: 1,
+        ...style,
         width: "100%",
-
         "& .MuiOutlinedInput-root:hover": {
           "& > fieldset": {
             borderColor: border ? border : "white",

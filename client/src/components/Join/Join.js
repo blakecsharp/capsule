@@ -75,7 +75,8 @@ const Join = () => {
           placeholder="ID of capsule to join"
           id="title-input"
           type="string"
-          border="black"
+          style={{ mb: "10px" }}
+          border="#9567E0"
           adornment={<EditIcon sx={{ color: "black", pr: 3 }} />}
         />
       </Box>

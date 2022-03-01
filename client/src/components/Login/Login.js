@@ -120,6 +120,7 @@ const Login = () => {
               id="email-input"
               type="string"
               adornment={<EmailIcon sx={{ color: "white", mr: 3 }} />}
+              style={{ mb: "10px" }}
             />
             <TextInput
               value={values.password}
@@ -133,6 +134,7 @@ const Login = () => {
               sx={{
                 display: "flex",
                 flexDirection: "row",
+                justifyContent: "space-between",
                 alignItems: "center",
                 mt: 3,
               }}
@@ -140,24 +142,30 @@ const Login = () => {
               <Button
                 variant="contained"
                 disableElevation
-                onClick={handleLogin()}
                 sx={{
-                  width: "50%",
-                }}
-              >
-                Log in
-              </Button>
-              <Button
-                variant="contained"
-                disableElevation
-                sx={{
-                  width: "50%",
+                  width: "30%",
+                  border: 1,
+                  borderColor: "white",
+                  borderRadius: "10px",
                 }}
                 onClick={() => {
                   setValues({ joinNow: true, error: "" });
                 }}
               >
                 Join now
+              </Button>
+              <Button
+                variant="contained"
+                disableElevation
+                onClick={handleLogin()}
+                sx={{
+                  width: "30%",
+                  border: 1,
+                  borderColor: "white",
+                  borderRadius: "10px",
+                }}
+              >
+                Log in
               </Button>
             </Box>
           </Box>
@@ -168,23 +176,32 @@ const Login = () => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
+                justifyContent: "space-between",
                 width: "100%",
+                mb: "10px",
               }}
             >
-              <TextInput
-                value={values.addFirstName}
-                handleChange={handleChange("addFirstName")}
-                placeholder="First Name"
-                id="first-name-input"
-                type="string"
-              />
-              <TextInput
-                value={values.addLastName}
-                handleChange={handleChange("addLastName")}
-                placeholder="Last Name"
-                id="last-name-input"
-                type="string"
-              />
+              <Box sx={{ width: "90%", mr: "5px" }}>
+                <TextInput
+                  value={values.addFirstName}
+                  handleChange={handleChange("addFirstName")}
+                  placeholder="First Name"
+                  id="first-name-input"
+                  type="string"
+                />
+              </Box>
+              <Box sx={{ width: "90%", ml: "5px" }}>
+                <TextInput
+                  value={values.addLastName}
+                  handleChange={handleChange("addLastName")}
+                  placeholder="Last Name"
+                  id="last-name-input"
+                  type="string"
+                  sx={{
+                    width: "45%",
+                  }}
+                />
+              </Box>
             </Box>
             <TextInput
               value={values.addEmail}
@@ -193,6 +210,7 @@ const Login = () => {
               id="add-email-input"
               type="string"
               adornment={<EmailIcon sx={{ color: "white", mr: 3 }} />}
+              style={{ mb: "10px" }}
             />
             <TextInput
               value={values.addPW}
@@ -201,6 +219,7 @@ const Login = () => {
               id="add-password-input"
               type="password"
               adornment={<LockIcon sx={{ color: "white", mr: 3 }} />}
+              style={{ mb: "10px" }}
             />
 
             <TextInput
@@ -210,29 +229,46 @@ const Login = () => {
               id="add-password-confirm-input"
               type="password"
               adornment={<LockIcon sx={{ color: "white", mr: 3 }} />}
+              style={{ mb: "10px" }}
             />
-            <Button
-              variant="contained"
-              disableElevation
+            <Box
               sx={{
-                width: "50%",
-              }}
-              onClick={handleAddUser}
-            >
-              Sign Up
-            </Button>
-            <Button
-              variant="contained"
-              disableElevation
-              sx={{
-                width: "50%",
-              }}
-              onClick={() => {
-                setValues({ joinNow: false, error: "" });
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+                mt: 3,
               }}
             >
-              Back to Login
-            </Button>
+              <Button
+                variant="contained"
+                disableElevation
+                sx={{
+                  width: "30%",
+                  border: 1,
+                  borderColor: "white",
+                  borderRadius: "10px",
+                }}
+                onClick={() => {
+                  setValues({ joinNow: false, error: "" });
+                }}
+              >
+                Back to Login
+              </Button>
+              <Button
+                variant="contained"
+                disableElevation
+                sx={{
+                  width: "30%",
+                  border: 1,
+                  borderColor: "white",
+                  borderRadius: "10px",
+                }}
+                onClick={handleAddUser}
+              >
+                Sign Up
+              </Button>
+            </Box>
           </Box>
         )}
         <Typography>{values.error}</Typography>
