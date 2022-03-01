@@ -23,6 +23,7 @@ import ShortcutIcon from "@mui/icons-material/Shortcut";
 import CustomButton from "../shared/Button";
 
 import NavigationBar from "../shared/NavigationBar";
+import Loading from "../shared/Loading";
 import { GET_ITEM } from "../../requests";
 import { auth } from "../../AuthContext";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -49,7 +50,7 @@ const Item = () => {
   });
 
   if (loading) {
-    return null;
+    return <Loading />;
   }
   const memories = [];
 

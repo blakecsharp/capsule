@@ -120,7 +120,7 @@ const Login = () => {
               id="email-input"
               type="string"
               adornment={<EmailIcon sx={{ color: "white", mr: 3 }} />}
-              style={{ mb: "10px" }}
+              style={{ mb: "10px", width: "100%" }}
             />
             <TextInput
               value={values.password}
@@ -129,6 +129,7 @@ const Login = () => {
               id="password-input"
               type="password"
               adornment={<LockIcon sx={{ color: "white", mr: 3 }} />}
+              style={{ width: "100%" }}
             />
             <Box
               sx={{

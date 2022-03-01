@@ -3,12 +3,12 @@ import { Container, Typography } from "@mui/material";
 import { useQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
-import { Button } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import CustomButton from "../shared/Button";
 
 import NavigationBar from "../shared/NavigationBar";
+import Loading from "../shared/Loading";
 import { GET_USER } from "../../requests";
 import { auth } from "../../AuthContext";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -33,10 +33,8 @@ const Home = () => {
   });
 
   if (loading) {
-    return null;
+    return <Loading />;
   }
-
-  console.log(data);
 
   return (
     <Container
@@ -52,6 +50,7 @@ const Home = () => {
       }}
     >
       <NavigationBar isLoggedIn={true} />
+
       {!loading && data && (
         <Container
           sx={{
