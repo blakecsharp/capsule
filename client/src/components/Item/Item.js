@@ -52,6 +52,8 @@ const Item = () => {
   if (loading) {
     return <Loading />;
   }
+
+  console.log(data);
   const memories = [];
 
   if (data) {

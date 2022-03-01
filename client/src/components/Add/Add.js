@@ -198,8 +198,6 @@ const Add = () => {
       }
     }
 
-    // GET CAPSULE ID
-    /*
     addItem({
       variables: {
         uploadedBy: user.uid,
@@ -214,9 +212,9 @@ const Add = () => {
       },
     }).then((response) => {
       if (response) {
+        setShowConfirmation(true);
       }
     });
-    */
   };
 
   const handleBack = async () => {

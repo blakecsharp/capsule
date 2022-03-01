@@ -239,6 +239,10 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
               id="memory-input"
               type="string"
               border="#9567E0"
+              style={{
+                mt: "10px",
+                width: "100%",
+              }}
             />
           </Box>
           <Button

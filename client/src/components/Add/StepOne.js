@@ -35,7 +35,7 @@ const StepOne = ({ values, handleChange }) => {
           id="title-input"
           type="string"
           adornment={<EditIcon sx={{ color: "#9567E0", pr: 3 }} />}
-          style={{ mb: "10px" }}
+          style={{ mb: "10px", width: "100%" }}
           border="#9567E0"
         />
       </Box>

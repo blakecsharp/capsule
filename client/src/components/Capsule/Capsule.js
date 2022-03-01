@@ -36,14 +36,29 @@ const Capsule = () => {
     },
   });
 
-  console.log(dataError);
+  const [dimensions, setDimensions] = React.useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
+  React.useEffect(() => {
+    function handleResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+  });
+
+  console.log(dimensions);
 
   React.useEffect(() => {
     if (loading) return;
     if (!user) return navigate("/");
   }, [user, loading]);
   return (
-    <Container maxWidth={false} disableGutters sx={{ maxWidth: "100vw" }}>
+    <Container maxWidth={false} disableGutters sx={{}}>
       <NavigationBar isLoggedIn />
       <Box
         sx={{
@@ -58,7 +73,11 @@ const Capsule = () => {
           capsuleId={location.state.capsuleId}
         />
         {sort === "all" && (
-          <ImageList sx={{ width: "80vw" }} cols={4} rowHeight={500}>
+          <ImageList
+            sx={{ width: "80vw" }}
+            cols={parseInt((dimensions.width * 0.75) / 300)}
+            rowHeight={500}
+          >
             {data &&
               data.response.map((item, key) => (
                 <ImageListItem
@@ -69,6 +88,7 @@ const Capsule = () => {
                     borderColor: "#9567E0",
                     padding: "10px",
                     mr: "10px",
+                    mb: "10px",
                     width: "300px",
                   }}
                   onClick={() => {
