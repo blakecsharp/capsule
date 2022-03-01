@@ -94,7 +94,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
           <TextInput
             value={values.date}
             handleChange={handleChange("date")}
-            placeholder="Date for the objet (if appropriate)"
+            placeholder="Date for the object (if appropriate)"
             id="date-input"
             type="string"
             border="#9567E0"

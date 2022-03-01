@@ -6,8 +6,11 @@ import { Box, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../AuthContext";
 import { useAuthState } from "react-firebase-hooks/auth";
+import NavigationBar from "../shared/NavigationBar";
+import EditIcon from "@mui/icons-material/Edit";
 
 import TextInput from "../shared/TextInput";
+import CustomButton from "../shared/Button";
 
 const CreateCapsule = () => {
   const navigate = useNavigate();
@@ -41,7 +44,7 @@ const CreateCapsule = () => {
       maxWidth={false}
       disableGutters
       sx={{
-        backgroundColor: "#9567e0",
+        backgroundColor: "#ffffff",
         height: "100vh",
         width: "100vw",
         display: "flex",
@@ -49,6 +52,7 @@ const CreateCapsule = () => {
         alignItems: "center",
       }}
     >
+      <NavigationBar isLoggedIn />
       <Box
         sx={{
           width: "60%",
@@ -61,10 +65,37 @@ const CreateCapsule = () => {
           placeholder="Name of your new Capsule"
           id="title-input"
           type="string"
+          border="black"
+          adornment={<EditIcon sx={{ color: "black", pr: 3 }} />}
         />
-        <Button variant="contained" disableElevation onClick={handleCreate()}>
-          Create Capsule
-        </Button>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <Button
+            disableElevation
+            onClick={() => {
+              navigate("/home");
+            }}
+            sx={{
+              border: 1,
+              borderRadius: "10px",
+            }}
+            isLoggedIn
+          >
+            Back to home
+          </Button>
+
+          <CustomButton
+            onClick={handleCreate}
+            text="Create Capsule"
+            isLoggedIn
+          />
+        </Box>
       </Box>
     </Container>
   );

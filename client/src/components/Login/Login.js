@@ -20,6 +20,8 @@ const Login = () => {
   const navigate = useNavigate();
   const { signup } = useAuth();
   const { login } = useAuth();
+
+  /*
   const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
@@ -31,6 +33,7 @@ const Login = () => {
       navigate("/home");
     }
   }, [user, loading]);
+  */
 
   const [values, setValues] = React.useState({
     email: "",

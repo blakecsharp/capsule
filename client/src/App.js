@@ -11,7 +11,8 @@ import Capsule from "./components/Capsule/Capsule";
 import Add from "./components/Add/Add";
 import CreateCapsule from "./components/CreateCapsule/CreateCapsule";
 import Item from "./components/Item/Item";
-import Join from "./components/JoinCapsule/JoinCapsule";
+import Join from "./components/Join/Join";
+import Invite from "./components/Invite/Invite";
 import Request from "./components/Request/Request";
 import { TabletView, isMobile, isTablet } from "react-device-detect";
 import { Typography } from "@mui/material";
@@ -30,11 +31,13 @@ function App() {
       <ThemeProvider theme={theme}>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="/capsule" element={<Capsule />} />
           <Route path="/add" element={<Add />} />
           <Route path="/create" element={<CreateCapsule />} />
           <Route path="/item" element={<Item />} />
+          <Route path="/invite" element={<Invite />} />
           <Route path="/join" element={<Join />} />
           <Route path="/request" element={<Request />} />
         </Routes>

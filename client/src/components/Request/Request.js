@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { useNavigate, useLocation } from "react-router-dom";
 import { Container } from "@mui/material";
-import { Box, Typography } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { auth } from "../../AuthContext";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -47,7 +47,9 @@ const Request = () => {
           alignItems: "center",
         }}
       ></Box>
-      <CustomButton
+
+      <Button
+        disableElevation
         onClick={() => {
           navigate("/capsule", {
             state: {
@@ -55,9 +57,14 @@ const Request = () => {
             },
           });
         }}
-        text="Back"
+        sx={{
+          border: 1,
+          borderRadius: "10px",
+        }}
         isLoggedIn
-      />
+      >
+        Back
+      </Button>
     </Container>
   );
 };

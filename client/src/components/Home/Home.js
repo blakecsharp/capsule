@@ -19,7 +19,7 @@ const Home = () => {
 
   useEffect(() => {
     if (loading) return;
-    if (!user) return navigate("/");
+    if (!user) navigate("/");
   }, [user, loading]);
 
   const {
@@ -96,7 +96,7 @@ const Home = () => {
                   mb: "10px",
                 }}
                 onClick={() => {
-                  navigate("/create");
+                  navigate("/join");
                 }}
                 text="Join your first capsule"
               />
@@ -120,6 +120,7 @@ const Home = () => {
                       maxWidth: "800px",
                       pt: "5px",
                       pb: "5px",
+                      mb: "20px",
                       border: 1,
                       borderColor: "black",
                       borderRadius: 16,
@@ -211,13 +212,30 @@ const Home = () => {
                   </Box>
                 );
               })}
-              <Button
+              <CustomButton
+                isLoggedIn
+                disableElevation
+                style={{
+                  width: "50%",
+                  mb: "10px",
+                }}
                 onClick={() => {
                   navigate("/create");
                 }}
-              >
-                Create a new capsule
-              </Button>
+                text="Create a new capsule"
+              />
+              <CustomButton
+                isLoggedIn
+                disableElevation
+                style={{
+                  width: "50%",
+                  mb: "10px",
+                }}
+                onClick={() => {
+                  navigate("/join");
+                }}
+                text="Join an existing capsule"
+              />
             </Container>
           )}
         </Container>

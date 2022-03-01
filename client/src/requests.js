@@ -130,3 +130,12 @@ export const CREATE_CAPSULE = gql`
     }
   }
 `;
+
+export const JOIN_CAPSULE = gql`
+  mutation JoinCapsule($userId: String, $capsuleId: String) {
+    JoinCapsule(userId: $userId, capsuleId: $capsuleId) {
+      success
+      error
+    }
+  }
+`;

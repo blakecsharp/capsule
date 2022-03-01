@@ -16,6 +16,7 @@ import ImageListItem from "@mui/material/ImageListItem";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import SortingBar from "../shared/SortingBar";
 import MementoTypes from "../../constants/constants";
+import CustomButton from "../shared/Button";
 
 import NavigationBar from "../shared/NavigationBar";
 
@@ -166,21 +167,39 @@ const Capsule = () => {
             })}
           </Box>
         )}
-        <Button
-          onClick={() => {
-            navigate("/add", {
-              state: {
-                capsuleId: location.state.capsuleId,
-              },
-            });
-          }}
-          sx={{
-            border: 1,
-            borderColor: "#9567E0",
-          }}
-        >
-          Add item to capsule
-        </Button>
+        <Box sx={{ display: "flex", flexDirection: "column", width: "25%" }}>
+          <CustomButton
+            disableElevation
+            onClick={() => {
+              navigate("/add", {
+                state: {
+                  capsuleId: location.state.capsuleId,
+                },
+              });
+            }}
+            style={{
+              border: 1,
+              borderColor: "#9567E0",
+              borderRadius: "10px",
+              mb: "20px",
+            }}
+            text="Add item to capsule"
+            isLoggedIn
+          />
+          <Button
+            disableElevation
+            onClick={() => {
+              navigate("/home");
+            }}
+            sx={{
+              border: 1,
+              borderRadius: "10px",
+            }}
+            isLoggedIn
+          >
+            Back
+          </Button>
+        </Box>
       </Box>
     </Container>
   );

@@ -48,7 +48,7 @@ const SortingBar = ({ sort, setSort, capsuleId }) => {
           borderColor: "#9567E0",
         }}
         onClick={() => {
-          navigate("/join", {
+          navigate("/invite", {
             state: {
               capsuleId: capsuleId,
             },

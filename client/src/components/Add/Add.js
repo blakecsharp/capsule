@@ -51,8 +51,6 @@ const Add = () => {
     audioMemoryIndex: -1,
   });
 
-  console.log(values);
-
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
@@ -137,32 +135,30 @@ const Add = () => {
     if (errorMessage) {
       return;
     }
-    if (currentStep == 2 || values.currentTextMemory != "") {
+    if (currentStep == 2 && values.currentTextMemory != "") {
       handleTextMemory();
     }
     if (currentStep < 3) {
       setCurrentStep(currentStep + 1);
       return;
     }
+    // setShowConfirmation(true);
+
     const storage = getStorage();
 
     var firebaseImages = [];
 
-    console.log(imageFiles);
-
     for (var i = 0; i < imageFiles.length; i++) {
-      if (typeof imageFiles[i] === "String") {
+      if (typeof imageFiles[i] === "string") {
         const imagePath = `/images/${values.title}/capturedImage${Math.floor(
           Math.random() * 256
-        )}`;
+        )}.png`;
         const storageRef = ref(storage, imagePath);
-
-        const encodedString = btoa(values.capturedMedia);
 
         const uploadTask = await uploadString(
           storageRef,
-          encodedString,
-          "base64"
+          imageFiles[i],
+          "data_url"
         );
         const url = await getDownloadURL(ref(storage, imagePath));
         firebaseImages.push(url);
@@ -203,6 +199,7 @@ const Add = () => {
     }
 
     // GET CAPSULE ID
+    /*
     addItem({
       variables: {
         uploadedBy: user.uid,
@@ -217,9 +214,9 @@ const Add = () => {
       },
     }).then((response) => {
       if (response) {
-        setShowConfirmation(true);
       }
     });
+    */
   };
 
   const handleBack = async () => {

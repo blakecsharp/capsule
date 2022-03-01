@@ -31,7 +31,11 @@ const StepFour = ({
   for (var i = 0; i < values.textMemories.length; i++) {
     memories.push(
       <TimelineItem>
-        <TimelineOppositeContent style={{ flex: "0.1" }} />
+        <TimelineOppositeContent
+          sx={{
+            flex: 0.5,
+          }}
+        />
         <TimelineSeparator>
           {i == 0 ? <TimelineConnector /> : null}
           <TimelineDot />
@@ -41,6 +45,7 @@ const StepFour = ({
           sx={{
             display: "flex",
             alignItems: "center",
+            flex: 25,
           }}
         >
           {values.textMemories[i]}
@@ -49,12 +54,14 @@ const StepFour = ({
     );
   }
 
-  console.log(values.audioBlobs[0]);
-
   for (var i = 0; i < values.audioURLs.length; i++) {
     memories.push(
       <TimelineItem>
-        <TimelineOppositeContent style={{ flex: "0.1" }} />
+        <TimelineOppositeContent
+          sx={{
+            flex: 0.5,
+          }}
+        />
         <TimelineSeparator>
           {i == 0 && values.textMemories.length == 0 ? (
             <TimelineConnector />
@@ -62,7 +69,13 @@ const StepFour = ({
           <TimelineDot />
           <TimelineConnector />
         </TimelineSeparator>
-        <TimelineContent>
+        <TimelineContent
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            flex: 25,
+          }}
+        >
           <audio key={i} src={values.audioURLs[i]} controls="controls" />
         </TimelineContent>
       </TimelineItem>
@@ -71,12 +84,20 @@ const StepFour = ({
 
   memories.push(
     <TimelineItem>
-      <TimelineOppositeContent style={{ flex: "0.1" }} />
+      <TimelineOppositeContent
+        sx={{
+          flex: 0.5,
+        }}
+      />
       <TimelineSeparator>
         <TimelineDot />
         <TimelineConnector />
       </TimelineSeparator>
-      <TimelineContent>
+      <TimelineContent
+        sx={{
+          flex: 25,
+        }}
+      >
         Add another memory
         <Box sx={{ display: "flex", flexDirection: "row" }}>
           <Box

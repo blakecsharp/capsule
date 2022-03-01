@@ -1,15 +1,16 @@
 import * as React from "react";
 
 import { useNavigate, useLocation } from "react-router-dom";
-import { Container } from "@mui/material";
+import { Container, Button } from "@mui/material";
 import { Box, Typography } from "@mui/material";
 import { auth } from "../../AuthContext";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import NavigationBar from "../shared/NavigationBar";
 import CustomButton from "../shared/Button";
+import TextInput from "../shared/TextInput";
 
-const Join = () => {
+const Invite = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [user, loading, error] = useAuthState(auth);
@@ -51,7 +52,8 @@ const Join = () => {
           </Typography>
         </Typography>
       </Box>
-      <CustomButton
+      <Button
+        disableElevation
         onClick={() => {
           navigate("/capsule", {
             state: {
@@ -59,11 +61,15 @@ const Join = () => {
             },
           });
         }}
-        text="Back"
-        isLoggedIn
-      />
+        sx={{
+          border: 1,
+          borderRadius: "10px",
+        }}
+      >
+        Back
+      </Button>
     </Container>
   );
 };
 
-export default Join;
+export default Invite;

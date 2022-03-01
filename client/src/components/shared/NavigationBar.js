@@ -71,13 +71,9 @@ const NavigationBar = ({ isLoggedIn }) => {
             height: "75%",
           }}
           onClick={() => {
-            logout()
-              .then(() => {
-                navigate(`/`);
-              })
-              .catch((error) => {
-                // An error happened.
-              });
+            console.log("logging out");
+            navigate("/login");
+            logout();
           }}
           text="Sign Out"
         />

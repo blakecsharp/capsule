@@ -26,6 +26,7 @@ const typeDefs = gql`
       audio: [String]
       capsuleId: String
     ): Response
+    JoinCapsule(userId: String, capsuleId: String): Response
   }
 
   type User {
