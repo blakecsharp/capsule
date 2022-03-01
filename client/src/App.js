@@ -14,6 +14,7 @@ import Item from "./components/Item/Item";
 import Join from "./components/Join/Join";
 import Invite from "./components/Invite/Invite";
 import Request from "./components/Request/Request";
+import Recycle from "./components/Recycle/Recycle";
 import { TabletView, isMobile, isTablet } from "react-device-detect";
 import { Typography } from "@mui/material";
 
@@ -40,6 +41,7 @@ function App() {
           <Route path="/invite" element={<Invite />} />
           <Route path="/join" element={<Join />} />
           <Route path="/request" element={<Request />} />
+          <Route path="/recycle" element={<Recycle />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>

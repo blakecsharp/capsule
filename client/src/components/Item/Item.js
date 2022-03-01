@@ -5,7 +5,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Box } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
@@ -258,7 +257,11 @@ const Item = () => {
               </Typography>
               <CustomButton
                 onClick={() => {
-                  console.log("clicked!");
+                  navigate("/recycle", {
+                    state: {
+                      itemId: location.state.itemId,
+                    },
+                  });
                 }}
                 text="Find a new home"
                 isLoggedIn

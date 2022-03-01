@@ -11,8 +11,7 @@ import { auth } from "../../AuthContext";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import Webcam from "react-webcam";
-import firebase from "firebase/app";
-import { storage } from "../../AuthContext";
+
 import "firebase/storage";
 
 import UploadIcon from "@mui/icons-material/Upload";

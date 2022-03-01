@@ -30,7 +30,6 @@ const TextInput = ({
       maxRows={multiline ? maxRows : 1}
       sx={{
         ...style,
-        width: "100%",
         "& .MuiOutlinedInput-root:hover": {
           "& > fieldset": {
             borderColor: border ? border : "white",

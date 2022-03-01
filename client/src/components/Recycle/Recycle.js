@@ -11,10 +11,7 @@ import CardActions from "@mui/material/CardActions";
 import CardMedia from "@mui/material/CardMedia";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import FormHelperText from "@mui/material/FormHelperText";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+
 import TextInput from "../shared/TextInput";
 
 import NavigationBar from "../shared/NavigationBar";
@@ -25,7 +22,7 @@ import CustomButton from "../shared/Button";
     Get family members associated with the account
 */
 
-const Request = () => {
+const Recycle = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [user, loading, error] = useAuthState(auth);
@@ -33,7 +30,6 @@ const Request = () => {
   const [member, setMember] = React.useState("");
   const [message, setMessage] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
-  const [showConfirmation, setShowConfirmation] = React.useState(false);
 
   React.useEffect(() => {
     if (loading) return;
@@ -60,7 +56,6 @@ const Request = () => {
       disableGutters
       sx={{
         backgroundColor: "#ffffff",
-        height: "100vh",
         width: "100vw",
         display: "flex",
         flexDirection: "column",
@@ -131,125 +126,44 @@ const Request = () => {
           </Box>
         </Box>
       )}
-      {!showConfirmation && (
+
+      <Box
+        sx={{
+          ml: "100px",
+          mr: "100px",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
         <Box
           sx={{
-            ml: "100px",
-            mr: "100px",
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
+            mb: "20px",
           }}
         >
-          <FormControl
-            sx={{
-              width: "50%",
-              mb: "20px",
-            }}
-          >
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={member}
-              onChange={handleChange}
-              displayEmpty
-            >
-              <MenuItem value={"Mary"}>Mary</MenuItem>
-              <MenuItem value={"Joe"}>Joe</MenuItem>
-              <MenuItem value={"Sue"}>Sue</MenuItem>
-              <MenuItem value={"Jill"}>Jill</MenuItem>
-            </Select>
-            <FormHelperText>Request more information from</FormHelperText>
-          </FormControl>
-
-          <Typography>Add a note to your request</Typography>
-          <TextInput
-            multiline
-            rows={4}
-            value={message}
-            handleChange={(e) => {
-              setMessage(e.target.value);
-            }}
-            placeholder="Type here"
-            id="memory-input"
-            type="string"
-            border="#9567E0"
-            style={{
-              mb: "20px",
-              width: "50%",
-            }}
-          />
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              width: "50%",
-            }}
-          >
-            <Button
-              disableElevation
-              onClick={() => {
-                navigate("/capsule", {
-                  state: {
-                    capsuleId: location.state.capsuleId,
-                  },
-                });
-              }}
-              sx={{
-                border: 1,
-                borderRadius: "10px",
-                width: "25%",
-              }}
-              isLoggedIn
-            >
-              Back
-            </Button>
-            <CustomButton
-              variant="contained"
-              disabled={message == "" ? true : false}
-              onClick={() => {
-                if (member && message) {
-                  setShowConfirmation(true);
-                } else {
-                  setErrorMessage(
-                    "You must pick a family member and add a note"
-                  );
-                }
-              }}
-              style={{
-                width: "25%",
-                maxWidth: "400px",
-              }}
-              text={"Done"}
-              isLoggedIn
-            />
-          </Box>
-          <Typography>{errorMessage}</Typography>
+          <Typography variant="subtitle2" sx={{ mb: "20px" }}>
+            Donation centers near by
+          </Typography>
+          <iframe
+            src="https://www.google.com/maps/d/embed?mid=1X6w3csR3qYLRH6h622Su-Pi_dQuRrb9Z&ehbc=2E312F"
+            width="50%"
+            height="480"
+          ></iframe>
         </Box>
-      )}
-      {showConfirmation && (
         <Box
           sx={{
-            ml: "100px",
-            mr: "100px",
-            width: "100%",
             display: "flex",
-            flexDirection: "column",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            width: "50%",
           }}
         >
-          <Typography>Your request has been sent.</Typography>
-
-          <Typography>You requessted more info from {member}</Typography>
-
-          <Typography>Note: {message}</Typography>
-
           <Button
             disableElevation
             onClick={() => {
-              navigate("/item", {
+              navigate("/capsule", {
                 state: {
-                  itemId: location.state.itemId,
+                  capsuleId: location.state.capsuleId,
                 },
               });
             }}
@@ -257,16 +171,33 @@ const Request = () => {
               border: 1,
               borderRadius: "10px",
               width: "25%",
-              mt: "20px",
             }}
             isLoggedIn
           >
-            Back to your item
+            Back
           </Button>
+
+          <CustomButton
+            variant="contained"
+            onClick={() => {
+              navigate("/item", {
+                state: {
+                  itemId: location.state.itemId,
+                },
+              });
+            }}
+            style={{
+              width: "25%",
+              maxWidth: "400px",
+            }}
+            text={"Done"}
+            isLoggedIn
+          />
         </Box>
-      )}
+        <Typography>{errorMessage}</Typography>
+      </Box>
     </Container>
   );
 };
 
-export default Request;
+export default Recycle;
