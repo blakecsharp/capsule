@@ -20,7 +20,7 @@ import { TabletView, isMobile, isTablet } from "react-device-detect";
 import { Typography } from "@mui/material";
 
 function App() {
-  if (isMobile) {
+  if (isMobile && !isTablet) {
     return (
       <Typography>
         Our product looks better on iPad or Desktop. Come back on one of those

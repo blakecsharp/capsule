@@ -31,7 +31,6 @@ const StepTwo = ({
   const [user, loading, error] = useAuthState(auth);
   const [inUpload, setInUpload] = React.useState(false);
   const [inCapture, setInCapture] = React.useState(false);
-  const [isIpad, setIsiPad] = React.useState(false);
 
   const webcamRef = React.useRef(null);
   const mediaRecorderRef = React.useRef(null);
@@ -39,10 +38,6 @@ const StepTwo = ({
   const [capturing, setCapturing] = React.useState(false);
   const [recordedChunks, setRecordedChunks] = React.useState([]);
   const [mode, setMode] = React.useState("photo");
-
-  if (isTablet) {
-    setIsiPad(true);
-  }
 
   React.useEffect(() => {
     if (loading) return;

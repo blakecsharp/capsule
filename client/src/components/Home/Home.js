@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
+import AvatarGroup from "@mui/material/AvatarGroup";
 import Stack from "@mui/material/Stack";
 import CustomButton from "../shared/Button";
 
@@ -112,6 +113,7 @@ const Home = () => {
               {data.response.capsules.map((capsule, index) => {
                 return (
                   <Box
+                    key={index}
                     sx={{
                       display: "flex",
                       flexDirection: "row",
@@ -163,9 +165,12 @@ const Home = () => {
                         : ""}
                     </Typography>
 
-                    <Stack direction="row" spacing={2}>
+                    <AvatarGroup total={capsule.items.length}>
                       {capsule.items &&
                         capsule.items.map((item, key) => {
+                          if (key > 2) {
+                            return;
+                          }
                           return (
                             <Avatar
                               sx={{ height: 80, width: 80 }}
@@ -174,7 +179,7 @@ const Home = () => {
                             />
                           );
                         })}
-                    </Stack>
+                    </AvatarGroup>
 
                     {capsule.items.length === 0 && (
                       <Box

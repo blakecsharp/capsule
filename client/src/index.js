@@ -7,8 +7,6 @@ import { ApolloProvider, HttpLink } from "@apollo/client";
 import * as serviceWorker from "./lib/serviceWorker";
 import { AuthProvider } from "./AuthContext";
 
-console.log(process.env.NODE_ENV);
-
 const url =
   process.env.NODE_ENV === "development"
     ? "http://localhost:5000/capsule-1d048/us-central1/api"
