@@ -123,7 +123,9 @@ const Request = () => {
             >
               <Typography variant="h4">Date </Typography>{" "}
               <Typography variant="subtitle1">{data.response.date}</Typography>
-              <Typography variant="h4">Location: </Typography>
+              <Typography variant="h4">
+                Current location of the memento:
+              </Typography>
               <Typography variant="subtitle1">
                 {data.response.location}
               </Typography>
@@ -238,9 +240,10 @@ const Request = () => {
             flexDirection: "column",
           }}
         >
-          <Typography>Your request has been sent.</Typography>
-
-          <Typography>You requessted more info from {member}</Typography>
+          <Typography>
+            An email to {member} requesting more information on{" "}
+            {data.response.title} has been sent.
+          </Typography>
 
           <Typography>Note: {message}</Typography>
 

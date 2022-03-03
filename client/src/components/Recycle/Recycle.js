@@ -118,7 +118,9 @@ const Recycle = () => {
             >
               <Typography variant="h4">Date </Typography>{" "}
               <Typography variant="subtitle1">{data.response.date}</Typography>
-              <Typography variant="h4">Location: </Typography>
+              <Typography variant="h4">
+                Current location of the memento:{" "}
+              </Typography>
               <Typography variant="subtitle1">
                 {data.response.location}
               </Typography>

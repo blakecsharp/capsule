@@ -11,6 +11,7 @@ import whitelogo from "./whitesmalllogo.png";
 import blanklogo from "./smalllogoblank.png";
 import purplelogo from "./smallpurplelogo.png";
 import purplelogoblank from "./smallpurpleblank.png";
+import HelpIcon from "@mui/icons-material/Help";
 import CustomButton from "./Button";
 
 const purple = "#9567e0";
@@ -60,6 +61,18 @@ const NavigationBar = ({ isLoggedIn }) => {
           }}
           onClick={() => {
             navigate(`/home`);
+          }}
+        />
+
+        <HelpIcon
+          sx={{
+            color: isLoggedIn ? purple : "white",
+            height: "60px",
+            width: "50px",
+            mr: "20px",
+          }}
+          onClick={() => {
+            navigate(`/faq`);
           }}
         />
 
