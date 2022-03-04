@@ -7,12 +7,13 @@ import { ApolloProvider, HttpLink } from "@apollo/client";
 import * as serviceWorker from "./lib/serviceWorker";
 import { AuthProvider } from "./AuthContext";
 
-console.log(process.env.NODE_ENV);
-
-const url =
-  process.env.NODE_ENV === "development"
+const url = "https://us-central1-capsule-1d048.cloudfunctions.net/api";
+/*  
+process.env.NODE_ENV === "development"
     ? "http://localhost:5000/capsule-1d048/us-central1/api"
     : "https://us-central1-capsule-1d048.cloudfunctions.net/api";
+
+    */
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
