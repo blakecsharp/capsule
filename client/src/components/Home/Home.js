@@ -33,7 +33,7 @@ const Home = () => {
     },
   });
 
-  if (loading) {
+  if (dataLoading) {
     return <Loading />;
   }
 

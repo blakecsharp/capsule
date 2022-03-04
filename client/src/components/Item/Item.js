@@ -52,11 +52,10 @@ const Item = () => {
 
   const [deleteItem] = useMutation(DELETE_ITEM);
 
-  if (loading) {
+  if (dataLoading) {
     return <Loading />;
   }
 
-  console.log(data);
   const memories = [];
 
   if (data) {
