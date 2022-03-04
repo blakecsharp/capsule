@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Container } from "@mui/material";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Box, Button } from "@mui/material";
 import Card from "@mui/material/Card";
@@ -24,7 +24,7 @@ import CustomButton from "../shared/Button";
 
 import NavigationBar from "../shared/NavigationBar";
 import Loading from "../shared/Loading";
-import { GET_ITEM } from "../../requests";
+import { GET_ITEM, DELETE_ITEM } from "../../requests";
 import { auth } from "../../AuthContext";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -33,6 +33,7 @@ const Item = () => {
   const location = useLocation();
   const [user, loading, error] = useAuthState(auth);
   const [imageIndex, setImageIndex] = React.useState(0);
+  const [showConfirmDelete, setShowConfirmDelete] = React.useState(false);
 
   useEffect(() => {
     if (loading) return;
@@ -48,6 +49,8 @@ const Item = () => {
       itemId: location.state.itemId,
     },
   });
+
+  const [deleteItem] = useMutation(DELETE_ITEM);
 
   if (loading) {
     return <Loading />;
@@ -281,6 +284,19 @@ const Item = () => {
             </Typography>
             <Timeline align="left">{memories}</Timeline>
           </Box>
+          {showConfirmDelete && (
+            <Typography
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "flex-end",
+                width: "100%",
+              }}
+              variant="subtitle1"
+            >
+              Are you sure?
+            </Typography>
+          )}
           <Box
             sx={{
               display: "flex",
@@ -306,13 +322,54 @@ const Item = () => {
             >
               Back
             </Button>
-            <CustomButton
-              onClick={() => {
-                // build this functionality
-              }}
-              text="Delete Object"
-              isLoggedIn
-            />
+            {!showConfirmDelete && (
+              <CustomButton
+                onClick={() => {
+                  setShowConfirmDelete(true);
+                }}
+                text="Delete Object"
+                isLoggedIn
+              />
+            )}
+            {showConfirmDelete && (
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "flex-end",
+                }}
+              >
+                <Button
+                  disableElevation
+                  onClick={() => {
+                    setShowConfirmDelete(false);
+                  }}
+                  sx={{
+                    border: 1,
+                    borderRadius: "10px",
+                  }}
+                  isLoggedIn
+                >
+                  No, keep this memento in my capsule.
+                </Button>
+                <CustomButton
+                  onClick={() => {
+                    deleteItem({
+                      variables: {
+                        itemId: location.state.itemId,
+                      },
+                    });
+                    navigate("/capsule", {
+                      state: {
+                        capsuleId: location.state.capsuleId,
+                      },
+                    });
+                  }}
+                  text="Yes, delete this memento from my capsule"
+                  isLoggedIn
+                />
+              </Box>
+            )}
           </Box>
         </Box>
       )}

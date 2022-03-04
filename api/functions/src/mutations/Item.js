@@ -52,4 +52,21 @@ const AddItem = async (_, data) => {
     };
   }
 };
+
+const DeleteItem = async (_, data) => {
+  const res = await admin
+    .firestore()
+    .collection("items")
+    .doc(data.itemId)
+    .delete();
+
+  if (res) {
+    return {
+      success: "Successfully deleted",
+      error: "",
+    };
+  }
+};
+
 exports.AddItem = AddItem;
+exports.DeleteItem = DeleteItem;

@@ -16,6 +16,7 @@ import Invite from "./components/Invite/Invite";
 import Request from "./components/Request/Request";
 import Recycle from "./components/Recycle/Recycle";
 import FAQ from "./components/FAQ/FAQ";
+import Reset from "./components/ResetPassword/ResetPassword";
 import { TabletView, isMobile, isTablet } from "react-device-detect";
 import { Typography } from "@mui/material";
 
@@ -44,6 +45,7 @@ function App() {
           <Route path="/request" element={<Request />} />
           <Route path="/recycle" element={<Recycle />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/reset" element={<Reset />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>

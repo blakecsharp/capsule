@@ -10,7 +10,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import { useAuth, auth } from "../../AuthContext";
 
-import logo from "./whitelogo.png";
+import logo from "../shared/whitelogo.png";
 
 import { ADD_USER } from "../../requests";
 
@@ -20,20 +20,6 @@ const Login = () => {
   const navigate = useNavigate();
   const { signup } = useAuth();
   const { login } = useAuth();
-
-  /*
-  const [user, loading, error] = useAuthState(auth);
-
-  useEffect(() => {
-    if (loading) {
-      return <>Loading...</>;
-    }
-    if (user) {
-      console.log(user);
-      navigate("/home");
-    }
-  }, [user, loading]);
-  */
 
   const [values, setValues] = React.useState({
     email: "",
@@ -60,15 +46,21 @@ const Login = () => {
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        setValues({ error: errorMessage });
-        console.log(errorMessage);
+        var errorMessage;
+        console.log(error.code);
+        if (errorCode === "auth/missing-email") {
+          errorMessage = `There is no account associated with that email. Please create an account by clicking the "Join Now" button`;
+        }
+        if (errorCode === "auth/wrong-password") {
+          errorMessage = `Incorrect password. Please try again.`;
+        }
+        setValues({ ...values, error: errorMessage });
       });
   };
 
   const handleAddUser = () => {
     if (values.addPW != values.addPWConf) {
-      setValues({ error: "Your passwords must match" });
+      setValues({ ...values, error: "Your passwords must match" });
     }
     const val = signup(values.addEmail, values.addPW)
       .then((user) => {
@@ -136,7 +128,7 @@ const Login = () => {
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-between",
-                alignItems: "center",
+                alignItems: "flex-start",
                 mt: 3,
               }}
             >
@@ -150,24 +142,39 @@ const Login = () => {
                   borderRadius: "10px",
                 }}
                 onClick={() => {
-                  setValues({ joinNow: true, error: "" });
+                  setValues({ ...values, joinNow: true, error: "" });
                 }}
               >
                 Join now
               </Button>
-              <Button
-                variant="contained"
-                disableElevation
-                onClick={handleLogin()}
-                sx={{
-                  width: "30%",
-                  border: 1,
-                  borderColor: "white",
-                  borderRadius: "10px",
-                }}
-              >
-                Log in
-              </Button>
+              <Box>
+                <Button
+                  variant="contained"
+                  disableElevation
+                  onClick={handleLogin()}
+                  sx={{
+                    width: "100%",
+                    border: 1,
+                    borderColor: "white",
+                    borderRadius: "10px",
+                    mb: "10px",
+                  }}
+                >
+                  Log in
+                </Button>
+
+                <Typography
+                  onClick={() => {
+                    navigate("/reset");
+                  }}
+                  variant="body1"
+                  sx={{
+                    color: "white",
+                  }}
+                >
+                  Forgot password?
+                </Typography>
+              </Box>
             </Box>
           </Box>
         ) : (
@@ -182,24 +189,26 @@ const Login = () => {
                 mb: "10px",
               }}
             >
-              <Box sx={{ width: "90%", mr: "5px" }}>
+              <Box sx={{ width: "100%" }}>
                 <TextInput
                   value={values.addFirstName}
                   handleChange={handleChange("addFirstName")}
                   placeholder="First Name"
                   id="first-name-input"
                   type="string"
+                  style={{
+                    width: "50%",
+                  }}
                 />
-              </Box>
-              <Box sx={{ width: "90%", ml: "5px" }}>
+
                 <TextInput
                   value={values.addLastName}
                   handleChange={handleChange("addLastName")}
                   placeholder="Last Name"
                   id="last-name-input"
                   type="string"
-                  sx={{
-                    width: "45%",
+                  style={{
+                    width: "50%",
                   }}
                 />
               </Box>
@@ -208,19 +217,19 @@ const Login = () => {
               value={values.addEmail}
               handleChange={handleChange("addEmail")}
               placeholder="Email"
-              id="add-email-input"
+              id="email-add-input"
               type="string"
               adornment={<EmailIcon sx={{ color: "white", mr: 3 }} />}
-              style={{ mb: "10px" }}
+              style={{ mb: "10px", width: "100%" }}
             />
             <TextInput
               value={values.addPW}
               handleChange={handleChange("addPW")}
               placeholder="Password"
-              id="add-password-input"
+              id="password-add-input"
               type="password"
               adornment={<LockIcon sx={{ color: "white", mr: 3 }} />}
-              style={{ mb: "10px" }}
+              style={{ mb: "10px", width: "100%" }}
             />
 
             <TextInput
@@ -230,7 +239,7 @@ const Login = () => {
               id="add-password-confirm-input"
               type="password"
               adornment={<LockIcon sx={{ color: "white", mr: 3 }} />}
-              style={{ mb: "10px" }}
+              style={{ mb: "10px", width: "100%" }}
             />
             <Box
               sx={{
@@ -251,7 +260,7 @@ const Login = () => {
                   borderRadius: "10px",
                 }}
                 onClick={() => {
-                  setValues({ joinNow: false, error: "" });
+                  setValues({ ...values, joinNow: false, error: "" });
                 }}
               >
                 Back to Login
@@ -272,7 +281,13 @@ const Login = () => {
             </Box>
           </Box>
         )}
-        <Typography>{values.error}</Typography>
+        <Typography
+          sx={{
+            mt: "20px",
+          }}
+        >
+          {values.error}
+        </Typography>
       </Box>
     </Container>
   );

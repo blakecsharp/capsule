@@ -27,6 +27,7 @@ const typeDefs = gql`
       capsuleId: String
     ): Response
     JoinCapsule(userId: String, capsuleId: String): Response
+    DeleteItem(itemId: String): Response
   }
 
   type User {

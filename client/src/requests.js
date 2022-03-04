@@ -103,6 +103,15 @@ export const ADD_ITEM = gql`
   }
 `;
 
+export const DELETE_ITEM = gql`
+  mutation DeleteItem($itemId: String) {
+    DeleteItem(itemId: $itemId) {
+      success
+      error
+    }
+  }
+`;
+
 export const ADD_USER = gql`
   mutation AddUser(
     $id: String

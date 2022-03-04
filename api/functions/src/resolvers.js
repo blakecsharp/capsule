@@ -16,6 +16,7 @@ module.exports = {
     AddUser: MutationUser.AddUser,
     CreateCapsule: Capsule.CreateCapsule,
     AddItem: Item.AddItem,
+    DeleteItem: Item.DeleteItem,
     JoinCapsule: Capsule.JoinCapsule,
   },
 };
