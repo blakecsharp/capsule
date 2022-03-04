@@ -9,7 +9,14 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 const SortingBar = ({ sort, setSort, capsuleId }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [dimensions, setDimensions] = React.useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
   return (
+
+    <div style={{display: "flex"}}>
+    
     <Box
       sx={{
         display: "flex",
@@ -19,6 +26,7 @@ const SortingBar = ({ sort, setSort, capsuleId }) => {
         maxWidth: "100vw",
       }}
     >
+      <div style={{alignItems: "left"}}>
       <ToggleButtonGroup
         value={sort}
         exclusive
@@ -42,10 +50,15 @@ const SortingBar = ({ sort, setSort, capsuleId }) => {
           By memento type
         </ToggleButton>
       </ToggleButtonGroup>
+      </div>
+      
+      <div style={{alignSelf: "right", marginLeft: "auto", marginRight: parseInt(dimensions.width/5)}}>
       <Button
         sx={{
+          height: "48px",
           border: 1,
           borderColor: "#9567E0",
+          borderRadius: 2,
         }}
         onClick={() => {
           navigate("/invite", {
@@ -57,7 +70,11 @@ const SortingBar = ({ sort, setSort, capsuleId }) => {
       >
         Invite someone to this capsule
       </Button>
+    </div>
+    
     </Box>
+    
+    </div>
   );
 };
 

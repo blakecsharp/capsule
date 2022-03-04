@@ -72,11 +72,51 @@ const Capsule = () => {
           setSort={setSort}
           capsuleId={location.state.capsuleId}
         />
+        <Box sx={{ display: "flex", flexDirection: "row", width: "80%", paddingTop: 3}}>
+          <CustomButton
+            disableElevation
+            onClick={() => {
+              navigate("/add", {
+                state: {
+                  capsuleId: location.state.capsuleId,
+                },
+              });
+            }}
+            style={{
+              justifySelf: "flex-start",
+              border: 1,
+              borderColor: "#9567E0",
+              borderRadius: "10px",
+              mb: "20px",
+              
+            }}
+            text="Add item to capsule"
+            isLoggedIn
+          />
+          <Button
+            disableElevation
+            onClick={() => {
+              navigate("/home");
+            }}
+            sx={{
+              border: 1,
+              borderRadius: "10px",
+              marginLeft: "auto",
+              marginRight: 0,
+              justifySelf: "flex-end",
+              mb: "20px",
+            }}
+            isLoggedIn
+          >
+            Back
+          </Button>
+        </Box>
+
         {sort === "all" && (
           <ImageList
             sx={{ width: "80vw" }}
             cols={parseInt((dimensions.width * 0.75) / 300)}
-            rowHeight={500}
+            rowHeight={350}
           >
             {data &&
               data.response.map((item, key) => (
@@ -100,7 +140,17 @@ const Capsule = () => {
                     });
                   }}
                 >
-                  <img src={item.photos[0]} alt={item.title} loading="lazy" />
+                  <img 
+                    src={item.photos[0]} 
+                    alt={item.title} 
+                    loading="lazy" 
+                    style={{
+                      borderRadius: 12, 
+                       
+                      width: 300,
+                      height: 3, 
+                      resizeMode: "stretch"}}/>
+
                   <ImageListItemBar
                     position="below"
                     title={item.title}
@@ -135,7 +185,7 @@ const Capsule = () => {
                   <Typography variant="h5" sx={{ pl: "5px" }}>
                     {type}
                   </Typography>
-                  <ImageList sx={{}} cols={4} rowHeight={500}>
+                  <ImageList sx={{}} cols={4} rowHeight={350}>
                     {data &&
                       data.response.map((item, key) => {
                         if (item.mementoType != type) {
@@ -187,39 +237,8 @@ const Capsule = () => {
             })}
           </Box>
         )}
-        <Box sx={{ display: "flex", flexDirection: "column", width: "25%" }}>
-          <CustomButton
-            disableElevation
-            onClick={() => {
-              navigate("/add", {
-                state: {
-                  capsuleId: location.state.capsuleId,
-                },
-              });
-            }}
-            style={{
-              border: 1,
-              borderColor: "#9567E0",
-              borderRadius: "10px",
-              mb: "20px",
-            }}
-            text="Add item to capsule"
-            isLoggedIn
-          />
-          <Button
-            disableElevation
-            onClick={() => {
-              navigate("/home");
-            }}
-            sx={{
-              border: 1,
-              borderRadius: "10px",
-            }}
-            isLoggedIn
-          >
-            Back
-          </Button>
-        </Box>
+        
+        
       </Box>
     </Container>
   );
