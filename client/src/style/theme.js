@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material/styles";
+import "@fontsource/poppins";
 
 const theme = createTheme({
   shadows: ["none"],
@@ -16,11 +17,11 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: [
-      "Futura",
-      "Futura-CondensedExtraBold",
-      "Futura-CondensedMedium",
-      "Futura-Medium",
-      "Futura-MediumItalic",
+      "Poppins",
+      "Poppins-CondensedExtraBold",
+      "Poppins-CondensedMedium",
+      "Poppins-Medium",
+      "Poppins-MediumItalic",
     ].join(","),
     h2: {
       fontSize: 48,

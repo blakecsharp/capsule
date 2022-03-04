@@ -262,7 +262,7 @@ const Add = () => {
               clearCurrentTextMemory={clearCurrentTextMemory}
             />
           ) : (
-            <Typography> Oops something went wrong </Typography>
+            <Typography> Oops! Something went wrong </Typography>
           )}
           <Typography variant="h6">{errorMessage}</Typography>
           <Box
