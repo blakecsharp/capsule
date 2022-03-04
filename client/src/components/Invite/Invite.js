@@ -34,7 +34,6 @@ const Invite = () => {
         alignItems: "center",
       }}
     >
-      <Loading />
       <NavigationBar isLoggedIn />
       <Box
         sx={{
