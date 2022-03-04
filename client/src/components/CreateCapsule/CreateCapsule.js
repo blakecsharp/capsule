@@ -30,7 +30,7 @@ const CreateCapsule = () => {
     setValues({ ...values, [prop]: event.target.value });
   };
 
-  const handleCreate = () => () => {
+  const handleCreate = () => {
     createCapsule({
       variables: {
         createdById: user.uid,
@@ -57,6 +57,7 @@ const CreateCapsule = () => {
         sx={{
           width: "60%",
           maxWidth: "800px",
+          mt: "20px",
         }}
       >
         <TextInput
@@ -66,7 +67,7 @@ const CreateCapsule = () => {
           id="title-input"
           type="string"
           adornment={<EditIcon sx={{ color: "black", pr: 3 }} />}
-          style={{ mb: "10px" }}
+          style={{ mb: "10px", width: "100%" }}
           border="#9567E0"
         />
 
@@ -75,6 +76,7 @@ const CreateCapsule = () => {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
+            mt: "20px",
           }}
         >
           <Button

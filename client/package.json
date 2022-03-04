@@ -6,6 +6,7 @@
     "@apollo/client": "^3.5.8",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@fontsource/poppins": "^4.5.2",
     "@googlemaps/react-wrapper": "^1.1.25",
     "@mui/icons-material": "^5.4.1",
     "@mui/lab": "^5.0.0-alpha.70",
