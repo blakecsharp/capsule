@@ -12,7 +12,7 @@ const useStyles = makeStyles({
       animationTimingFunction: "ease-in-out",
     },
     "50%": {
-      transform: "rotate(120deg) translateX(10px) translateY(-3px)",
+      transform: "rotate(120deg) translateX(5px) translateY(-2px)",
       transformOrigin: "top right",
       animationTimingFunction: "ease-in-out",
     },
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
       animationTimingFunction: "ease-in-out",
     },
     "50%": {
-      transform: "rotate(-120deg) translateX(-10px) translateY(-3px)",
+      transform: "rotate(-120deg) translateX(-5px) translateY(-2px)",
       transformOrigin: "top left",
       animationTimingFunction: "ease-in-out",
     },

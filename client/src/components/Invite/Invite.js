@@ -9,6 +9,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import NavigationBar from "../shared/NavigationBar";
 import CustomButton from "../shared/Button";
 import TextInput from "../shared/TextInput";
+import Loading from "../shared/Loading";
 
 const Invite = () => {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ const Invite = () => {
         alignItems: "center",
       }}
     >
+      <Loading />
       <NavigationBar isLoggedIn />
       <Box
         sx={{
