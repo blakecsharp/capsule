@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Container } from "@mui/material";
 import { useQuery } from "@apollo/client";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardMedia from "@mui/material/CardMedia";
@@ -254,21 +254,25 @@ const Item = () => {
             >
               <Typography variant="h4">Date </Typography>{" "}
               <Typography variant="subtitle1">{data.response.date}</Typography>
-              <Typography variant="h4">Location: </Typography>
+              <Typography variant="h4">
+                Current location of the memento:{" "}
+              </Typography>
               <Typography variant="subtitle1">
                 {data.response.location}
               </Typography>
-              <CustomButton
-                onClick={() => {
-                  navigate("/recycle", {
-                    state: {
-                      itemId: location.state.itemId,
-                    },
-                  });
-                }}
-                text="Find a new home"
-                isLoggedIn
-              />
+              {data.response.uploadedBy === user.uid && (
+                <CustomButton
+                  onClick={() => {
+                    navigate("/recycle", {
+                      state: {
+                        itemId: location.state.itemId,
+                      },
+                    });
+                  }}
+                  text="Find a place to donate this memento"
+                  isLoggedIn
+                />
+              )}
             </Box>
           </Box>
           <Box>
@@ -277,17 +281,39 @@ const Item = () => {
             </Typography>
             <Timeline align="left">{memories}</Timeline>
           </Box>
-          <CustomButton
-            onClick={() => {
-              navigate("/capsule", {
-                state: {
-                  capsuleId: location.state.capsuleId,
-                },
-              });
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              mr: "5vw",
             }}
-            text="Back"
-            isLoggedIn
-          />
+          >
+            <Button
+              disableElevation
+              onClick={() => {
+                navigate("/capsule", {
+                  state: {
+                    capsuleId: location.state.capsuleId,
+                  },
+                });
+              }}
+              sx={{
+                border: 1,
+                borderRadius: "10px",
+              }}
+              isLoggedIn
+            >
+              Back
+            </Button>
+            <CustomButton
+              onClick={() => {
+                // build this functionality
+              }}
+              text="Delete Object"
+              isLoggedIn
+            />
+          </Box>
         </Box>
       )}
     </Container>

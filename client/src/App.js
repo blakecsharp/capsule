@@ -15,11 +15,12 @@ import Join from "./components/Join/Join";
 import Invite from "./components/Invite/Invite";
 import Request from "./components/Request/Request";
 import Recycle from "./components/Recycle/Recycle";
+import FAQ from "./components/FAQ/FAQ";
 import { TabletView, isMobile, isTablet } from "react-device-detect";
 import { Typography } from "@mui/material";
 
 function App() {
-  if (isMobile) {
+  if (isMobile && !isTablet) {
     return (
       <Typography>
         Our product looks better on iPad or Desktop. Come back on one of those
@@ -42,6 +43,7 @@ function App() {
           <Route path="/join" element={<Join />} />
           <Route path="/request" element={<Request />} />
           <Route path="/recycle" element={<Recycle />} />
+          <Route path="/faq" element={<FAQ />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>
