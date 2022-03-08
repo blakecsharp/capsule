@@ -131,6 +131,7 @@ const Capsule = () => {
                     mb: "10px",
                     width: "300px",
                   }}
+                  style={{cursor:'pointer'}}
                   onClick={() => {
                     navigate("/item", {
                       state: {
