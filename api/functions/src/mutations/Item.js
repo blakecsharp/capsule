@@ -69,9 +69,7 @@ const DeleteItem = async (_, data) => {
 };
 
 const EditItem = async (_, data) => {
-  console.log(data);
-
-  var memory;
+  let memory;
 
   if (data.textMemory) {
     memory = {
