@@ -14,6 +14,8 @@ import { GET_USER } from "../../requests";
 import { auth } from "../../AuthContext";
 import { useAuthState } from "react-firebase-hooks/auth";
 
+const purple = "#9567e0";
+
 const Home = () => {
   const navigate = useNavigate();
   const [user, loading, error] = useAuthState(auth);
@@ -43,7 +45,6 @@ const Home = () => {
       disableGutters
       sx={{
         backgroundColor: "#ffffff",
-        height: "100vh",
         width: "100vw",
         display: "flex",
         flexDirection: "column",
@@ -74,7 +75,7 @@ const Home = () => {
               }}
             >
               <Typography variant="body1" sx={{ mb: "10px" }}>
-                Looks like you are not a part of any capsules.
+                Looks like you are not a member of any capsules.
               </Typography>
               <CustomButton
                 isLoggedIn
@@ -104,7 +105,6 @@ const Home = () => {
           ) : (
             <Container
               sx={{
-                width: "100vw",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -117,19 +117,20 @@ const Home = () => {
                     sx={{
                       display: "flex",
                       flexDirection: "row",
-                      width: "60%",
-                      maxWidth: "800px",
+                      width: "100%",
+                      maxWidth: "100%",
                       pt: "5px",
                       pb: "5px",
                       mb: "20px",
                       border: 1,
-                      borderColor: "black",
-                      borderRadius: 16,
+                      borderColor: purple,
+                      borderRadius: 3,
                       alignItems: "center",
                       display: "flex",
                       flexDirection: "column",
                       jusitfyContent: "center",
                     }}
+                    style={{cursor:'pointer'}}
                     onClick={() => {
                       navigate("/capsule", {
                         state: {
@@ -165,7 +166,7 @@ const Home = () => {
                         : ""}
                     </Typography>
 
-                    <AvatarGroup total={capsule.items.length}>
+                    <AvatarGroup total={capsule.items.length} style={{paddingBottom: 8}}>
                       {capsule.items &&
                         capsule.items.map((item, key) => {
                           if (key > 2) {
@@ -216,12 +217,15 @@ const Home = () => {
                   </Box>
                 );
               })}
+            
+              <div style={{width: "100% ", display: "flex", flexDirection: "row"}}>
               <CustomButton
                 isLoggedIn
                 disableElevation
                 style={{
                   width: "50%",
                   mb: "10px",
+                  marginRight: "10px"
                 }}
                 onClick={() => {
                   navigate("/create");
@@ -234,12 +238,14 @@ const Home = () => {
                 style={{
                   width: "50%",
                   mb: "10px",
+                  marginLeft: "10px"
                 }}
                 onClick={() => {
                   navigate("/join");
                 }}
                 text="Join an existing capsule"
               />
+              </div>
             </Container>
           )}
         </Container>

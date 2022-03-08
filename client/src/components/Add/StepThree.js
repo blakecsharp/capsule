@@ -94,7 +94,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
           <TextInput
             value={values.date}
             handleChange={handleChange("date")}
-            placeholder="Date for the object (if appropriate)"
+            placeholder="Date"
             id="date-input"
             type="string"
             border="#9567E0"
@@ -104,7 +104,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
           <TextInput
             value={values.location}
             handleChange={handleChange("location")}
-            placeholder="Location where the object currently is"
+            placeholder="Location of the memento"
             id="location-input"
             type="string"
             border="#9567E0"

@@ -2,8 +2,8 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import HomeIcon from "@mui/icons-material/Home";
-
+import HomeIcon from "@mui/icons-material/HomeRounded";
+import SignOutIcon from '@mui/icons-material/ExitToAppRounded';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../AuthContext";
 
@@ -11,7 +11,7 @@ import whitelogo from "./whitesmalllogo.png";
 import blanklogo from "./smalllogoblank.png";
 import purplelogo from "./smallpurplelogo.png";
 import purplelogoblank from "./smallpurpleblank.png";
-import HelpIcon from "@mui/icons-material/Help";
+import HelpIcon from "@mui/icons-material/HelpCenter";
 import CustomButton from "./Button";
 
 const purple = "#9567e0";
@@ -53,6 +53,7 @@ const NavigationBar = ({ isLoggedIn }) => {
         }}
       >
         <HomeIcon
+          style={{cursor:'pointer'}}
           sx={{
             color: isLoggedIn ? purple : "white",
             height: "60px",
@@ -65,6 +66,7 @@ const NavigationBar = ({ isLoggedIn }) => {
         />
 
         <HelpIcon
+          style={{cursor:'pointer'}}
           sx={{
             color: isLoggedIn ? purple : "white",
             height: "60px",
@@ -76,19 +78,18 @@ const NavigationBar = ({ isLoggedIn }) => {
           }}
         />
 
-        <CustomButton
-          variant="contained"
-          disableElevation
-          isLoggedIn={isLoggedIn}
+        <SignOutIcon
+          style={{cursor:'pointer'}}
           sx={{
-            height: "75%",
+            color: isLoggedIn ? purple : "white",
+            height: "60px",
+            width: "50px",
+            mr: "20px",
           }}
           onClick={() => {
             console.log("logging out");
-            navigate("/login");
-            logout();
+            navigate(`/login`);
           }}
-          text="Sign Out"
         />
       </Box>
     </Box>

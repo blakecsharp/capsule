@@ -109,6 +109,7 @@ const Login = () => {
               value={values.email}
               handleChange={handleChange("email")}
               placeholder="Email"
+              placeholderTextColor="#FFFFF" 
               id="email-input"
               type="string"
               adornment={<EmailIcon sx={{ color: "white", mr: 3 }} />}
@@ -168,9 +169,11 @@ const Login = () => {
                     navigate("/reset");
                   }}
                   variant="body1"
+                  style={{cursor:'pointer'}}
                   sx={{
                     color: "white",
                   }}
+
                 >
                   Forgot password?
                 </Typography>
