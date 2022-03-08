@@ -21,7 +21,7 @@ const Breadcrumb = ({ currentStep }) => {
           height: "10px",
           width: "10px",
           borderRadius: "15px",
-          borderColor: "white",
+          borderColor: purple,
           border: 1,
           mr: 1,
           backgroundColor: currentStep == 0 ? purple : "None",
