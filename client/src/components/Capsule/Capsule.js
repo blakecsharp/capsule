@@ -13,7 +13,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { GET_CAPSULE } from "../../requests";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import SortingBar from "../shared/SortingBar";
 import MementoTypes from "../../constants/constants";
 import CustomButton from "../shared/Button";
@@ -62,9 +62,9 @@ const Capsule = () => {
       <NavigationBar isLoggedIn />
       <Box
         sx={{
-          width: "100%",
-          ml: "100px",
-          mr: "100px",
+          width: "100vw",
+          pl: "100px",
+          pr: "30px",
         }}
       >
         <SortingBar
@@ -126,7 +126,10 @@ const Capsule = () => {
                     border: 1,
                     borderRadius: "15px",
                     borderColor: "#9567E0",
-                    padding: "10px",
+                    pt: "15px",
+                    pl: "15px",
+                    pr: "15px",
+                    ml: "10px",
                     mr: "10px",
                     mb: "10px",
                     width: "300px",
@@ -156,12 +159,12 @@ const Capsule = () => {
                     position="below"
                     title={item.title}
                     actionIcon={
-                      <ArrowForwardIosIcon sx={{ color: "#9567E0" }} />
+                      <ArrowForwardIosIcon sx={{ pt: "4px", color: "#9567E0" }} />
                     }
                     sx={{
-                      mt: "10px",
-                      pl: "10px",
-                      pr: "10px",
+                      mt: "5px",
+                      pl: "5px",
+                      pr: "5px",
                     }}
                   />
                 </ImageListItem>
@@ -222,11 +225,7 @@ const Capsule = () => {
                                     sx={{ color: "#9567E0" }}
                                   />
                                 }
-                                sx={{
-                                  mt: "10px",
-                                  pl: "10px",
-                                  pr: "10px",
-                                }}
+                              
                               />
                             </ImageListItem>
                           );

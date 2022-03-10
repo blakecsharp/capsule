@@ -106,25 +106,25 @@ const Add = () => {
   const validate = () => {
     if (currentStep == 0) {
       if (values.title === "") {
-        return "Error: Please give your memento a title";
+        return "Please give your memento a name.";
       }
       if (values.mementoType === "") {
-        return "Error: Please choose a memento category.";
+        return "Please choose a memento category.";
       }
       return "";
     }
     if (currentStep == 1) {
       if (imageFiles.length == 0) {
-        return "Please upload at least one image";
+        return "Please upload at least one image.";
       }
       return "";
     }
     if (currentStep == 2) {
       if (values.location === "") {
-        return "Please add a current location for the memento.";
+        return "Please add the memento's current location.";
       }
       if (values.currentTextMemory === "" && values.audioBlobs.length === 0) {
-        return "Please add either a text or audio memory with the memento.";
+        return "Please add either a text or audio memory for the memento.";
       }
     }
   };

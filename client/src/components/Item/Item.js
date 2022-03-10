@@ -8,7 +8,7 @@ import CardActions from "@mui/material/CardActions";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIosRounded";
 
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem from "@mui/lab/TimelineItem";
@@ -19,7 +19,7 @@ import TimelineOppositeContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
 import TextsmsIcon from "@mui/icons-material/Textsms";
 import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
-import ShortcutIcon from "@mui/icons-material/Shortcut";
+import ShortcutIcon from "@mui/icons-material/ShortcutRounded";
 import CustomButton from "../shared/Button";
 
 import NavigationBar from "../shared/NavigationBar";
