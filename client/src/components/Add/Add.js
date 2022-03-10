@@ -338,12 +338,12 @@ const Add = () => {
             mt: "20px",
           }}
         >
-          <Typography>Item successfully added to your capsule.</Typography>
-          <CustomButton
+          <Typography sx={{mt: "100px", mb: "100px", fontSize: 30}}>Item successfully added to your capsule!</Typography>
+          <CustomButton sx={{padding: "15px"}}
             onClick={() => {
               navigate("/home");
             }}
-            text="Return to the home screen"
+            text="Return Home"
             isLoggedIn
           />
         </Box>
