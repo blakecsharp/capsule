@@ -159,7 +159,8 @@ const Capsule = () => {
                     position="below"
                     title={item.title}
                     actionIcon={
-                      <ArrowForwardIosIcon sx={{ pt: "4px", color: "#9567E0" }} />
+                      <img src="https://i.imgur.com/6jtTC7P.png" alt="" style={{ width: "25px", paddingTop: "4px"}}></img>
+                      // <ArrowForwardIosIcon sx={{ pt: "4px", color: "#9567E0" }} />
                     }
                     sx={{
                       mt: "5px",

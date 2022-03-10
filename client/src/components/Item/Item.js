@@ -215,6 +215,7 @@ const Item = () => {
               <CardMedia
                 component="img"
                 height="300"
+                style = {{borderRadius: "15px"}}
                 image={
                   data.response.photos[imageIndex]
                     ? data.response.photos[imageIndex]
