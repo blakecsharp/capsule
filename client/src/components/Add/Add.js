@@ -229,7 +229,6 @@ const Add = () => {
       disableGutters
       sx={{
         backgroundColor: "#ffffff",
-        width: "100vw",
         ml: "20px",
         mr: "20px",
       }}

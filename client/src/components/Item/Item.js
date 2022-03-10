@@ -236,8 +236,6 @@ const Item = () => {
       disableGutters
       sx={{
         backgroundColor: "#ffffff",
-        height: "100vh",
-        width: "100vw",
         display: "flex",
         flexDirection: "column",
       }}

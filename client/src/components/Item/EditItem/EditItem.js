@@ -67,7 +67,7 @@ const EditItem = ({
       {!inType && !inRecord && (
         <Box
           sx={{
-            mt: "30px",
+            mt: "20px",
           }}
         >
           <Typography variant="h3">Add a memory</Typography>
@@ -77,55 +77,72 @@ const EditItem = ({
               display: "flex",
               flexDirection: "row",
               width: "80vw",
-              justifyContent: "center",
+              justifyContent: "left",
               alignItems: "center",
               mt: "20px",
               mb: "20px",
             }}
           >
-            <Box
-              sx={{
+            <Button sx={{
                 border: 1,
                 borderColor: "#9567E0",
                 borderRadius: "10px",
                 justifyContent: "center",
                 alignItems: "center",
-                width: "40%",
-                height: "10vh",
+                width: "20%",
+                height: "15vh",
                 display: "flex",
                 flexDirection: "column",
                 mr: "20px",
+              }}>
+            <Box
+              style = {{cursor: "pointer"}}
+              sx={{
+                borderRadius: "10px",
+                width: "110%",
+                height: "120%",
               }}
               onClick={() => {
                 setInType(true);
               }}
             >
               <TextsmsIcon
-                sx={{ color: "#9567E0", height: "50px", width: "50px" }}
+                sx={{ color: "#9567E0", height: "50px", width: "50px", marginTop: "7px" }}
               />
-              <Typography variant="subtitle2">Type</Typography>
+              <Typography variant="subtitle2" style={{fontSize: "20px"}}>Type</Typography>
             </Box>
-            <Box
-              sx={{
+            </Button>
+
+
+            <Button sx={{
                 border: 1,
                 borderColor: "#9567E0",
                 borderRadius: "10px",
                 justifyContent: "center",
                 alignItems: "center",
-                width: "40%",
-                height: "10vh",
+                width: "20%",
+                height: "15vh",
                 display: "flex",
                 flexDirection: "column",
+                mr: "20px",
+              }}>
+            <Box
+              style = {{cursor: "pointer"}}
+              sx={{
+                borderRadius: "10px",
+                width: "110%",
+                height: "120%",
               }}
               onClick={() => {
                 setInRecord(true);
               }}
             >
               <KeyboardVoiceIcon
-                sx={{ color: "#9567E0", height: "50px", width: "50px" }}
+                sx={{ color: "#9567E0", height: "50px", width: "50px", marginTop: "7px" }}
               />
-              <Typography variant="subtitle2">Record</Typography>
+              <Typography variant="subtitle2" style={{fontSize: "20px"}}>Record</Typography>
             </Box>
+            </Button>
           </Box>
         </Box>
       )}
