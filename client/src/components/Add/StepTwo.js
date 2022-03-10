@@ -224,8 +224,7 @@ const StepTwo = ({
               mb: "20px",
             }}
           >
-            <input
-              type="file"
+            <input type="file"
               multiple
               onChange={(e) => {
                 if (imageFiles) {
@@ -240,8 +239,19 @@ const StepTwo = ({
               onClick={updateImages}
             >
               {" "}
-              Add Image{" "}
+              Confirm Image{" "}
             </Button>
+            <Typography sx={{ml: "10px", mr: "10px", fontWeight: 'bold'}}> or </Typography>
+            
+            <Button
+          sx={{border: 1, borderColor: "#9567E0" }}
+            onClick={() => {
+              setInUpload(false);
+              setInCapture(false);
+            }}
+          >
+            Reselect image
+          </Button>
           </Box>
           <Box
             sx={{
@@ -254,6 +264,7 @@ const StepTwo = ({
                 <Box
                   key={index}
                   component="img"
+                  style = {{borderRadius: "15px"}}
                   sx={{
                     maxWidth: "300px",
                     maxHeight: "500px",
@@ -263,14 +274,7 @@ const StepTwo = ({
                 />
               ))}
           </Box>
-          <Button
-            onClick={() => {
-              setInUpload(false);
-              setInCapture(false);
-            }}
-          >
-            Back to media selection
-          </Button>
+         
         </Box>
       )}
 
