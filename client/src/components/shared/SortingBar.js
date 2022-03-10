@@ -15,18 +15,10 @@ const SortingBar = ({ sort, setSort, capsuleId }) => {
   });
   return (
 
-    <div style={{display: "flex"}}>
+    <div style={{display: "flex", flexDirection: "row", alignItems: "center", alignSelf: "center", marginTop: "20px", marginBottom: "10px"}}>
     
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "row",
-        width: "100%",
-        alignItems: "flex-end",
-        maxWidth: "100vw",
-      }}
-    >
-      <div style={{alignItems: "left"}}>
+  
+      <div style={{alignSelf: "left", marginRight: "auto", justifyContent: "flex-start"}}>
       <ToggleButtonGroup
         value={sort}
         exclusive
@@ -35,7 +27,8 @@ const SortingBar = ({ sort, setSort, capsuleId }) => {
         }}
         aria-label="sorting"
         sx={{
-          mt: "20px",
+
+          height: "38px",
           display: "flex",
           flexDirection: "row",
         }}
@@ -52,10 +45,16 @@ const SortingBar = ({ sort, setSort, capsuleId }) => {
       </ToggleButtonGroup>
       </div>
       
-      <div style={{alignSelf: "right", marginLeft: "auto", marginRight: parseInt(dimensions.width/5)}}>
+      <div style={{alignSelf: "right", marginLeft: "auto", justifyContent: "flex-end"}}>
       <Button
+        style={{
+          justifySelf: "flex-end",
+          alignSelf: "flex-end",
+          marginLeft: "auto", 
+          marginRight: "0px"
+        }}
         sx={{
-          height: "48px",
+          width: "300px",
           border: 1,
           borderColor: "#9567E0",
           borderRadius: 2,
@@ -72,7 +71,6 @@ const SortingBar = ({ sort, setSort, capsuleId }) => {
       </Button>
     </div>
     
-    </Box>
     
     </div>
   );

@@ -63,15 +63,37 @@ const Capsule = () => {
       <Box
         sx={{
           pl: "100px",
-          pr: "30px",
+          pr: "100px",
         }}
       >
+
         <SortingBar
           sort={sort}
           setSort={setSort}
           capsuleId={location.state.capsuleId}
         />
-        <Box sx={{ display: "flex", flexDirection: "row", width: "80%", paddingTop: 3}}>
+
+        <div style={{ display: "flex", flexDirection: "row", paddingTop: 3}}>
+         
+        <div style={{ flex: 1}}>
+          <Button
+            disableElevation
+            onClick={() => {
+              navigate("/home");
+            }}
+            sx={{
+              border: 1,
+              borderRadius: "10px",
+              justifySelf: "flex-start",
+              mb: "20px",
+            }}
+            isLoggedIn
+          >
+            Back
+          </Button>
+          </div>
+
+          <div style={{}}>
           <CustomButton
             disableElevation
             onClick={() => {
@@ -82,39 +104,25 @@ const Capsule = () => {
               });
             }}
             style={{
-              justifySelf: "flex-start",
+              justifySelf: "flex-end",
               border: 1,
               borderColor: "#9567E0",
               borderRadius: "10px",
+              marginLeft: "auto",
+              marginRight: 0,
               mb: "20px",
               
             }}
             text="Add item to capsule"
             isLoggedIn
           />
-          <Button
-            disableElevation
-            onClick={() => {
-              navigate("/home");
-            }}
-            sx={{
-              border: 1,
-              borderRadius: "10px",
-              marginLeft: "auto",
-              marginRight: 0,
-              justifySelf: "flex-end",
-              mb: "20px",
-            }}
-            isLoggedIn
-          >
-            Back
-          </Button>
-        </Box>
+           </div>
+
+        </div>
 
         {sort === "all" && (
           <ImageList
-            sx={{ width: "80vw" }}
-            cols={parseInt((dimensions.width * 0.75) / 300)}
+            cols={4}
             rowHeight={350}
           >
             {data &&
@@ -131,7 +139,7 @@ const Capsule = () => {
                     ml: "10px",
                     mr: "10px",
                     mb: "10px",
-                    width: "300px",
+                    width: "253px",
                   }}
                   style={{cursor:'pointer'}}
                   onClick={() => {
@@ -149,9 +157,8 @@ const Capsule = () => {
                     loading="lazy" 
                     style={{
                       borderRadius: 12, 
-                       
-                      width: 300,
-                      height: 3, 
+                      width: "253px",
+                      height: "253px", 
                       resizeMode: "stretch"}}/>
 
                   <ImageListItemBar
