@@ -83,7 +83,7 @@ const StepFour = ({
   }
 
   memories.push(
-    <TimelineItem style={{position: 'absolute', right: '66px', top: '221px'}}>
+    <TimelineItem style={{position: 'absolute', right: '66px', top: '150px'}}>
       <TimelineOppositeContent
         sx={{
           flex: 0.5,
@@ -165,7 +165,7 @@ const StepFour = ({
           <Typography variant="h4">Location: </Typography>
           <Typography variant="subtitle1">{values.location}</Typography>
         </Box>
-        <Box style={{position: 'absolute', top: '120px', right: '150px'}}>
+        <Box style={{position: 'absolute', top: '100px', right: '150px'}}>
         <Typography variant="subtitle2" sx={{ mb: "30px" }}>
           MEMORY LANE
         </Typography>
