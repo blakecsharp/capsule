@@ -56,7 +56,7 @@ const Home = () => {
             alignItems: "center",
           }}
         >
-          <Typography variant="h2" sx={{ mb: "20px", mt: "20px" }}>
+          <Typography variant="h2" sx={{ mb: "15px", mt: "5px" }}>
             Hi {data.response.firstName}!
           </Typography>
 
@@ -115,8 +115,8 @@ const Home = () => {
                       width: "1230px",
                       pt: "5px",
                       pb: "5px",
-                      mb: "20px",
-                      border: 1.5,
+                      mb: "17px",
+                      border: 1.2,
                       borderColor: purple,
                       borderRadius: 3,
                       alignItems: "center",
@@ -197,6 +197,7 @@ const Home = () => {
                         <CustomButton
                           isLoggedIn
                           disableElevation
+                          style={{marginBottom: "5px"}}
                           onClick={() => {
                             navigate("/add", {
                               state: {

@@ -61,7 +61,7 @@ const CreateCapsule = () => {
         <TextInput
           value={values.title}
           handleChange={handleChange("title")}
-          placeholder="Name of your new Capsule"
+          placeholder="Name of your new capsule"
           id="title-input"
           type="string"
           adornment={<EditIcon sx={{ color: "black", pr: 3 }} />}

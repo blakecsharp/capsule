@@ -36,10 +36,10 @@ const StepFour = ({
             flex: 0.5,
           }}
         />
-        <TimelineSeparator>
-          {i == 0 ? <TimelineConnector /> : null}
-          <TimelineDot />
-          <TimelineConnector />
+        <TimelineSeparator >
+          {i == 0 ? <TimelineConnector sx={{  backgroundColor: "#9567E0" }}/> : null}
+          <TimelineDot sx={{  backgroundColor: "#9567E0" }}/>
+          <TimelineConnector sx={{  backgroundColor: "#9567E0" }}/>
         </TimelineSeparator>
         <TimelineContent
           sx={{
@@ -62,11 +62,11 @@ const StepFour = ({
             flex: 0.5,
           }}
         />
-        <TimelineSeparator>
+        <TimelineSeparator >
           {i == 0 && values.textMemories.length == 0 ? (
-            <TimelineConnector />
+            <TimelineConnector sx={{  backgroundColor: "#9567E0" }}/>
           ) : null}
-          <TimelineDot />
+          <TimelineDot sx={{  backgroundColor: "#9567E0" }}/>
           <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent
@@ -87,13 +87,15 @@ const StepFour = ({
       <TimelineOppositeContent
         sx={{
           flex: 0.5,
+          
         }}
       />
       
       <TimelineContent sx={{ml: '15px', fontWeight: 'bold'}}>
         <Typography sx={{mt: '10px', fontWeight: 'bold'}}>Add another memory</Typography>
-        <Box  sx={{ display: "flex", flexDirection: "row" }}>
+        <Box  sx={{ display: "flex", flexDirection: "row", mt: 1}}>
           <Box
+            style={{cursor:"pointer"}}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -102,6 +104,7 @@ const StepFour = ({
               alignItems: "center",
               border: 1,
               borderRadius: "10px",
+              borderColor: "#9567E0",
               p: "10px",
               width: "100px",
             }}
@@ -110,10 +113,12 @@ const StepFour = ({
               clearCurrentTextMemory();
             }}
           >
+            <TextsmsIcon sx={{color: "#9567E0"}}/>
             Type
-            <TextsmsIcon />
+            
           </Box>
           <Box
+            style={{cursor:"pointer"}}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -121,6 +126,7 @@ const StepFour = ({
               justifyContent: "center",
               alignItems: "center",
               border: 1,
+              borderColor: "#9567E0",
               borderRadius: "10px",
               p: "10px",
               width: "100px",
@@ -129,8 +135,9 @@ const StepFour = ({
               setCurrentStep(2);
             }}
           >
+            <KeyboardVoiceIcon sx={{color: "#9567E0"}}/>
             Record
-            <KeyboardVoiceIcon />
+            
           </Box>
         </Box>
       </TimelineContent>
@@ -164,10 +171,10 @@ const StepFour = ({
           <Typography variant="subtitle1">{values.location}</Typography>
         </Box>
       <Box style={{position: 'absolute', top: '85px', right: '150px'}}>
-        <Typography variant="subtitle2" sx={{ mb: "30px" }}>
+        <Typography variant="h3" sx={{ ml: "100px", mb: "30px" }}>
           MEMORY LANE
         </Typography>
-        <Timeline style={{justifyContent: "flex-start"}}>{memories}</Timeline>
+      <Timeline style={{justifyContent: "flex-start", marginTop: "-20px"}}>{memories}</Timeline>
       </Box>
       </Box>
       

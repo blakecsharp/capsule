@@ -303,7 +303,7 @@ const Item = () => {
             >
               <Typography variant="h4">Date </Typography>{" "}
               <Typography style={{fontSize:"20px"}}  variant="subtitle1">{data.response.date}</Typography>
-              <Typography style={{marginTop:"20px"}} variant="h4">
+              <Typography style={{marginTop:"10px"}} variant="h4">
                 Current location of the memento:{" "}
               </Typography>
               <Typography style={{fontSize:"20px"}} variant="subtitle1">
@@ -311,7 +311,7 @@ const Item = () => {
               </Typography>
               {data.response.uploadedBy === user.uid && (
                 <CustomButton
-                  style={{marginTop: "105px"}}
+                  style={{marginTop: "40px"}}
                   onClick={() => {
                     navigate("/recycle", {
                       state: {
@@ -330,7 +330,7 @@ const Item = () => {
               <Typography variant="subtitle2" sx={{ mb: "30px" }}>
                 MEMORY LANE
               </Typography>
-              <Timeline align="left">{memories}</Timeline>
+              <Timeline style={{marginLeft: "-19vh", marginTop: "-4vh"}} align="left">{memories}</Timeline>
             </Box>
           )}
           {showAddTextOrAudio && (

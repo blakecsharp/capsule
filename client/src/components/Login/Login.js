@@ -83,8 +83,12 @@ const Login = () => {
     <Container
       maxWidth={false}
       disableGutters
+      style={{
+        backgroundImage: "url(" + "https://i.imgur.com/tb0m2H2.jpg",
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',}}
       sx={{
-        backgroundColor: "#9567e0",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -137,8 +141,9 @@ const Login = () => {
                 variant="contained"
                 disableElevation
                 sx={{
+                  backgroundColor:"transparent",
                   width: "30%",
-                  border: 1,
+                  border: 1.5,
                   borderColor: "white",
                   borderRadius: "10px",
                 }}
@@ -154,8 +159,9 @@ const Login = () => {
                   disableElevation
                   onClick={handleLogin()}
                   sx={{
+                    backgroundColor: "transparent",
                     width: "100%",
-                    border: 1,
+                    border: 1.5,
                     borderColor: "white",
                     borderRadius: "10px",
                     mb: "10px",
@@ -192,7 +198,7 @@ const Login = () => {
                 mb: "10px",
               }}
             >
-              <Box sx={{ width: "100%" }}>
+              <Box style={{borderRadius: "10px"}} sx={{ width: "100%" }}>
                 <TextInput
                   value={values.addFirstName}
                   handleChange={handleChange("addFirstName")}
@@ -258,7 +264,8 @@ const Login = () => {
                 disableElevation
                 sx={{
                   width: "30%",
-                  border: 1,
+                  border: 1.5,
+                  backgroundColor: "transparent",
                   borderColor: "white",
                   borderRadius: "10px",
                 }}
@@ -273,8 +280,9 @@ const Login = () => {
                 disableElevation
                 sx={{
                   width: "30%",
-                  border: 1,
+                  border: 1.5,
                   borderColor: "white",
+                  backgroundColor: "transparent",
                   borderRadius: "10px",
                 }}
                 onClick={handleAddUser}

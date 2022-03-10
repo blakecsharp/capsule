@@ -113,7 +113,7 @@ const Capsule = () => {
               mb: "20px",
               
             }}
-            text="Add item to capsule"
+            text="Add memento"
             isLoggedIn
           />
            </div>
@@ -204,10 +204,11 @@ const Capsule = () => {
                               style={{cursor:'pointer'}}
                               key={key}
                               sx={{
-                                pt: "10px",
-                                pl: "10px",
-                                pr: "10px",
+                                pt: "15px",
+                                pl: "15px",
+                                pr: "15px",
                                 mr: "10px",
+                                width: "253px",
                                 border: 1,
                                 borderRadius: "15px",
                                 borderColor: "#9567E0",
@@ -224,7 +225,7 @@ const Capsule = () => {
                               <img
                                 src={item.photos[0]}
                                 alt={item.title}
-                                style={{ borderRadius:"12px"}}
+                                style={{ width: "253px", height: "253px", borderRadius:"12px",  resizeMode: "stretch"}}
                                 loading="lazy"
                               />
                               <ImageListItemBar

@@ -36,9 +36,6 @@ const SortingBar = ({ sort, setSort, capsuleId }) => {
         <ToggleButton value="all" aria-label="all">
           All mementos
         </ToggleButton>
-        <ToggleButton value="familyMmeber" aria-label="family">
-          By family member
-        </ToggleButton>
         <ToggleButton value="mementoType" aria-label="mementoType">
           By memento type
         </ToggleButton>

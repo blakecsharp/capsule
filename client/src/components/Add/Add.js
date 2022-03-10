@@ -305,8 +305,8 @@ const Add = () => {
                   width: "100%",
                   maxWidth: "400px",
                   position: 'absolute',
-                  bottom: '10px',
-                  left: '10px',
+                  bottom: '50px',
+                  left: '125px',
                 }}
                 text="Back"
                 isLoggedIn
@@ -317,8 +317,8 @@ const Add = () => {
                 onClick={handleNext}
                 style={{
                   position: 'absolute',
-                  bottom: '10px',
-                  right: '10px',
+                  bottom: '50px',
+                  right: '125px',
                   width: "100%",
                   maxWidth: "400px",
                 }}
@@ -326,7 +326,7 @@ const Add = () => {
                 isLoggedIn
               />
             </Box>
-            <Box style={{position: 'absolute', bottom: '20px', left: parseInt(dimensions.width/2 - 35) }}>
+            <Box style={{position: 'absolute', bottom: '60px', left: parseInt(dimensions.width/2 - 35) }}>
             <Breadcrumb 
               currentStep={currentStep} />
             </Box>
