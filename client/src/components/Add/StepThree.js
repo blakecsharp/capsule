@@ -76,6 +76,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
       <Box sx={{ display: "flex", flexDirection: "row" }}>
         <Box
           component="img"
+          style = {{borderRadius: "15px"}}
           sx={{
             width: "13%",
             height: "13%",
@@ -95,7 +96,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
           <TextInput
             value={values.date}
             handleChange={handleChange("date")}
-            placeholder="Date"
+            placeholder="Date memento was acquired"
             id="date-input"
             type="string"
             border="#9567E0"
