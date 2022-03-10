@@ -303,10 +303,8 @@ const Add = () => {
                 disabled={currentStep == 0 ? true : false}
                 style={{
                   width: "100%",
-                  maxWidth: "400px",
-                  position: 'absolute',
-                  bottom: '10px',
-                  left: '10px',
+                  maxWidth: "250px",
+              
                 }}
                 text="Back"
                 isLoggedIn
@@ -316,24 +314,19 @@ const Add = () => {
                 variant="contained"
                 onClick={handleNext}
                 style={{
-                  position: 'absolute',
-                  bottom: '10px',
-                  right: '10px',
+                 
                   width: "100%",
-                  maxWidth: "400px",
+                  maxWidth: "250px",
                 }}
                 text={currentStep != 3 ? "Next" : "Done"}
                 isLoggedIn
               />
             </Box>
-            <Box style={{position: 'absolute', bottom: '20px', left: parseInt(dimensions.width/2 - 35) }}>
+  
             <Breadcrumb 
               currentStep={currentStep} />
-            </Box>
-            <Button style={{
-              position: 'absolute',
-              bottom: '-50px',    
-              }}
+           
+            <Button 
               disableElevation
               onClick={() => {
                 navigate("/home");

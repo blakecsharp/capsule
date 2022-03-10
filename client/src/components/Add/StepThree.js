@@ -128,8 +128,8 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
               display: "flex",
               flexDirection: "row",
               width: "80vw",
-              justifyContent: "center",
-              alignItems: "center",
+              justifyContent: "left",
+              alignItems: "left",
               mt: "20px",
               mb: "10px",
             }}

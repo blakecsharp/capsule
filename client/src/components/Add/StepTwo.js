@@ -36,6 +36,7 @@ const StepTwo = ({
   const mediaRecorderRef = React.useRef(null);
 
   const [capturing, setCapturing] = React.useState(false);
+  const [firstPhoto, setFirstPhoto] = React.useState(true);
   const [recordedChunks, setRecordedChunks] = React.useState([]);
   const [mode, setMode] = React.useState("photo");
 
@@ -122,6 +123,7 @@ const StepTwo = ({
   }, [mediaRecorderRef, webcamRef, setCapturing]);
 
   const capture = React.useCallback(() => {
+    setFirstPhoto(false);
     const imageSrc = webcamRef.current.getScreenshot();
     handledCapturedMedia(imageSrc);
   }, [webcamRef]);
@@ -217,7 +219,6 @@ const StepTwo = ({
           <Box
             sx={{
             
-              mt: "10px",
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
@@ -299,23 +300,35 @@ const StepTwo = ({
             }}
           >
             <ToggleButton value="photo" aria-label="photo">
-              Photo
+            <Typography sx={{ml: "10px", mr: "10px", fontWeight: 'bold'}}> Photo </Typography>
             </ToggleButton>
             <ToggleButton value="video" aria-label="photo">
-              Video
+            <Typography sx={{ml: "10px", mr: "10px", fontWeight: 'bold'}}> Video </Typography>
             </ToggleButton>
           </ToggleButtonGroup>
           <Webcam audio={false} ref={webcamRef} />
-          {mode === "photo" && <Button onClick={capture}>Capture photo</Button>}
+          {mode === "photo" && firstPhoto &&
+           (<Button sx={{mt: "5px", mb: "5px", border: 1, borderColor: "#9567E0" }} onClick={capture}>Take photo</Button>)}
+          {mode === "photo" && !firstPhoto &&
+           (<Button sx={{mt: "5px", mb: "5px", border: 1, borderColor: "#9567E0" }} onClick={capture}>Retake photo</Button>)}
           {mode === "video" && capturing && (
-            <Button onClick={handleStopCaptureClick}>Stop Capture</Button>
+            <Button sx={{border: 1, mt: "5px", borderColor: "#9567E0" }} onClick={handleStopCaptureClick}>Stop Video Recording</Button>
           )}
           {mode === "video" && !capturing && (
-            <Button onClick={handleStartCaptureClick}>Start Capture</Button>
+            <Button sx={{border: 1, mb: "5px", mt: "5px", borderColor: "#9567E0" }} onClick={handleStartCaptureClick}>Start Video Recording</Button>
           )}
           {recordedChunks.length > 0 && (
-            <Button onClick={handleDownload}>See Video</Button>
+            <Button sx={{border: 1, mt: "5px", borderColor: "#9567E0" }} onClick={handleDownload}>See Video</Button>
           )}
+          <Typography sx={{ml: "10px", mr: "10px", fontWeight: 'bold'}}> or </Typography>
+          <Button sx={{border: 1, mt: "5px", borderColor: "#9567E0" }}
+            onClick={() => {
+              setInUpload(false);
+              setInCapture(false);
+            }}
+          >
+            Back to media selection
+          </Button>
 
           {values.capturedMedia && (
             <Box
@@ -330,15 +343,7 @@ const StepTwo = ({
               src={values.capturedMedia}
             />
           )}
-
-          <Button
-            onClick={() => {
-              setInUpload(false);
-              setInCapture(false);
-            }}
-          >
-            Back to media selection
-          </Button>
+           
         </Box>
       )}
     </Container>
