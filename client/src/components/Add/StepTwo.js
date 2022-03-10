@@ -217,11 +217,11 @@ const StepTwo = ({
           <Box
             sx={{
             
-              mt: "30px",
+              mt: "10px",
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              mb: "20px",
+              mb: "40px",
             }}
           >
             <input type="file"
