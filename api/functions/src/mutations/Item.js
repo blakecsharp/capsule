@@ -68,5 +68,39 @@ const DeleteItem = async (_, data) => {
   }
 };
 
+const EditItem = async (_, data) => {
+  let memory;
+
+  if (data.textMemory) {
+    memory = {
+      addedBy: data.addedBy,
+      text: data.textMemory,
+      typeOfMemory: "TEXT",
+    };
+  } else if (data.audio) {
+    memory = {
+      addedBy: data.addedBy,
+      audio: data.audio,
+      typeOfMemory: "AUDIO",
+    };
+  }
+
+  console.log(memory);
+
+  await admin
+    .firestore()
+    .collection("items")
+    .doc(data.itemId)
+    .update({
+      memories: admin.firestore.FieldValue.arrayUnion(memory),
+    });
+
+  return {
+    success: "Success",
+    error: "",
+  };
+};
+
 exports.AddItem = AddItem;
 exports.DeleteItem = DeleteItem;
+exports.EditItem = EditItem;

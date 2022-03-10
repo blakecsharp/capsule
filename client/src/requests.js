@@ -103,6 +103,25 @@ export const ADD_ITEM = gql`
   }
 `;
 
+export const EDIT_ITEM = gql`
+  mutation EditItem(
+    $itemId: String
+    $addedBy: String
+    $textMemory: String
+    $audio: String
+  ) {
+    EditItem(
+      itemId: $itemId
+      addedBy: $addedBy
+      textMemory: $textMemory
+      audio: $audio
+    ) {
+      success
+      error
+    }
+  }
+`;
+
 export const DELETE_ITEM = gql`
   mutation DeleteItem($itemId: String) {
     DeleteItem(itemId: $itemId) {

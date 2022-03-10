@@ -62,7 +62,6 @@ const Capsule = () => {
       <NavigationBar isLoggedIn />
       <Box
         sx={{
-          width: "100vw",
           pl: "100px",
           pr: "30px",
         }}

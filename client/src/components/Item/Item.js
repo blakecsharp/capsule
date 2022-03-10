@@ -23,10 +23,12 @@ import ShortcutIcon from "@mui/icons-material/ShortcutRounded";
 import CustomButton from "../shared/Button";
 
 import NavigationBar from "../shared/NavigationBar";
+import EditItem from "./EditItem/EditItem";
 import Loading from "../shared/Loading";
 import { GET_ITEM, DELETE_ITEM } from "../../requests";
 import { auth } from "../../AuthContext";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { ValuesOfCorrectTypeRule } from "graphql";
 
 const Item = () => {
   const navigate = useNavigate();
@@ -34,11 +36,50 @@ const Item = () => {
   const [user, loading, error] = useAuthState(auth);
   const [imageIndex, setImageIndex] = React.useState(0);
   const [showConfirmDelete, setShowConfirmDelete] = React.useState(false);
+  const [showAddTextOrAudio, setShowAddTextOrAudio] = React.useState(false);
+  const [isRecording, setIsRecording] = React.useState(false);
+  const [recorder, setRecorder] = React.useState(null);
+  const [audio, setAudio] = React.useState({});
 
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate("/");
   }, [user, loading]);
+
+  async function requestRecorder() {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    return new MediaRecorder(stream);
+  }
+
+  React.useEffect(() => {
+    // Lazily obtain recorder first time we're recording.
+    if (recorder === null) {
+      if (isRecording) {
+        requestRecorder().then((recorder) => {
+          console.log("request!");
+          setRecorder(recorder);
+        }, console.error);
+      }
+      return;
+    }
+
+    // Manage recorder state.
+    if (isRecording) {
+      recorder.start();
+    } else {
+      recorder.stop();
+      // recorder.getTracks().forEach((track) => track.stop());
+    }
+
+    // Obtain the audio when ready.
+    const handleData = (e) => {
+      let audioURL = URL.createObjectURL(e.data);
+      setAudio({ blob: e.data, url: audioURL });
+    };
+
+    recorder.addEventListener("dataavailable", handleData);
+    return () => recorder.removeEventListener("dataavailable", handleData);
+  }, [recorder, isRecording]);
 
   const {
     loading: dataLoading,
@@ -68,11 +109,11 @@ const Item = () => {
             }}
           />
           <TimelineSeparator>
-            {i == 0 ? (
+            {i == 0 && (
               <TimelineConnector
                 sx={{ width: "1px", backgroundColor: "#9567E0" }}
               />
-            ) : null}
+            )}
             <TimelineDot sx={{ width: "1px", backgroundColor: "#9567E0" }} />
             <TimelineConnector
               sx={{ width: "1px", backgroundColor: "#9567E0" }}
@@ -127,7 +168,9 @@ const Item = () => {
               p: "10px",
               width: "200px",
             }}
-            onClick={() => {}}
+            onClick={() => {
+              setShowAddTextOrAudio(true);
+            }}
           >
             <Typography variant="subtitle1" color="black">
               Type or Record
@@ -193,8 +236,6 @@ const Item = () => {
       disableGutters
       sx={{
         backgroundColor: "#ffffff",
-        height: "100vh",
-        width: "100vw",
         display: "flex",
         flexDirection: "column",
       }}
@@ -278,12 +319,27 @@ const Item = () => {
               )}
             </Box>
           </Box>
-          <Box>
-            <Typography variant="subtitle2" sx={{ mb: "30px" }}>
-              MEMORY LANE
-            </Typography>
-            <Timeline align="left">{memories}</Timeline>
-          </Box>
+          {!showAddTextOrAudio && (
+            <Box>
+              <Typography variant="subtitle2" sx={{ mb: "30px" }}>
+                MEMORY LANE
+              </Typography>
+              <Timeline align="left">{memories}</Timeline>
+            </Box>
+          )}
+          {showAddTextOrAudio && (
+            <Box>
+              <EditItem
+                audio={audio}
+                setShowAddTextOrAudio={setShowAddTextOrAudio}
+                isRecording={isRecording}
+                setIsRecording={setIsRecording}
+                title={data.response.title}
+                itemId={location.state.itemId}
+                uploadBy={user.uid}
+              />
+            </Box>
+          )}
           {showConfirmDelete && (
             <Typography
               sx={{
@@ -308,11 +364,15 @@ const Item = () => {
             <Button
               disableElevation
               onClick={() => {
-                navigate("/capsule", {
-                  state: {
-                    capsuleId: location.state.capsuleId,
-                  },
-                });
+                if (showAddTextOrAudio) {
+                  setShowAddTextOrAudio(false);
+                } else {
+                  navigate("/capsule", {
+                    state: {
+                      capsuleId: location.state.capsuleId,
+                    },
+                  });
+                }
               }}
               sx={{
                 border: 1,
@@ -322,7 +382,7 @@ const Item = () => {
             >
               Back
             </Button>
-            {!showConfirmDelete && (
+            {!showConfirmDelete && !showAddTextOrAudio && (
               <CustomButton
                 onClick={() => {
                   setShowConfirmDelete(true);

@@ -45,7 +45,6 @@ const Home = () => {
       disableGutters
       sx={{
         backgroundColor: "#ffffff",
-        width: "100vw",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",

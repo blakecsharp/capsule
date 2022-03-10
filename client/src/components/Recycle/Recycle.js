@@ -56,7 +56,6 @@ const Recycle = () => {
       disableGutters
       sx={{
         backgroundColor: "#ffffff",
-        width: "100vw",
         display: "flex",
         flexDirection: "column",
       }}
@@ -75,6 +74,7 @@ const Recycle = () => {
           >
             <Card sx={{ maxWidth: 350 }}>
               <CardMedia
+                style={{borderRadius: "15px"}}
                 component="img"
                 height="300"
                 image={
@@ -143,8 +143,8 @@ const Recycle = () => {
             mb: "20px",
           }}
         >
-          <Typography variant="subtitle2" sx={{ mb: "20px" }}>
-            Donation centers near by
+          <Typography variant="subtitle2" sx={{ mb: "10px" }}>
+            Donation centers near you
           </Typography>
           <iframe
             src="https://www.google.com/maps/d/embed?mid=1X6w3csR3qYLRH6h622Su-Pi_dQuRrb9Z&ehbc=2E312F"
