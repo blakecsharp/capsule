@@ -51,8 +51,9 @@ const Home = () => {
         alignItems: "center",
       }}
     >
-      <NavigationBar isLoggedIn={true} />
-
+      <NavigationBar
+        isLoggedIn={true}
+       />
       {!loading && data && (
         <Container
           sx={{
@@ -61,7 +62,7 @@ const Home = () => {
             alignItems: "center",
           }}
         >
-          <Typography variant="h2" sx={{ mb: "20px" }}>
+          <Typography variant="h2" sx={{ mb: "20px", mt: "20px" }}>
             Hi {data.response.firstName}!
           </Typography>
 

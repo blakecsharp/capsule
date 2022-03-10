@@ -264,7 +264,9 @@ const Add = () => {
           ) : (
             <Typography> Oops! Something went wrong </Typography>
           )}
-          <Typography variant="h6">{errorMessage}</Typography>
+          <Typography variant="h6"  sx={{
+            fontWeight: 'bold',
+            }}>{errorMessage} </Typography>
           <Box
             sx={{
               width: "100%",

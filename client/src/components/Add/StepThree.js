@@ -69,7 +69,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
 
   return (
     <Container maxWidth={false} disableGutters sx={{ mb: "40px" }}>
-      <Typography variant="h2" sx={{ mb: "20px" }}>
+      <Typography variant="h2" sx={{ mt: "7px", mb: "30px", fontWeight: 'bold' }}>
         {values.title}
       </Typography>
 
@@ -77,8 +77,8 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
         <Box
           component="img"
           sx={{
-            width: "20%",
-            height: "20%",
+            width: "13%",
+            height: "13%",
           }}
           alt={`Image`}
           src={values.previewImages[0] ? values.previewImages[0] : null}
@@ -87,6 +87,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
           sx={{
             display: "flex",
             flexDirection: "column",
+            justifyContent: "center",
             width: "100%",
             ml: "20px",
           }}
@@ -99,7 +100,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
             type="string"
             border="#9567E0"
             adornment={<EditIcon sx={{ color: "#9567E0", mr: 3 }} />}
-            style={{ mb: "10px" }}
+            style={{ mb: "20px" }}
           />
           <TextInput
             value={values.location}
@@ -109,7 +110,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
             type="string"
             border="#9567E0"
             adornment={<EditIcon sx={{ color: "#9567E0", mr: 3 }} />}
-            style={{ mb: "10px" }}
+            style={{}}
           />
         </Box>
       </Box>
@@ -119,7 +120,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
             mt: "30px",
           }}
         >
-          <Typography variant="h3">Add a memory</Typography>
+          <Typography variant="h3" sx={{fontWeight: 'bold'}}>Add a memory about this memento</Typography>
 
           <Box
             sx={{
@@ -129,7 +130,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
               justifyContent: "center",
               alignItems: "center",
               mt: "20px",
-              mb: "20px",
+              mb: "10px",
             }}
           >
             <Box
@@ -140,7 +141,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
                 justifyContent: "center",
                 alignItems: "center",
                 width: "40%",
-                height: "10vh",
+                height: "100%",
                 display: "flex",
                 flexDirection: "column",
                 mr: "20px",
@@ -162,7 +163,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
                 justifyContent: "center",
                 alignItems: "center",
                 width: "40%",
-                height: "10vh",
+                height: "100%",
                 display: "flex",
                 flexDirection: "column",
               }}
