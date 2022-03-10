@@ -49,8 +49,6 @@ const Join = () => {
       disableGutters
       sx={{
         backgroundColor: "white",
-        height: "100vh",
-        width: "100vw",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -61,10 +59,7 @@ const Join = () => {
         sx={{
           width: "60%",
           maxWidth: "800px",
-          mt: "50px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          mt: "20px",
         }}
       >
         <TextInput
@@ -75,17 +70,20 @@ const Join = () => {
           placeholder="ID of capsule to join"
           id="title-input"
           type="string"
-          style={{ mb: "10px" }}
+          style={{ mb: "10px", width: "100%" }}
           border="#9567E0"
+
           adornment={<EditIcon sx={{ color: "black", pr: 3 }} />}
         />
       </Box>
+
       <Box
         sx={{
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
-          width: "40%",
+          width: "800px",
+          mt: "20px",
         }}
       >
         <Button

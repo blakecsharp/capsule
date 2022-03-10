@@ -140,7 +140,7 @@ const StepTwo = ({
 
   return (
     <Container maxWidth={false} disableGutters sx={{}}>
-      <Typography variant="h2" sx={{ mb: "20px" }}>
+      <Typography variant="h2"sx={{ fontWeight: 'bold', mb: "100px", mt: "7px" }}>
         Add a photo or video
       </Typography>
 
@@ -149,13 +149,13 @@ const StepTwo = ({
           sx={{
             display: "flex",
             flexDirection: "row",
-            width: "80vw",
             justifyContent: "center",
             alignItems: "center",
-            mb: "50px",
+            mb: "120px",
           }}
         >
           <Box
+            style={{cursor: "pointer"}}
             sx={{
               border: 1,
               borderColor: "#9567E0",
@@ -163,7 +163,7 @@ const StepTwo = ({
               justifyContent: "center",
               alignItems: "center",
               width: "40%",
-              height: "10vh",
+              height: "100%",
               display: "flex",
               flexDirection: "column",
               mr: "20px",
@@ -173,11 +173,14 @@ const StepTwo = ({
             }}
           >
             <UploadIcon
-              sx={{ color: "#9567E0", height: "50px", width: "50px" }}
+              sx={{ mt: "75px", mb: "10px", color: "#9567E0", height: "50px", width: "50px" }}
             />
-            <Typography variant="subtitle2">Upload</Typography>
+            <Typography variant="subtitle2"
+             sx={{color: "#000000", fontWeight: 'bold', mb: "75px"}}
+            >Upload</Typography>
           </Box>
           <Box
+            style={{cursor: "pointer"}}
             sx={{
               border: 1,
               borderColor: "#9567E0",
@@ -185,7 +188,7 @@ const StepTwo = ({
               justifyContent: "center",
               alignItems: "center",
               width: "40%",
-              height: "10vh",
+              height: "100%",
               display: "flex",
               flexDirection: "column",
             }}
@@ -194,9 +197,10 @@ const StepTwo = ({
             }}
           >
             <CameraAltIcon
-              sx={{ color: "#9567E0", height: "50px", width: "50px" }}
+              sx={{ mt: "75px", mb: "10px", color: "#9567E0", height: "50px", width: "50px" }}
             />
-            <Typography variant="subtitle2">Capture</Typography>
+            <Typography variant="subtitle2" 
+            sx={{color: "#000000", fontWeight: 'bold', mb: "75px"}}>Capture</Typography>
           </Box>
         </Box>
       )}
@@ -213,14 +217,15 @@ const StepTwo = ({
         >
           <Box
             sx={{
+            
+              mt: "10px",
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              mb: "20px",
+              mb: "40px",
             }}
           >
-            <input
-              type="file"
+            <input type="file"
               multiple
               onChange={(e) => {
                 if (imageFiles) {
@@ -231,12 +236,23 @@ const StepTwo = ({
               }}
             />
             <Button
-              sx={{ border: 1, borderColor: "#9567E0" }}
+              sx={{border: 1, borderColor: "#9567E0" }}
               onClick={updateImages}
             >
               {" "}
-              Add Image{" "}
+              Confirm Image{" "}
             </Button>
+            <Typography sx={{ml: "10px", mr: "10px", fontWeight: 'bold'}}> or </Typography>
+            
+            <Button
+          sx={{border: 1, borderColor: "#9567E0" }}
+            onClick={() => {
+              setInUpload(false);
+              setInCapture(false);
+            }}
+          >
+            Reselect image
+          </Button>
           </Box>
           <Box
             sx={{
@@ -249,6 +265,7 @@ const StepTwo = ({
                 <Box
                   key={index}
                   component="img"
+                  style = {{borderRadius: "15px"}}
                   sx={{
                     maxWidth: "300px",
                     maxHeight: "500px",
@@ -258,14 +275,7 @@ const StepTwo = ({
                 />
               ))}
           </Box>
-          <Button
-            onClick={() => {
-              setInUpload(false);
-              setInCapture(false);
-            }}
-          >
-            Back to media selection
-          </Button>
+         
         </Box>
       )}
 

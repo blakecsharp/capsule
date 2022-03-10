@@ -43,16 +43,11 @@ const Home = () => {
     <Container
       maxWidth={false}
       disableGutters
-      sx={{
-        backgroundColor: "#ffffff",
-        width: "100vw",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
+     
     >
-      <NavigationBar isLoggedIn={true} />
-
+      <NavigationBar
+        isLoggedIn={true}
+       />
       {!loading && data && (
         <Container
           sx={{
@@ -61,7 +56,7 @@ const Home = () => {
             alignItems: "center",
           }}
         >
-          <Typography variant="h2" sx={{ mb: "20px" }}>
+          <Typography variant="h2" sx={{ mb: "15px", mt: "5px" }}>
             Hi {data.response.firstName}!
           </Typography>
 
@@ -117,12 +112,11 @@ const Home = () => {
                     sx={{
                       display: "flex",
                       flexDirection: "row",
-                      width: "100%",
-                      maxWidth: "100%",
+                      width: "1230px",
                       pt: "5px",
                       pb: "5px",
-                      mb: "20px",
-                      border: 1,
+                      mb: "17px",
+                      border: 1.2,
                       borderColor: purple,
                       borderRadius: 3,
                       alignItems: "center",
@@ -203,6 +197,7 @@ const Home = () => {
                         <CustomButton
                           isLoggedIn
                           disableElevation
+                          style={{marginBottom: "5px"}}
                           onClick={() => {
                             navigate("/add", {
                               state: {
@@ -218,7 +213,7 @@ const Home = () => {
                 );
               })}
             
-              <div style={{width: "100% ", display: "flex", flexDirection: "row"}}>
+              <div style={{width: "1230px", display: "flex", flexDirection: "row"}}>
               <CustomButton
                 isLoggedIn
                 disableElevation

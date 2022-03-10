@@ -23,7 +23,26 @@ import StepTwo from "./StepTwo";
 import StepThree from "./StepThree";
 import StepFour from "./StepFour";
 
+
+
+
 const Add = () => {
+
+  const [dimensions, setDimensions] = React.useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
+  React.useEffect(() => {
+    function handleResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+  });
+
   const navigate = useNavigate();
   const location = useLocation();
   const [user, loading, error] = useAuthState(auth);
@@ -50,7 +69,6 @@ const Add = () => {
     audioURLs: [],
     audioMemoryIndex: -1,
   });
-
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
@@ -227,12 +245,6 @@ const Add = () => {
     <Container
       maxWidth={false}
       disableGutters
-      sx={{
-        backgroundColor: "#ffffff",
-        width: "100vw",
-        ml: "20px",
-        mr: "20px",
-      }}
     >
       <NavigationBar isLoggedIn={true} />
       {!showConfirmation && (
@@ -264,7 +276,9 @@ const Add = () => {
           ) : (
             <Typography> Oops! Something went wrong </Typography>
           )}
-          <Typography variant="h6">{errorMessage}</Typography>
+          <Typography variant="h6"  sx={{
+            fontWeight: 'bold',
+            }}>{errorMessage} </Typography>
           <Box
             sx={{
               width: "100%",
@@ -290,6 +304,9 @@ const Add = () => {
                 style={{
                   width: "100%",
                   maxWidth: "400px",
+                  position: 'absolute',
+                  bottom: '50px',
+                  left: '125px',
                 }}
                 text="Back"
                 isLoggedIn
@@ -299,6 +316,9 @@ const Add = () => {
                 variant="contained"
                 onClick={handleNext}
                 style={{
+                  position: 'absolute',
+                  bottom: '50px',
+                  right: '125px',
                   width: "100%",
                   maxWidth: "400px",
                 }}
@@ -306,9 +326,14 @@ const Add = () => {
                 isLoggedIn
               />
             </Box>
-            <Breadcrumb currentStep={currentStep} />
-
-            <Button
+            <Box style={{position: 'absolute', bottom: '60px', left: parseInt(dimensions.width/2 - 35) }}>
+            <Breadcrumb 
+              currentStep={currentStep} />
+            </Box>
+            <Button style={{
+              position: 'absolute',
+              bottom: '-50px',    
+              }}
               disableElevation
               onClick={() => {
                 navigate("/home");
@@ -320,6 +345,7 @@ const Add = () => {
               }}
               isLoggedIn
             >
+            
               Back to home
             </Button>
           </Box>
@@ -336,12 +362,12 @@ const Add = () => {
             mt: "20px",
           }}
         >
-          <Typography>Item successfully added to your capsule.</Typography>
-          <CustomButton
+          <Typography sx={{mt: "100px", mb: "100px", fontSize: 30}}>Item successfully added to your capsule!</Typography>
+          <CustomButton sx={{padding: "15px"}}
             onClick={() => {
               navigate("/home");
             }}
-            text="Return to the home screen"
+            text="Return Home"
             isLoggedIn
           />
         </Box>

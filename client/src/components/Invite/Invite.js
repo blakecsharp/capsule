@@ -27,8 +27,6 @@ const Invite = () => {
       disableGutters
       sx={{
         backgroundColor: "white",
-        height: "100vh",
-        width: "100vw",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -45,9 +43,8 @@ const Invite = () => {
           alignItems: "center",
         }}
       >
-        <Typography variant="h4">
-          Tell your friend or family member to join Capsule and use this ID to
-          join the capsule:
+        <Typography variant="h4" style={{marginTop: "40px", fontSize: "25px"}}>
+          Join this capsule with the following ID:
           <Typography variant="subtitle2">
             {location.state.capsuleId}
           </Typography>
@@ -63,6 +60,7 @@ const Invite = () => {
           });
         }}
         sx={{
+          marginTop: 10,
           border: 1,
           borderRadius: "10px",
         }}

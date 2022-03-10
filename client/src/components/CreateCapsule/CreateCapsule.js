@@ -45,8 +45,6 @@ const CreateCapsule = () => {
       disableGutters
       sx={{
         backgroundColor: "#ffffff",
-        height: "100vh",
-        width: "100vw",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -63,7 +61,7 @@ const CreateCapsule = () => {
         <TextInput
           value={values.title}
           handleChange={handleChange("title")}
-          placeholder="Name of your new Capsule"
+          placeholder="Name of your new capsule"
           id="title-input"
           type="string"
           adornment={<EditIcon sx={{ color: "black", pr: 3 }} />}
