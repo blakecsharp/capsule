@@ -140,7 +140,7 @@ const StepTwo = ({
 
   return (
     <Container maxWidth={false} disableGutters sx={{}}>
-      <Typography variant="h2" sx={{ mb: "20px" }}>
+      <Typography variant="h2"sx={{ fontWeight: 'bold', mb: "100px", mt: "7px" }}>
         Add a photo or video
       </Typography>
 
@@ -152,7 +152,7 @@ const StepTwo = ({
             width: "80vw",
             justifyContent: "center",
             alignItems: "center",
-            mb: "50px",
+            mb: "120px",
           }}
         >
           <Box
@@ -163,7 +163,7 @@ const StepTwo = ({
               justifyContent: "center",
               alignItems: "center",
               width: "40%",
-              height: "10vh",
+              height: "100%",
               display: "flex",
               flexDirection: "column",
               mr: "20px",
@@ -173,9 +173,11 @@ const StepTwo = ({
             }}
           >
             <UploadIcon
-              sx={{ color: "#9567E0", height: "50px", width: "50px" }}
+              sx={{ mt: "75px", mb: "10px", color: "#9567E0", height: "50px", width: "50px" }}
             />
-            <Typography variant="subtitle2">Upload</Typography>
+            <Typography variant="subtitle2"
+             sx={{color: "#000000", fontWeight: 'bold', mb: "75px"}}
+            >Upload</Typography>
           </Box>
           <Box
             sx={{
@@ -185,7 +187,7 @@ const StepTwo = ({
               justifyContent: "center",
               alignItems: "center",
               width: "40%",
-              height: "10vh",
+              height: "100%",
               display: "flex",
               flexDirection: "column",
             }}
@@ -194,9 +196,10 @@ const StepTwo = ({
             }}
           >
             <CameraAltIcon
-              sx={{ color: "#9567E0", height: "50px", width: "50px" }}
+              sx={{ mt: "75px", mb: "10px", color: "#9567E0", height: "50px", width: "50px" }}
             />
-            <Typography variant="subtitle2">Capture</Typography>
+            <Typography variant="subtitle2" 
+            sx={{color: "#000000", fontWeight: 'bold', mb: "75px"}}>Capture</Typography>
           </Box>
         </Box>
       )}
@@ -213,6 +216,8 @@ const StepTwo = ({
         >
           <Box
             sx={{
+            
+              mt: "30px",
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
@@ -231,7 +236,7 @@ const StepTwo = ({
               }}
             />
             <Button
-              sx={{ border: 1, borderColor: "#9567E0" }}
+              sx={{border: 1, borderColor: "#9567E0" }}
               onClick={updateImages}
             >
               {" "}

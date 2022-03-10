@@ -23,11 +23,12 @@ const StepOne = ({ values, handleChange }) => {
   }, [user, loading]);
   return (
     <Container maxWidth={false} disableGutters>
-      <Typography variant="h2" sx={{ mb: "20px" }}>
+      <Typography variant="h2"
+      sx={{ fontWeight: 'bold', mb: "15px", mt: "7px" }}>
         Add a memento
       </Typography>
-      <Box sx={{ width: "60%", maxWidth: "800px" }}>
-        <Typography>Give your memento a name:</Typography>
+      <Box sx={{width: "60%", maxWidth: "800px" }}>
+        <Typography sx={{ fontWeight: 'bold'}}>Give your memento a name:</Typography>
         <TextInput
           value={values.title}
           handleChange={handleChange("title")}
@@ -41,8 +42,9 @@ const StepOne = ({ values, handleChange }) => {
       </Box>
       <Box>
         <FormControl>
-          <FormLabel id="demo-controlled-radio-buttons-group">
-            Memento Type
+          <FormLabel id="demo-controlled-radio-buttons-group"
+           sx={{color: "#000000", mt: "10px", fontWeight: 'bold'}}>
+            Select memento type:
           </FormLabel>
           <RadioGroup
             aria-labelledby="demo-controlled-radio-buttons-group"
