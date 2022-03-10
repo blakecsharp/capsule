@@ -23,7 +23,26 @@ import StepTwo from "./StepTwo";
 import StepThree from "./StepThree";
 import StepFour from "./StepFour";
 
+
+
+
 const Add = () => {
+
+  const [dimensions, setDimensions] = React.useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
+  React.useEffect(() => {
+    function handleResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+  });
+
   const navigate = useNavigate();
   const location = useLocation();
   const [user, loading, error] = useAuthState(auth);
@@ -50,7 +69,6 @@ const Add = () => {
     audioURLs: [],
     audioMemoryIndex: -1,
   });
-
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
@@ -291,6 +309,9 @@ const Add = () => {
                 style={{
                   width: "100%",
                   maxWidth: "400px",
+                  position: 'absolute',
+                  bottom: '10px',
+                  left: '10px',
                 }}
                 text="Back"
                 isLoggedIn
@@ -300,6 +321,9 @@ const Add = () => {
                 variant="contained"
                 onClick={handleNext}
                 style={{
+                  position: 'absolute',
+                  bottom: '10px',
+                  right: '10px',
                   width: "100%",
                   maxWidth: "400px",
                 }}
@@ -307,9 +331,14 @@ const Add = () => {
                 isLoggedIn
               />
             </Box>
-            <Breadcrumb currentStep={currentStep} />
-
-            <Button
+            <Box style={{position: 'absolute', bottom: '20px', left: parseInt(dimensions.width/2 - 35) }}>
+            <Breadcrumb 
+              currentStep={currentStep} />
+            </Box>
+            <Button style={{
+              position: 'absolute',
+              bottom: '-50px',    
+              }}
               disableElevation
               onClick={() => {
                 navigate("/home");
@@ -321,6 +350,7 @@ const Add = () => {
               }}
               isLoggedIn
             >
+            
               Back to home
             </Button>
           </Box>

@@ -83,7 +83,7 @@ const StepFour = ({
   }
 
   memories.push(
-    <TimelineItem>
+    <TimelineItem style={{position: 'absolute', right: '66px', top: '221px'}}>
       <TimelineOppositeContent
         sx={{
           flex: 0.5,
@@ -93,13 +93,9 @@ const StepFour = ({
         <TimelineDot />
         <TimelineConnector />
       </TimelineSeparator>
-      <TimelineContent
-        sx={{
-          flex: 25,
-        }}
-      >
-        Add another memory
-        <Box sx={{ display: "flex", flexDirection: "row" }}>
+      <TimelineContent >
+        <Typography>Add another memory</Typography>
+        <Box  sx={{ display: "flex", flexDirection: "row" }}>
           <Box
             sx={{
               display: "flex",
@@ -164,19 +160,19 @@ const StepFour = ({
           src={values.previewImages[0]}
         />
         <Box sx={{ display: "flex", flexDirection: "column", ml: "30px" }}>
-          <Typography variant="h4">Date </Typography>{" "}
+          <Typography variant="h4">Date: </Typography>{" "}
           <Typography variant="subtitle1">{values.date}</Typography>
           <Typography variant="h4">Location: </Typography>
           <Typography variant="subtitle1">{values.location}</Typography>
         </Box>
-      </Box>
-      <Box sx={{ mt: "30px" }}>
+        <Box style={{position: 'absolute', top: '120px', right: '150px'}}>
         <Typography variant="subtitle2" sx={{ mb: "30px" }}>
           MEMORY LANE
         </Typography>
-
         <Timeline>{memories}</Timeline>
       </Box>
+      </Box>
+      
     </Container>
   );
 };
