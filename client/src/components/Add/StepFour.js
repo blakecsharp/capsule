@@ -151,6 +151,7 @@ const StepFour = ({
       </Typography>
       <Box sx={{ display: "flex", flexDirection: "row" }}>
         <Box
+        style = {{borderRadius: "15px"}}
           component="img"
           sx={{
             width: "20%",
