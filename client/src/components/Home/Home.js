@@ -112,12 +112,11 @@ const Home = () => {
                     sx={{
                       display: "flex",
                       flexDirection: "row",
-                      width: "100%",
-                      maxWidth: "100%",
+                      width: "1230px",
                       pt: "5px",
                       pb: "5px",
                       mb: "20px",
-                      border: 1,
+                      border: 1.5,
                       borderColor: purple,
                       borderRadius: 3,
                       alignItems: "center",
@@ -213,7 +212,7 @@ const Home = () => {
                 );
               })}
             
-              <div style={{width: "100% ", display: "flex", flexDirection: "row"}}>
+              <div style={{width: "1230px", display: "flex", flexDirection: "row"}}>
               <CustomButton
                 isLoggedIn
                 disableElevation

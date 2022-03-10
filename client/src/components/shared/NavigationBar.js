@@ -44,7 +44,7 @@ const NavigationBar = ({ isLoggedIn }) => {
           width: "50px",
           pt: "1vh",
           pb: "1vh",
-          ml: "5vw",
+          ml: "110px",
           justifyContent: "flex-start",
           alignItems: "center",
         }}
@@ -52,7 +52,7 @@ const NavigationBar = ({ isLoggedIn }) => {
       <Box
         sx={{
           marginLeft: "auto",
-          mr: "15px",
+          mr: "35px",
           justifyContent: "flex-start",
           display: "flex",
           alignItems: "center",

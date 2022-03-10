@@ -79,7 +79,8 @@ const Request = () => {
             <Card sx={{ maxWidth: 350 }}>
               <CardMedia
                 component="img"
-                height="300"
+                height="250"
+                style={{borderRadius: "15px"}}
                 image={
                   data.response.photos[imageIndex]
                     ? data.response.photos[imageIndex]
@@ -120,11 +121,11 @@ const Request = () => {
               }}
             >
               <Typography variant="h4">Date </Typography>{" "}
-              <Typography variant="subtitle1">{data.response.date}</Typography>
-              <Typography variant="h4">
-                Current location of the memento:
+              <Typography style={{fontSize:"20px"}}  variant="subtitle1">{data.response.date}</Typography>
+              <Typography style={{marginTop:"20px"}} variant="h4">
+                Current location of the memento:{" "}
               </Typography>
-              <Typography variant="subtitle1">
+              <Typography style={{fontSize:"20px"}} variant="subtitle1">
                 {data.response.location}
               </Typography>
             </Box>
