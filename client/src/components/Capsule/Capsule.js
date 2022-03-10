@@ -136,8 +136,8 @@ const Capsule = () => {
                     pt: "15px",
                     pl: "15px",
                     pr: "15px",
-                    ml: "10px",
-                    mr: "10px",
+                    ml: "1px",
+                    mr: "22.5px",
                     mb: "10px",
                     width: "253px",
                   }}
@@ -188,9 +188,6 @@ const Capsule = () => {
                   sx={{
                     m: "10px",
                     p: "10px",
-                    border: 1,
-                    borderRadius: "15px",
-                    borderColor: "#9567E0",
                   }}
                 >
                   <Typography variant="h5" sx={{ pl: "5px" }}>
@@ -204,11 +201,16 @@ const Capsule = () => {
                         } else {
                           return (
                             <ImageListItem
+                              style={{cursor:'pointer'}}
                               key={key}
                               sx={{
-                                padding: "10px",
+                                pt: "10px",
+                                pl: "10px",
+                                pr: "10px",
                                 mr: "10px",
-                                width: "300px",
+                                border: 1,
+                                borderRadius: "15px",
+                                borderColor: "#9567E0",
                               }}
                               onClick={() => {
                                 navigate("/item", {
@@ -222,15 +224,14 @@ const Capsule = () => {
                               <img
                                 src={item.photos[0]}
                                 alt={item.title}
+                                style={{ borderRadius:"12px"}}
                                 loading="lazy"
                               />
                               <ImageListItemBar
                                 position="below"
                                 title={item.title}
                                 actionIcon={
-                                  <ArrowForwardIosIcon
-                                    sx={{ color: "#9567E0" }}
-                                  />
+                                  <img src="https://i.imgur.com/6jtTC7P.png" alt="" style={{ width: "25px", paddingTop: "4px"}}></img>
                                 }
                               
                               />
