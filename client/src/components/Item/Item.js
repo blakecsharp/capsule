@@ -306,6 +306,7 @@ const Item = () => {
               </Typography>
               {data.response.uploadedBy === user.uid && (
                 <CustomButton
+                  style={{marginTop: "105px"}}
                   onClick={() => {
                     navigate("/recycle", {
                       state: {
@@ -387,7 +388,7 @@ const Item = () => {
                 onClick={() => {
                   setShowConfirmDelete(true);
                 }}
-                text="Delete Object"
+                text="Delete memento"
                 isLoggedIn
               />
             )}

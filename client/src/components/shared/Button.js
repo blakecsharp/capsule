@@ -18,10 +18,12 @@ const CustomButton = ({ onClick, text, disabled, style, isLoggedIn }) => {
         borderWidth: 0,
         color: "white",
         p: "10px",
+        pr: "20px",
+        pl: "20px",
       }}
       onClick={onClick}
     >
-      <Typography>{text}</Typography>
+      <Typography style={{fontSize: "14px"}}>{text}</Typography>
     </Button>
   );
 };

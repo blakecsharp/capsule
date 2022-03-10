@@ -23,12 +23,14 @@ const NavigationBar = ({ isLoggedIn }) => {
     <Box
       sx={{
         backgroundImage: "linear-gradient(to right, #9567E0, #B64FE7, #A082F8)",
-
         display: "flex",
         flexDirection: "row",
         position: "static",
-        mt: "0px",
-        width: "100%",
+        mt: "-8px",
+        ml: "-8px",
+        mr: "-8px",
+        mb: "10px",
+        width: "101.5%",
         height: "100%",
         alignItems: "center",
       }}

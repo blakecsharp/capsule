@@ -245,11 +245,6 @@ const Add = () => {
     <Container
       maxWidth={false}
       disableGutters
-      sx={{
-        backgroundColor: "#ffffff",
-        ml: "20px",
-        mr: "20px",
-      }}
     >
       <NavigationBar isLoggedIn={true} />
       {!showConfirmation && (

@@ -43,12 +43,7 @@ const Home = () => {
     <Container
       maxWidth={false}
       disableGutters
-      sx={{
-        backgroundColor: "#ffffff",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
+     
     >
       <NavigationBar
         isLoggedIn={true}
