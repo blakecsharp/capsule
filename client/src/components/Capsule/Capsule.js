@@ -119,11 +119,12 @@ const Capsule = () => {
            </div>
 
         </div>
-
+        <Box >
         {sort === "all" && (
           <ImageList
-            cols={parseInt(dimensions.width/370)}
+            cols={parseInt(dimensions.width/400)}
             rowHeight={350}
+            gap={8}
           >
             {data &&
               data.response.map((item, key) => (
@@ -133,10 +134,9 @@ const Capsule = () => {
                     border: 1,
                     borderRadius: "15px",
                     borderColor: "#9567E0",
-                    pt: "15px",
-                    pl: "15px",
-                    pr: "15px",
-                    mb: "10px",
+                    pt: "4%",
+                    pl: "4%",
+                    pr: "4%",
                   }}
                   style={{cursor:'pointer'}}
                   onClick={() => {
@@ -153,9 +153,9 @@ const Capsule = () => {
                     alt={item.title} 
                     loading="lazy" 
                     style={{
-                      borderRadius: 12, 
+                      borderRadius: 15, 
                       width: "100%",
-                      height: "253px", 
+                      height: "80%", 
                       resizeMode: "stretch"}}/>
 
                   <ImageListItemBar
@@ -175,22 +175,23 @@ const Capsule = () => {
               ))}
           </ImageList>
         )}
+        </Box>
 
         {sort === "mementoType" && (
-          <Box sx={{ mt: "20px", maxWidth: "80%" }}>
+          <Box >
             {MementoTypes.map((type, key) => {
               return (
                 <Box
                   key={key}
                   sx={{
-                    m: "10px",
-                    p: "10px",
+                    // m: "10px",
+                    // p: "10px",
                   }}
                 >
                   <Typography variant="h5" sx={{ pl: "5px" }}>
                     {type}
                   </Typography>
-                  <ImageList sx={{}} cols={4} rowHeight={350}>
+                  <ImageList sx={{}} cols={parseInt(dimensions.width/300)} rowHeight={350}>
                     {data &&
                       data.response.map((item, key) => {
                         if (item.mementoType != type) {
@@ -205,6 +206,7 @@ const Capsule = () => {
                                 pl: "15px",
                                 pr: "15px",
                                 mr: "10px",
+                                mb: "20px",
                                 width: "253px",
                                 border: 1,
                                 borderRadius: "15px",
@@ -222,7 +224,7 @@ const Capsule = () => {
                               <img
                                 src={item.photos[0]}
                                 alt={item.title}
-                                style={{ width: "253px", height: "253px", borderRadius:"12px",  resizeMode: "stretch"}}
+                                style={{ width: "253px", height: "253px", borderRadius:"15px",  resizeMode: "stretch"}}
                                 loading="lazy"
                               />
                               <ImageListItemBar
