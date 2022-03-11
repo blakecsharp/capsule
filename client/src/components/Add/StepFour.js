@@ -90,10 +90,11 @@ const StepFour = ({
           
         }}
       />
-      
+
       <TimelineContent sx={{ml: '15px', fontWeight: 'bold'}}>
         <Typography sx={{mt: '10px', fontWeight: 'bold'}}>Add another memory</Typography>
         <Box  sx={{ display: "flex", flexDirection: "row", mt: 1}}>
+
           <Box
             style={{cursor:"pointer"}}
             sx={{
@@ -150,12 +151,11 @@ const StepFour = ({
   }, [user, loading]);
   return (
     <Container maxWidth={false} disableGutters sx={{}}>
-      <Typography variant="h2" sx={{ fontWeight: 'bold', mt: "10px", mb: "20px" }}>
+      <Typography variant="h2" sx={{ fontWeight: 'bold', mb: "30px", mt: "7px" }}>
         {values.title}
       </Typography>
       <Box sx={{ display: "flex", flexDirection: "row" }}>
         <Box
-        style = {{borderRadius: "15px"}}
           component="img"
           sx={{
             width: "20%",
@@ -177,7 +177,6 @@ const StepFour = ({
       <Timeline style={{justifyContent: "flex-start", marginTop: "-20px"}}>{memories}</Timeline>
       </Box>
       </Box>
-      
     </Container>
   );
 };
