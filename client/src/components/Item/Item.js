@@ -353,6 +353,7 @@ const Item = () => {
                 flexDirection: "row",
                 justifyContent: "flex-end",
                 width: "100%",
+                fontSize: "120%"
               }}
               variant="subtitle1"
             >

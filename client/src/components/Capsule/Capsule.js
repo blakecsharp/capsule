@@ -122,7 +122,7 @@ const Capsule = () => {
 
         {sort === "all" && (
           <ImageList
-            cols={3}
+            cols={parseInt(dimensions.width/370)}
             rowHeight={350}
           >
             {data &&
@@ -137,7 +137,6 @@ const Capsule = () => {
                     pl: "15px",
                     pr: "15px",
                     mb: "10px",
-                    width: "90%",
                   }}
                   style={{cursor:'pointer'}}
                   onClick={() => {
