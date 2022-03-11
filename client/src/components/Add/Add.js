@@ -325,7 +325,7 @@ const Add = () => {
                 isLoggedIn
               />
             </Box>
-            <Box style={{position: 'absolute', bottom: '60px', left: parseInt(dimensions.width/2 - 35) }}>
+            <Box style={{position: 'absolute', bottom: '90px', left: parseInt(dimensions.width/2 - 35) }}>
             <Breadcrumb 
               currentStep={currentStep} />
             </Box>

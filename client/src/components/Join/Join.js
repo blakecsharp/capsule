@@ -82,8 +82,8 @@ const Join = () => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
-          width: "800px",
           mt: "20px",
+          width: "56.5%"
         }}
       >
         <Button
@@ -99,6 +99,7 @@ const Join = () => {
         >
           Back to home
         </Button>
+      
 
         <CustomButton
           onClick={() => {
