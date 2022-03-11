@@ -51,7 +51,7 @@ const SortingBar = ({ sort, setSort, capsuleId }) => {
           marginRight: "0px"
         }}
         sx={{
-          width: "300px",
+          width: "100%",
           border: 1,
           borderColor: "#9567E0",
           borderRadius: 2,

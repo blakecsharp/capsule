@@ -62,8 +62,8 @@ const Capsule = () => {
       <NavigationBar isLoggedIn />
       <Box
         sx={{
-          pl: "100px",
-          pr: "100px",
+          pl: "11%",
+          pr: "11%",
         }}
       >
 
@@ -122,7 +122,7 @@ const Capsule = () => {
 
         {sort === "all" && (
           <ImageList
-            cols={4}
+            cols={3}
             rowHeight={350}
           >
             {data &&
@@ -136,10 +136,8 @@ const Capsule = () => {
                     pt: "15px",
                     pl: "15px",
                     pr: "15px",
-                    ml: "1px",
-                    mr: "22.5px",
                     mb: "10px",
-                    width: "253px",
+                    width: "90%",
                   }}
                   style={{cursor:'pointer'}}
                   onClick={() => {
@@ -157,7 +155,7 @@ const Capsule = () => {
                     loading="lazy" 
                     style={{
                       borderRadius: 12, 
-                      width: "253px",
+                      width: "100%",
                       height: "253px", 
                       resizeMode: "stretch"}}/>
 

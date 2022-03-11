@@ -112,7 +112,7 @@ const Home = () => {
                     sx={{
                       display: "flex",
                       flexDirection: "row",
-                      width: "1230px",
+                      width: "100%",
                       pt: "5px",
                       pb: "5px",
                       mb: "17px",
@@ -213,14 +213,14 @@ const Home = () => {
                 );
               })}
             
-              <div style={{width: "1230px", display: "flex", flexDirection: "row"}}>
+              <div style={{width: "100%", display: "flex", flexDirection: "row"}}>
               <CustomButton
                 isLoggedIn
                 disableElevation
                 style={{
                   width: "50%",
                   mb: "10px",
-                  marginRight: "10px"
+                  marginRight: "2%"
                 }}
                 onClick={() => {
                   navigate("/create");
@@ -233,7 +233,7 @@ const Home = () => {
                 style={{
                   width: "50%",
                   mb: "10px",
-                  marginLeft: "10px"
+                  marginLeft: "2%"
                 }}
                 onClick={() => {
                   navigate("/join");
