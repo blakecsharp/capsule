@@ -160,7 +160,6 @@ const Add = () => {
       setCurrentStep(currentStep + 1);
       return;
     }
-    // setShowConfirmation(true);
 
     const storage = getStorage();
 
