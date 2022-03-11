@@ -127,6 +127,7 @@ const StepTwo = ({
 
   const capture = React.useCallback(() => {
     setFirstPhoto(false);
+    setUpload(false);
     const imageSrc = webcamRef.current.getScreenshot();
     handledCapturedMedia(imageSrc);
   }, [webcamRef]);
@@ -320,7 +321,7 @@ const StepTwo = ({
           {mode === "video" && !capturing && (
             <Button sx={{border: 1, mb: "5px", mt: "5px", borderColor: "#9567E0" }} onClick={handleStartCaptureClick}>Start Video Recording</Button>
           )}
-          {mode == "video" && recordedChunks.length > 0 && upload && (
+          {mode == "video" && recordedChunks.length > 0 && upload && !capturing && (
             <Button sx={{border: 1, mt: "5px", borderColor: "#9567E0" }} onClick={handleDownload}>Upload Video</Button>
           )}
           <Typography sx={{ml: "10px", mr: "10px", fontWeight: 'bold'}}> or </Typography>
