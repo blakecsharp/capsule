@@ -56,7 +56,7 @@ const Home = () => {
             alignItems: "center",
           }}
         >
-          <Typography variant="h2" sx={{ mb: "20px", mt: "20px" }}>
+          <Typography variant="h2" sx={{ mb: "15px", mt: "5px" }}>
             Hi {data.response.firstName}!
           </Typography>
 
@@ -113,11 +113,10 @@ const Home = () => {
                       display: "flex",
                       flexDirection: "row",
                       width: "100%",
-                      maxWidth: "100%",
                       pt: "5px",
                       pb: "5px",
-                      mb: "20px",
-                      border: 1,
+                      mb: "17px",
+                      border: 1.2,
                       borderColor: purple,
                       borderRadius: 3,
                       alignItems: "center",
@@ -198,6 +197,7 @@ const Home = () => {
                         <CustomButton
                           isLoggedIn
                           disableElevation
+                          style={{marginBottom: "5px"}}
                           onClick={() => {
                             navigate("/add", {
                               state: {
@@ -213,14 +213,14 @@ const Home = () => {
                 );
               })}
             
-              <div style={{width: "100% ", display: "flex", flexDirection: "row"}}>
+              <div style={{width: "100%", display: "flex", flexDirection: "row"}}>
               <CustomButton
                 isLoggedIn
                 disableElevation
                 style={{
                   width: "50%",
                   mb: "10px",
-                  marginRight: "10px"
+                  marginRight: "2%"
                 }}
                 onClick={() => {
                   navigate("/create");
@@ -233,7 +233,7 @@ const Home = () => {
                 style={{
                   width: "50%",
                   mb: "10px",
-                  marginLeft: "10px"
+                  marginLeft: "2%"
                 }}
                 onClick={() => {
                   navigate("/join");

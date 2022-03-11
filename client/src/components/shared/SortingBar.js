@@ -36,9 +36,6 @@ const SortingBar = ({ sort, setSort, capsuleId }) => {
         <ToggleButton value="all" aria-label="all">
           All mementos
         </ToggleButton>
-        <ToggleButton value="familyMmeber" aria-label="family">
-          By family member
-        </ToggleButton>
         <ToggleButton value="mementoType" aria-label="mementoType">
           By memento type
         </ToggleButton>
@@ -54,7 +51,7 @@ const SortingBar = ({ sort, setSort, capsuleId }) => {
           marginRight: "0px"
         }}
         sx={{
-          width: "300px",
+          width: "100%",
           border: 1,
           borderColor: "#9567E0",
           borderRadius: 2,

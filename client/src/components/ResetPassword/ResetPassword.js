@@ -48,8 +48,12 @@ const Reset = () => {
     <Container
       maxWidth={false}
       disableGutters
+      style={{
+        backgroundImage: "url(" + "https://i.imgur.com/tb0m2H2.jpg",
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat'}}
       sx={{
-        backgroundColor: "#9567e0",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -93,6 +97,7 @@ const Reset = () => {
               width: "40%",
               border: 1,
               borderColor: "white",
+              backgroundColor: "transparent",
               borderRadius: "10px",
             }}
             onClick={() => {
@@ -109,6 +114,7 @@ const Reset = () => {
               width: "40%",
               border: 1,
               borderColor: "white",
+              backgroundColor: "transparent",
               borderRadius: "10px",
               mb: "10px",
             }}

@@ -28,11 +28,11 @@ const StepOne = ({ values, handleChange }) => {
         Add a memento
       </Typography>
       <Box sx={{width: "60%", maxWidth: "800px" }}>
-        <Typography sx={{ fontWeight: 'bold'}}>Give your memento a name:</Typography>
+        <Typography sx={{ fontWeight: 'bold'}}>Give your memento a name</Typography>
         <TextInput
           value={values.title}
           handleChange={handleChange("title")}
-          placeholder="ex: My Journal"
+          placeholder="ex: Ann's Journal"
           id="title-input"
           type="string"
           adornment={<EditIcon sx={{ color: "#9567E0", pr: 3 }} />}
@@ -43,8 +43,8 @@ const StepOne = ({ values, handleChange }) => {
       <Box>
         <FormControl>
           <FormLabel id="demo-controlled-radio-buttons-group"
-           sx={{color: "#000000", mt: "10px", fontWeight: 'bold'}}>
-            Select memento type:
+           sx={{color: "black", mt: "10px", fontWeight: 'bold'}}>
+            Select memento type
           </FormLabel>
           <RadioGroup
             aria-labelledby="demo-controlled-radio-buttons-group"
