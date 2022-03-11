@@ -39,6 +39,7 @@ const StepTwo = ({
   const [firstPhoto, setFirstPhoto] = React.useState(true);
   const [recordedChunks, setRecordedChunks] = React.useState([]);
   const [mode, setMode] = React.useState("photo");
+  const [upload, setUpload] = React.useState(false);
 
   React.useEffect(() => {
     if (loading) return;
@@ -98,6 +99,7 @@ const StepTwo = ({
 
   const handleStartCaptureClick = React.useCallback(() => {
     setCapturing(true);
+    setUpload(false);
     mediaRecorderRef.current = new MediaRecorder(webcamRef.current.stream, {
       mimeType: "video/webm",
     });
@@ -120,6 +122,7 @@ const StepTwo = ({
   const handleStopCaptureClick = React.useCallback(() => {
     mediaRecorderRef.current.stop();
     setCapturing(false);
+    setUpload(true);
   }, [mediaRecorderRef, webcamRef, setCapturing]);
 
   const capture = React.useCallback(() => {
@@ -317,11 +320,11 @@ const StepTwo = ({
           {mode === "video" && !capturing && (
             <Button sx={{border: 1, mb: "5px", mt: "5px", borderColor: "#9567E0" }} onClick={handleStartCaptureClick}>Start Video Recording</Button>
           )}
-          {recordedChunks.length > 0 && (
-            <Button sx={{border: 1, mt: "5px", borderColor: "#9567E0" }} onClick={handleDownload}>See Video</Button>
+          {mode == "video" && recordedChunks.length > 0 && upload && (
+            <Button sx={{border: 1, mt: "5px", borderColor: "#9567E0" }} onClick={handleDownload}>Upload Video</Button>
           )}
           <Typography sx={{ml: "10px", mr: "10px", fontWeight: 'bold'}}> or </Typography>
-          <Button sx={{border: 1, mt: "5px", borderColor: "#9567E0" }}
+          <Button sx={{border: 1, mt: "5px", mb: "5px", borderColor: "#9567E0" }}
             onClick={() => {
               setInUpload(false);
               setInCapture(false);
