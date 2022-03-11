@@ -155,7 +155,10 @@ const Item = () => {
       <TimelineContent sx={{ flex: 25 }}>
         Add another memory
         <Box sx={{ display: "flex", flexDirection: "row", mt: "10px" }}>
+          
+
           <Box
+            style={{cursor: "pointer"}}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -172,10 +175,7 @@ const Item = () => {
               setShowAddTextOrAudio(true);
             }}
           >
-            <Typography variant="subtitle1" color="black">
-              Type or Record
-            </Typography>
-
+            
             <Box
               sx={{
                 display: "flex",
@@ -194,8 +194,12 @@ const Item = () => {
                 sx={{ width: "36px", height: "36px", color: "#9567E0" }}
               />
             </Box>
+            <Typography fontSize="15px" color="black" marginBottom="5px">
+              Type or Record
+            </Typography>
           </Box>
           <Box
+            style={{cursor: "pointer"}}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -217,13 +221,14 @@ const Item = () => {
               });
             }}
           >
-            <Typography color="black" variant="subtitle1">
-              Request
-            </Typography>
+            
 
             <ShortcutIcon
               sx={{ width: "36px", height: "36px", color: "#9567E0" }}
             />
+             <Typography fontSize="15px" color="black" marginBottom="5px">
+              Request
+            </Typography>
           </Box>
         </Box>
       </TimelineContent>
@@ -242,7 +247,7 @@ const Item = () => {
     >
       <NavigationBar isLoggedIn />
       {data && (
-        <Box sx={{ ml: "100px", mr: "100px", mt: "50px" }}>
+        <Box sx={{ ml: "100px", mr: "100px", mt: "20px" }}>
           <Typography variant="h2" sx={{ mb: "20px" }}>
             {data.response.title}
           </Typography>
@@ -255,7 +260,7 @@ const Item = () => {
             <Card sx={{ maxWidth: 350 }}>
               <CardMedia
                 component="img"
-                height="300"
+                height="250"
                 style = {{borderRadius: "15px"}}
                 image={
                   data.response.photos[imageIndex]
@@ -297,16 +302,16 @@ const Item = () => {
               }}
             >
               <Typography variant="h4">Date </Typography>{" "}
-              <Typography variant="subtitle1">{data.response.date}</Typography>
-              <Typography variant="h4">
+              <Typography style={{fontSize:"20px"}}  variant="subtitle1">{data.response.date}</Typography>
+              <Typography style={{marginTop:"10px"}} variant="h4">
                 Current location of the memento:{" "}
               </Typography>
-              <Typography variant="subtitle1">
+              <Typography style={{fontSize:"20px"}} variant="subtitle1">
                 {data.response.location}
               </Typography>
               {data.response.uploadedBy === user.uid && (
                 <CustomButton
-                  style={{marginTop: "105px"}}
+                  style={{marginTop: "40px"}}
                   onClick={() => {
                     navigate("/recycle", {
                       state: {
@@ -325,7 +330,7 @@ const Item = () => {
               <Typography variant="subtitle2" sx={{ mb: "30px" }}>
                 MEMORY LANE
               </Typography>
-              <Timeline align="left">{memories}</Timeline>
+              <Timeline style={{marginLeft: "-12%", marginTop: "-3%"}} align="left">{memories}</Timeline>
             </Box>
           )}
           {showAddTextOrAudio && (
@@ -348,6 +353,7 @@ const Item = () => {
                 flexDirection: "row",
                 justifyContent: "flex-end",
                 width: "100%",
+                fontSize: "120%"
               }}
               variant="subtitle1"
             >
@@ -356,10 +362,11 @@ const Item = () => {
           )}
           <Box
             sx={{
+              width: "100%",
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
-              mr: "5vw",
+          
             }}
           >
             <Button
@@ -376,6 +383,7 @@ const Item = () => {
                 }
               }}
               sx={{
+                width:"20%",
                 border: 1,
                 borderRadius: "10px",
               }}
@@ -395,6 +403,7 @@ const Item = () => {
             {showConfirmDelete && (
               <Box
                 sx={{
+                  width: "70%",
                   display: "flex",
                   flexDirection: "row",
                   justifyContent: "flex-end",
@@ -408,12 +417,14 @@ const Item = () => {
                   sx={{
                     border: 1,
                     borderRadius: "10px",
+                    width:"100%",
                   }}
                   isLoggedIn
                 >
-                  No, keep this memento in my capsule.
+                  No, keep memento 
                 </Button>
                 <CustomButton
+                  style={{marginLeft:"2%", width:"130%",}}
                   onClick={() => {
                     deleteItem({
                       variables: {
@@ -426,7 +437,7 @@ const Item = () => {
                       },
                     });
                   }}
-                  text="Yes, delete this memento from my capsule"
+                  text="Yes, delete memento"
                   isLoggedIn
                 />
               </Box>

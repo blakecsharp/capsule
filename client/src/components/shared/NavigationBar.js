@@ -26,9 +26,9 @@ const NavigationBar = ({ isLoggedIn }) => {
         display: "flex",
         flexDirection: "row",
         position: "static",
-        mt: "-8px",
-        ml: "-8px",
-        mr: "-8px",
+        mt: "-0.93%",
+        ml: "-1%",
+        mr: "-1%",
         mb: "10px",
         width: "101.5%",
         height: "100%",
@@ -44,7 +44,7 @@ const NavigationBar = ({ isLoggedIn }) => {
           width: "50px",
           pt: "1vh",
           pb: "1vh",
-          ml: "5vw",
+          ml: "12%",
           justifyContent: "flex-start",
           alignItems: "center",
         }}
@@ -52,7 +52,7 @@ const NavigationBar = ({ isLoggedIn }) => {
       <Box
         sx={{
           marginLeft: "auto",
-          mr: "15px",
+          mr: "12%",
           justifyContent: "flex-start",
           display: "flex",
           alignItems: "center",
@@ -64,7 +64,7 @@ const NavigationBar = ({ isLoggedIn }) => {
             color: "white",
             height: "60px",
             width: "50px",
-            mr: "20px",
+            mr: "5%",
           }}
           onClick={() => {
             navigate(`/home`);
@@ -77,7 +77,7 @@ const NavigationBar = ({ isLoggedIn }) => {
             color: "white",
             height: "60px",
             width: "50px",
-            mr: "20px",
+            mr: "5%",
           }}
           onClick={() => {
             navigate(`/faq`);
@@ -90,7 +90,6 @@ const NavigationBar = ({ isLoggedIn }) => {
             color: "white",
             height: "60px",
             width: "50px",
-            mr: "5vw",
           }}
           onClick={() => {
             console.log("logging out");

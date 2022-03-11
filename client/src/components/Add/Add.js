@@ -302,9 +302,10 @@ const Add = () => {
                 onClick={handleBack}
                 disabled={currentStep == 0 ? true : false}
                 style={{
-                  width: "100%",
-                  maxWidth: "250px",
-              
+                  width: "30%",
+                  maxWidth: "400px",
+                  position: 'absolute',
+                  bottom: '10%',
                 }}
                 text="Back"
                 isLoggedIn
@@ -314,33 +315,21 @@ const Add = () => {
                 variant="contained"
                 onClick={handleNext}
                 style={{
-                 
-                  width: "100%",
-                  maxWidth: "250px",
+                  position: 'absolute',
+                  bottom: '10%',
+                  right: '11%',
+                  width: "30%",
+                  maxWidth: "400px",
                 }}
                 text={currentStep != 3 ? "Next" : "Done"}
                 isLoggedIn
               />
             </Box>
-  
+            <Box style={{position: 'absolute', bottom: '90px', left: parseInt(dimensions.width/2 - 35) }}>
             <Breadcrumb 
               currentStep={currentStep} />
-           
-            <Button 
-              disableElevation
-              onClick={() => {
-                navigate("/home");
-              }}
-              sx={{
-                border: 1,
-                borderRadius: "10px",
-                mt: "10px",
-              }}
-              isLoggedIn
-            >
-            
-              Back to home
-            </Button>
+            </Box>
+         
           </Box>
         </Box>
       )}

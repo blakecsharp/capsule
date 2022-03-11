@@ -96,7 +96,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
           <TextInput
             value={values.date}
             handleChange={handleChange("date")}
-            placeholder="Date memento was acquired"
+            placeholder="Date associated with the memento"
             id="date-input"
             type="string"
             border="#9567E0"
@@ -121,20 +121,22 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
             mt: "30px",
           }}
         >
-          <Typography variant="h3" sx={{fontWeight: 'bold'}}>Add a memory about this memento</Typography>
+          <Typography fontSize="170%" color="#9567e0" sx={{fontWeight: 'bold', mb: "5%"}}>Add a memory about this memento</Typography>
 
           <Box
             sx={{
               display: "flex",
               flexDirection: "row",
-              width: "80vw",
+              width: "30vw",
+              height: "7vw",
               justifyContent: "left",
-              alignItems: "left",
-              mt: "20px",
+              alignItems: "center",
+              mt: "4%",
               mb: "10px",
             }}
           >
             <Box
+              style={{cursor: "pointer"}}
               sx={{
                 border: 1,
                 borderColor: "#9567E0",
@@ -146,6 +148,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
                 display: "flex",
                 flexDirection: "column",
                 mr: "20px",
+                p: "20px",
               }}
               onClick={() => {
                 setInType(true);
@@ -154,9 +157,10 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
               <TextsmsIcon
                 sx={{ color: "#9567E0", height: "50px", width: "50px" }}
               />
-              <Typography variant="subtitle2">Type</Typography>
+              <Typography >Type</Typography>
             </Box>
             <Box
+              style={{cursor: "pointer"}}
               sx={{
                 border: 1,
                 borderColor: "#9567E0",
@@ -167,6 +171,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
+                p: "20px",
               }}
               onClick={() => {
                 setInRecord(true);
@@ -175,7 +180,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
               <KeyboardVoiceIcon
                 sx={{ color: "#9567E0", height: "50px", width: "50px" }}
               />
-              <Typography variant="subtitle2">Record</Typography>
+              <Typography>Record</Typography>
             </Box>
           </Box>
         </Box>
@@ -183,6 +188,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
       {!inType && inRecord && (
         <Box
           sx={{
+            mt: "20px",
             border: 1,
             borderColor: "white",
             borderRadius: "10px",
@@ -237,7 +243,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
               rows={4}
               value={values.currentTextMemory}
               handleChange={handleChange("currentTextMemory")}
-              placeholder="Type here"
+              placeholder="Type your memory here"
               id="memory-input"
               type="string"
               border="#9567E0"
@@ -248,6 +254,7 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
             />
           </Box>
           <Button
+            sx={{mt: 2, border: 1}}
             onClick={() => {
               setInType(false);
               setInRecord(false);

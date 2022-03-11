@@ -155,13 +155,13 @@ const StepTwo = ({
           sx={{
             display: "flex",
             flexDirection: "row",
-            width: "80vw",
             justifyContent: "center",
             alignItems: "center",
             mb: "120px",
           }}
         >
           <Box
+            style={{cursor: "pointer"}}
             sx={{
               border: 1,
               borderColor: "#9567E0",
@@ -186,6 +186,7 @@ const StepTwo = ({
             >Upload</Typography>
           </Box>
           <Box
+            style={{cursor: "pointer"}}
             sx={{
               border: 1,
               borderColor: "#9567E0",
