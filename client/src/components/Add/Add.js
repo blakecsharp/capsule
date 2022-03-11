@@ -303,8 +303,6 @@ const Add = () => {
                 style={{
                   width: "30%",
                   maxWidth: "400px",
-                  position: 'absolute',
-                  bottom: '10%',
                 }}
                 text="Back"
                 isLoggedIn
@@ -314,9 +312,6 @@ const Add = () => {
                 variant="contained"
                 onClick={handleNext}
                 style={{
-                  position: 'absolute',
-                  bottom: '10%',
-                  right: '11%',
                   width: "30%",
                   maxWidth: "400px",
                 }}
@@ -324,13 +319,11 @@ const Add = () => {
                 isLoggedIn
               />
             </Box>
-            <Box style={{position: 'absolute', bottom: '90px', left: parseInt(dimensions.width/2 - 35) }}>
             <Breadcrumb 
               currentStep={currentStep} />
             </Box>
-         
           </Box>
-        </Box>
+          
       )}
       {showConfirmation && (
         <Box
