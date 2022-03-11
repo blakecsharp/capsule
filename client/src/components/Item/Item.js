@@ -330,7 +330,7 @@ const Item = () => {
               <Typography variant="subtitle2" sx={{ mb: "30px" }}>
                 MEMORY LANE
               </Typography>
-              <Timeline style={{marginLeft: "-19vh", marginTop: "-4vh"}} align="left">{memories}</Timeline>
+              <Timeline style={{marginLeft: "-12%", marginTop: "-3%"}} align="left">{memories}</Timeline>
             </Box>
           )}
           {showAddTextOrAudio && (
@@ -353,6 +353,7 @@ const Item = () => {
                 flexDirection: "row",
                 justifyContent: "flex-end",
                 width: "100%",
+                fontSize: "120%"
               }}
               variant="subtitle1"
             >
@@ -361,10 +362,11 @@ const Item = () => {
           )}
           <Box
             sx={{
+              width: "100%",
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
-              mr: "5vw",
+          
             }}
           >
             <Button
@@ -381,6 +383,7 @@ const Item = () => {
                 }
               }}
               sx={{
+                width:"20%",
                 border: 1,
                 borderRadius: "10px",
               }}
@@ -400,6 +403,7 @@ const Item = () => {
             {showConfirmDelete && (
               <Box
                 sx={{
+                  width: "70%",
                   display: "flex",
                   flexDirection: "row",
                   justifyContent: "flex-end",
@@ -413,12 +417,14 @@ const Item = () => {
                   sx={{
                     border: 1,
                     borderRadius: "10px",
+                    width:"100%",
                   }}
                   isLoggedIn
                 >
-                  No, keep this memento in my capsule.
+                  No, keep memento 
                 </Button>
                 <CustomButton
+                  style={{marginLeft:"2%", width:"130%",}}
                   onClick={() => {
                     deleteItem({
                       variables: {
@@ -431,7 +437,7 @@ const Item = () => {
                       },
                     });
                   }}
-                  text="Yes, delete this memento from my capsule"
+                  text="Yes, delete memento"
                   isLoggedIn
                 />
               </Box>

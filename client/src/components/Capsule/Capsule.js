@@ -51,7 +51,9 @@ const Capsule = () => {
     window.addEventListener("resize", handleResize);
   });
 
-  console.log(dimensions);
+  const numCols = parseInt(dimensions.width / 370);
+
+  console.log((dimensions.width * 0.88) / numCols);
 
   React.useEffect(() => {
     if (loading) return;
@@ -62,69 +64,62 @@ const Capsule = () => {
       <NavigationBar isLoggedIn />
       <Box
         sx={{
-          pl: "100px",
-          pr: "100px",
+          pl: "11%",
+          pr: "11%",
         }}
       >
-
         <SortingBar
           sort={sort}
           setSort={setSort}
           capsuleId={location.state.capsuleId}
         />
 
-        <div style={{ display: "flex", flexDirection: "row", paddingTop: 3}}>
-         
-        <div style={{ flex: 1}}>
-          <Button
-            disableElevation
-            onClick={() => {
-              navigate("/home");
-            }}
-            sx={{
-              border: 1,
-              borderRadius: "10px",
-              justifySelf: "flex-start",
-              mb: "20px",
-            }}
-            isLoggedIn
-          >
-            Back
-          </Button>
+        <div style={{ display: "flex", flexDirection: "row", paddingTop: 3 }}>
+          <div style={{ flex: 1 }}>
+            <Button
+              disableElevation
+              onClick={() => {
+                navigate("/home");
+              }}
+              sx={{
+                border: 1,
+                borderRadius: "10px",
+                justifySelf: "flex-start",
+                mb: "20px",
+              }}
+              isLoggedIn
+            >
+              Back
+            </Button>
           </div>
 
           <div style={{}}>
-          <CustomButton
-            disableElevation
-            onClick={() => {
-              navigate("/add", {
-                state: {
-                  capsuleId: location.state.capsuleId,
-                },
-              });
-            }}
-            style={{
-              justifySelf: "flex-end",
-              border: 1,
-              borderColor: "#9567E0",
-              borderRadius: "10px",
-              marginLeft: "auto",
-              marginRight: 0,
-              mb: "20px",
-              
-            }}
-            text="Add memento"
-            isLoggedIn
-          />
-           </div>
-
+            <CustomButton
+              disableElevation
+              onClick={() => {
+                navigate("/add", {
+                  state: {
+                    capsuleId: location.state.capsuleId,
+                  },
+                });
+              }}
+              style={{
+                justifySelf: "flex-end",
+                border: 1,
+                borderColor: "#9567E0",
+                borderRadius: "10px",
+                marginLeft: "auto",
+                marginRight: 0,
+                mb: "20px",
+              }}
+              text="Add memento"
+              isLoggedIn
+            />
+          </div>
         </div>
 
         {sort === "all" && (
-          <ImageList
-            cols={4}
-            rowHeight={350}
-          >
+          <ImageList cols={numCols} rowHeight={350}>
             {data &&
               data.response.map((item, key) => (
                 <ImageListItem
@@ -136,12 +131,9 @@ const Capsule = () => {
                     pt: "15px",
                     pl: "15px",
                     pr: "15px",
-                    ml: "1px",
-                    mr: "22.5px",
                     mb: "10px",
-                    width: "253px",
                   }}
-                  style={{cursor:'pointer'}}
+                  style={{ cursor: "pointer" }}
                   onClick={() => {
                     navigate("/item", {
                       state: {
@@ -151,21 +143,27 @@ const Capsule = () => {
                     });
                   }}
                 >
-                  <img 
-                    src={item.photos[0]} 
-                    alt={item.title} 
-                    loading="lazy" 
+                  <img
+                    src={item.photos[0]}
+                    alt={item.title}
+                    loading="lazy"
                     style={{
-                      borderRadius: 12, 
-                      width: "253px",
-                      height: "253px", 
-                      resizeMode: "stretch"}}/>
+                      borderRadius: 12,
+                      width: "100%",
+                      height: "253px",
+                      resizeMode: "stretch",
+                    }}
+                  />
 
                   <ImageListItemBar
                     position="below"
                     title={item.title}
                     actionIcon={
-                      <img src="https://i.imgur.com/6jtTC7P.png" alt="" style={{ width: "25px", paddingTop: "4px"}}></img>
+                      <img
+                        src="https://i.imgur.com/6jtTC7P.png"
+                        alt=""
+                        style={{ width: "25px", paddingTop: "4px" }}
+                      ></img>
                       // <ArrowForwardIosIcon sx={{ pt: "4px", color: "#9567E0" }} />
                     }
                     sx={{
@@ -201,7 +199,7 @@ const Capsule = () => {
                         } else {
                           return (
                             <ImageListItem
-                              style={{cursor:'pointer'}}
+                              style={{ cursor: "pointer" }}
                               key={key}
                               sx={{
                                 pt: "15px",
@@ -225,16 +223,24 @@ const Capsule = () => {
                               <img
                                 src={item.photos[0]}
                                 alt={item.title}
-                                style={{ width: "253px", height: "253px", borderRadius:"12px",  resizeMode: "stretch"}}
+                                style={{
+                                  width: "253px",
+                                  height: "253px",
+                                  borderRadius: "12px",
+                                  resizeMode: "stretch",
+                                }}
                                 loading="lazy"
                               />
                               <ImageListItemBar
                                 position="below"
                                 title={item.title}
                                 actionIcon={
-                                  <img src="https://i.imgur.com/6jtTC7P.png" alt="" style={{ width: "25px", paddingTop: "4px"}}></img>
+                                  <img
+                                    src="https://i.imgur.com/6jtTC7P.png"
+                                    alt=""
+                                    style={{ width: "25px", paddingTop: "4px" }}
+                                  ></img>
                                 }
-                              
                               />
                             </ImageListItem>
                           );
@@ -246,8 +252,6 @@ const Capsule = () => {
             })}
           </Box>
         )}
-        
-        
       </Box>
     </Container>
   );

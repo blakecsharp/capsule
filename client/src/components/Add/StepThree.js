@@ -121,16 +121,17 @@ const StepThree = ({ values, handleChange, handleAudio }) => {
             mt: "30px",
           }}
         >
-          <Typography variant="h3" sx={{fontWeight: 'bold'}}>Add a memory about this memento</Typography>
+          <Typography fontSize="170%" color="#9567e0" sx={{fontWeight: 'bold', mb: "5%"}}>Add a memory about this memento</Typography>
 
           <Box
             sx={{
               display: "flex",
               flexDirection: "row",
-              width: "80vw",
-              justifyContent: "center",
+              width: "30vw",
+              height: "7vw",
+              justifyContent: "left",
               alignItems: "center",
-              mt: "20px",
+              mt: "4%",
               mb: "10px",
             }}
           >

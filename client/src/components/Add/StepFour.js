@@ -165,13 +165,13 @@ const StepFour = ({
           src={values.previewImages[0]}
         />
         <Box sx={{ display: "flex", flexDirection: "column", ml: "30px" }}>
-          <Typography variant="h4">Date: </Typography>{" "}
-          <Typography variant="subtitle1">{values.date}</Typography>
-          <Typography variant="h4">Location: </Typography>
-          <Typography variant="subtitle1">{values.location}</Typography>
+          <Typography fontSize="150%">Date: </Typography>{" "}
+          <Typography fontSize="150%">{values.date}</Typography>
+          <Typography fontSize="150%">Location: </Typography>
+          <Typography fontSize="150%">{values.location}</Typography>
         </Box>
-      <Box style={{position: 'absolute', top: '85px', right: '150px'}}>
-        <Typography variant="h3" sx={{ ml: "100px", mb: "30px" }}>
+      <Box style={{marginLeft:"6.5%"}}>
+        <Typography variant="h3" sx={{ ml: "20%", mb: "30px" }}>
           MEMORY LANE
         </Typography>
       <Timeline style={{justifyContent: "flex-start", marginTop: "-20px"}}>{memories}</Timeline>
