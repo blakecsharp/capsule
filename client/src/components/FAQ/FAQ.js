@@ -55,10 +55,16 @@ const FAQ = () => {
             <Typography variant="subtitle2">
               Can I belong to multiple capsules?
             </Typography>
-            <Typography variant="body">
-              Yes! You can belong to an unlimited number of capsules. Q: How do
-              I invite my family members or friends to join my capsule? A: Enter
-              the home page for the capsule you’d like to invite someone to and
+            <Typography style={{fontSize: 14}} variant="h5">
+              Yes! You can belong to an unlimited number of capsules. 
+            </Typography>
+          </Box>
+          <Box sx={{ pb: "30px" }}>
+            <Typography variant="subtitle2">
+           How do I invite my family members or friends to join my capsule? 
+            </Typography>
+            <Typography style={{fontSize: 14}} variant="h5">
+           Enter the home page for the capsule you’d like to invite someone to and
               click the “Invite someone to this capsule” button. This will
               provide you with a unique ID for the capsule that your loved one
               can enter when they sign up to join.
@@ -73,7 +79,7 @@ const FAQ = () => {
               Are there guidelines for how to upload good photo or video content
               of mementos?
             </Typography>
-            <Typography variant="body">
+            <Typography style={{fontSize: 14}} variant="h5">
               If the item is 3D, we suggest that you take multiple photos to
               capture all sides of the memento or one video that shows the
               memento in its entirety. If the memento is written like a recipe
@@ -92,7 +98,7 @@ const FAQ = () => {
               How will I know if someone requests more information on one of my
               uploaded mementos?
             </Typography>
-            <Typography variant="body">
+            <Typography style={{fontSize: 14}} variant="h5">
               You will receive an email notifying you of the request to the
               email address you signed up with.
             </Typography>
